@@ -11,7 +11,8 @@ app = Flask(__name__)
 @app.route("/Home", methods=['GET'])
 def returnFirst():
     if request.method == 'GET':
-        return render_template('home.html', data = 'Hello World')
+        sherifInfo = "Here is information about the High Sheriff"
+        return render_template('home.html', data = sherifInfo)
 
 if __name__ == "__main__":
     app.run(debug=True)
