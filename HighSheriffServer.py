@@ -13,5 +13,10 @@ def returnFirst():
     if request.method == 'GET':
         return render_template('home.html', data = 'Hello World')
 
+@app.route("/Application", methods=['GET'])
+def returnApplication():
+    if request.method == 'GET':
+        return render_template('application.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
