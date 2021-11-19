@@ -18,19 +18,19 @@
           <form method="dialog">
               <label name="email">
                   Your Email:
-                  <input type="text" name="email" /><br /><br />
+                  <input id="atEmail" type="text" name="email" /><br /><br />
               </label>
               <label name="firstname">
                   Your First Name:
-                  <input type="text" name="firstname" /><br /><br />
+                  <input id="atFirstname" type="text" name="firstname" /><br /><br />
               </label>
               <label name="lastname">
                   Last Name:
-                  <input type="text" name="lastname" /><br /><br />
+                  <input id="atLastname" type="text" name="lastname" /><br /><br />
               </label>
               <label>
                   Reason for applying<br />
-                  <textarea cols="100" rows="20" name="reason"></textarea><br /><br />
+                  <textarea id="atReason" cols="100" rows="20" name="reason"></textarea><br /><br />
               </label>
               <label>
                   Tick here to agree to the term of services
@@ -58,6 +58,7 @@
           if (terms == true && confirm == true) {
               document.getElementById("error1").style.visibility = "hidden";
               document.getElementById("error2").style.visibility = "hidden";
+              submitToServer();
           } else if (terms == false) {
               document.getElementById("error1").style.visibility = "visible";
               document.getElementById("error2").style.visibility = "hidden";
@@ -68,6 +69,21 @@
               document.getElementById("error1").style.visibility = "visible";
               document.getElementById("error2").style.visibility = "hidden";
           }
+      }
+
+      function submitToServer() {
+          var email = document.getElementByName("firstname").value
+          var xhttp = new XMLHttpRequest();
+          xhttp.open("POST", "/submitApplication", true);
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhttp.onreadystatechange = function () {
+              if (xhttp.readyState === 4) {
+                  if (xhttp.status === 200) { // Sets all of the json files from the server into the quiz html
+                      console.log(email);
+                  }
+              }
+          }
+          xhttp.send();
       }
 
   </script>
