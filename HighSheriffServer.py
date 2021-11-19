@@ -13,24 +13,24 @@ def returnFirst():
     if request.method == 'GET':
         return render_template('home.html', data = 'Hello World')
 
-@app.route("/adminDonators", method = ['GET', 'POST'])
-def adminDonatorsPage():
-    if request.method =='GET':
-        return render_template('adminDonators.html')
-    if request.method =='POST':
-        try:
-            lastname = request.form.get('lastname', default="Error")
-            conn = sqlite3.connect(DATABASE)
-            cur = conn.cursor()
-            cur.execute("SELECT * FROM Donators WHERE lastname=?", [lastname])
-            data = cur.fetchall()
-            print(data)
-        except:
-            print('there was an error', data)
-            conn.close()
-        finally:
-            conn.close()
-            return render_template('adminDonators.html', data = data)
+@app.route("/adminDonators", methods = ['GET', 'POST'])
+def adminDonators():
+	if request.method =='GET':
+		return render_template('adminDonators.html')
+	if request.method =='POST':
+		try:
+			surname = request.form.get('surname', default="Error")
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("SELECT * FROM Donators WHERE surname=?;", [surname])
+			data = cur.fetchall()
+			print(data)
+		except:
+			print('there was an error', data)
+			conn.close()
+		finally:
+			conn.close()
+			return render_template('ListDonators.html', data = data)
 
 
 if __name__ == "__main__":
