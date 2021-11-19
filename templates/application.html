@@ -1,2 +1,32 @@
-
-{% include 'nav.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <h1>Applications for funds</h1>
+      <section>
+          <h2>Apply through Reworking (Recommended)</h2>
+          <a href="">Reworking.com</a>
+      </section>
+      <section>
+          <h2>Apply using a form</h2>
+          <form method="post" action="/submitApplication">
+              <label name="email"> Your Email:
+                  <input type="text" name="email"/><br /><br />
+              </label>
+              <label name="firstname"> Your First Name:
+                  <input type="text" name="firstname"/><br /><br />
+              </label>
+              <label name="lastname"> Last Name:
+                  <input type="text" name="lastname"/><br /><br />
+              </label>
+              <label>Reason for applying<br />
+                  <textarea cols="100" rows="20" name="reason"></textarea><br /><br />
+              </label>
+              <button type="submit">Submit</button>
+          </form>
+      </section>
+  </body>
+</html>

@@ -3,6 +3,10 @@
     "",
     "\\templates"
   ],
+<<<<<<< HEAD
   "SelectedNode": "\\templates\\home.html",
+=======
+  "SelectedNode": "\\templates\\application.html",
+>>>>>>> user_story4_gf
   "PreviewInSolutionExplorer": false
 }
