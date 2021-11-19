@@ -7,9 +7,10 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
 
-def highSheriffInfo():
-	info = "Here is information about the High Sheriff"
-	return info
+@app.route("/submitApplication", methods=['POST'])
+def submitApp():
+    if request.method == 'POST':
+        return "Application successful"
 
 @app.route("/Home", methods=['GET'])
 def returnHome():
