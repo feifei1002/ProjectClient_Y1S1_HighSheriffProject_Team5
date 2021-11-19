@@ -9,8 +9,8 @@ app = Flask(__name__)
 
 @app.route("/submitApplication", methods=['POST'])
 def submitApp():
-    if request.method == 'POST':
-        return "Application successful"
+	if request.method == 'POST':
+		return "Application successful"
 
 @app.route("/Home", methods=['GET'])
 def returnHome():
@@ -28,10 +28,30 @@ def returnWork():
 	if request.method == 'GET':
 		return render_template('Donations.html')
 
-@app.route("/Application", methods=['GET'])
+@app.route("/Application", methods=['GET', 'POST'])
 def returnAppplication():
 	if request.method == 'GET':
 		return render_template('application.html')
+	if request.method == 'POST':
+		email = request.form.get('email', default = "Error")
+		firstname = request.form.get('firstname', default = "Error")
+		lastname = request.form.get('lastname', default = "Error")
+		reason = request.form.get('reason', default = "Error")
+		print("inserting applicant"+firstname)
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("INSERT INTO Applicants ('firstName', 'surName', 'Email', 'Reason')\
+						VALUES (?,?,?,?)",(firstname, lastname, email, reason) )
+
+			conn.commit()
+			msg = "Record successfully added"
+		except:
+			conn.rollback()
+			msg = "error in insert operation"
+		finally:
+			conn.close()
+			return msg
 
 
 @app.route("/adminDonators", methods = ['GET', 'POST'])

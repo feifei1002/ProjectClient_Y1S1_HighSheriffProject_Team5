@@ -1,10 +1,12 @@
-<h2>Applicants</h2>
+<h1>Applicants</h1>
 <table border = 1>
    <thead>
       <td>ID</td>
       <td>First Name</td>
       <td>Sur name</td>
       <td>Amount</td>
+      <td>Email</td>
+      <td>Reason</td>
    </thead>
 
    {% for row in data %}
@@ -15,6 +17,8 @@
         <td>{{row[1]}}</td>
         <td>{{row[2]}}</td>
         <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[5]}}</td>
       </tr>
    {% endfor %}
 </table>
