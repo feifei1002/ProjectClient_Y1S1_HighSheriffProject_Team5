@@ -5,6 +5,9 @@
     <title></title>
   </head>
   <body>
+      <header>
+          {% include 'nav.html'%}
+      </header>
       <h1>Applications for funds</h1>
       <section>
           <h2>Apply through Reworking (Recommended)</h2>
@@ -13,22 +16,28 @@
       <section>
           <h2>Apply using a form</h2>
           <form method="dialog">
-              <label name="email"> Your Email:
-                  <input type="text" name="email"/><br /><br />
+              <label name="email">
+                  Your Email:
+                  <input type="text" name="email" /><br /><br />
               </label>
-              <label name="firstname"> Your First Name:
-                  <input type="text" name="firstname"/><br /><br />
+              <label name="firstname">
+                  Your First Name:
+                  <input type="text" name="firstname" /><br /><br />
               </label>
-              <label name="lastname"> Last Name:
-                  <input type="text" name="lastname"/><br /><br />
+              <label name="lastname">
+                  Last Name:
+                  <input type="text" name="lastname" /><br /><br />
               </label>
-              <label>Reason for applying<br />
+              <label>
+                  Reason for applying<br />
                   <textarea cols="100" rows="20" name="reason"></textarea><br /><br />
               </label>
-              <label>Tick here to agree to the term of services
+              <label>
+                  Tick here to agree to the term of services
                   <input id="termsBox" type="checkbox" name="terms" /><br /><br />
               </label>
-              <label>Tick here to confirm you are within the stated county
+              <label>
+                  Tick here to confirm you are within the stated county
                   <input id="confirmBox" type="checkbox" name="confirm" /><br /><br />
               </label>
               <button onclick="validateForm()" type="submit">Submit</button>
@@ -47,13 +56,17 @@
           var terms = document.getElementById("termsBox").checked;
           var confirm = document.getElementById("confirmBox").checked;
           if (terms == true && confirm == true) {
-
+              document.getElementById("error1").style.visibility = "hidden";
+              document.getElementById("error2").style.visibility = "hidden";
           } else if (terms == false) {
               document.getElementById("error1").style.visibility = "visible";
+              document.getElementById("error2").style.visibility = "hidden";
           } else if (confirm == false) {
+              document.getElementById("error1").style.visibility = "hidden";
               document.getElementById("error2").style.visibility = "visible";
           } else {
               document.getElementById("error1").style.visibility = "visible";
+              document.getElementById("error2").style.visibility = "hidden";
           }
       }
 
