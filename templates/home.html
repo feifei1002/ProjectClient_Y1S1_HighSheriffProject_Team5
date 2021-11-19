@@ -1,12 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home Page</title>
+  </head>
+  <body>
+      <header>
+        {% include 'nav.html'%}
+      </header>
+      <main>
+          <h2>High Sherif</h2>
+          {%if data%}
+            {{data}}
+          {%endif%}
+      </main>
+      <footer>
 
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>{% block title %} - My Site {% endblock %}</title>
-    </head>
-    <body>
-        <div>Navbar</div>
-        {% block content %}{% endblock %}
-    </body>
+      </footer>
+  </body>
 </html>
