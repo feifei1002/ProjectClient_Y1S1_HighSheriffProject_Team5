@@ -9,7 +9,9 @@ CREATE TABLE IF NOT EXISTS `Donators` (
 );
 
 INSERT INTO 'Donators'('firstName','surName', 'Amount' ) VALUES ('Fei','Liu',5000);
-INSERT INTO 'Donators'('firstName','surName', 'Amount' ) VALUES ('Fei','Liu',1000);
+INSERT INTO 'Donators'('firstName','surName', 'Amount' ) VALUES ('Peter','Hayward',4000);
+INSERT INTO 'Donators'('firstName','surName', 'Amount' ) VALUES ('Jashan','Vigneswaran',3000);
+
 
 CREATE TABLE IF NOT EXISTS `Applicants` (
   `ID`		INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -19,4 +21,5 @@ CREATE TABLE IF NOT EXISTS `Applicants` (
 );
 
 INSERT INTO 'Applicants'('firstName','surName', 'Amount' ) VALUES ('Fei','Liu',5000);
-INSERT INTO 'Applicants'('firstName','surName', 'Amount' ) VALUES ('Fei','Liu',1000);
+INSERT INTO 'Applicants'('firstName','surName', 'Amount' ) VALUES ('Gianfranco','Cicciomessere',2000);
+INSERT INTO 'Applicants'('firstName','surName', 'Amount' ) VALUES ('Stevens','Matthew',2000);
