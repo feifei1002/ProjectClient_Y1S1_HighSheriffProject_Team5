@@ -7,6 +7,10 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
 
+@app.route("/submitApplication", methods=['POST'])
+def submitApp():
+    if request.method == 'POST':
+        return "Application successful"
 
 @app.route("/Home", methods=['GET'])
 def returnFirst():
