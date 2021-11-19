@@ -28,15 +28,16 @@
               <button type="submit">Submit</button>
           </form>
       </section>
+      <span id='txt'></span>
       <script>
       function loadApplicants() {
-        var firstName = document.forms["applyForm"]["firstName"].value;
-        var surname = document.forms["applyForm"]["surname"].value;
-        var termLocation = document.forms["applyForm"]["termLocation"].value;
-        var homeLocation = document.forms["applyForm"]["homeLocation"].value;
-        params = 'firstName='+firstName+'&surname='+surname+'&termLocation='+termLocation+'&homeLocation='+homeLocation;
+        var firstName = document.forms["applyForm"]["firstname"].value;
+        var lastName = document.forms["applyForm"]["lastname"].value;
+        var email = document.forms["applyForm"]["email"].value;
+        var reason = document.forms["applyForm"]["reason"].value;
+        params = 'firstname='+firstName+'&lastname='+lastName+'&email='+email+'&reason='+reason;
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", '/Student/AddStudent', true); // true is asynchronous
+        xhttp.open("POST", '/Application', true); // true is asynchronous
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onload = function() {
           if (xhttp.readyState === 4 && xhttp.status === 200) {
