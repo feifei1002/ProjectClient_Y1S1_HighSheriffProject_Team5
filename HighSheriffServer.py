@@ -15,14 +15,6 @@ def returnFirst():
 
 @app.route("/adminDonators", methods = ['GET', 'POST'])
 def adminDonators():
-	# error = None
-    # if request.method == 'POST':
-    #     if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-    #         error = 'Invalid Credentials. Please try again.'
-    #     else:
-    #         return render_template('moderator.html', variable=quiz_questions[1], num_quest = numNext + 1, list_var = quiz_questions, answer_var = quiz_answers, answervariable=quiz_answers[1])
-    # return render_template('login.html', error=error)
-
 	if request.method =='GET':
 		return render_template('adminDonators.html')
 	error = None
