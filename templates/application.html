@@ -12,7 +12,7 @@
       </section>
       <section>
           <h2>Apply using a form</h2>
-          <form method="post" action="/submitApplication">
+          <form id='applyForm' onsubmit="return loadApplicants()" method="post" action="/submitApplication">
               <label name="email"> Your Email:
                   <input type="text" name="email"/><br /><br />
               </label>
@@ -28,5 +28,28 @@
               <button type="submit">Submit</button>
           </form>
       </section>
+      <script>
+      function loadApplicants() {
+        var firstName = document.forms["applyForm"]["firstName"].value;
+        var surname = document.forms["applyForm"]["surname"].value;
+        var termLocation = document.forms["applyForm"]["termLocation"].value;
+        var homeLocation = document.forms["applyForm"]["homeLocation"].value;
+        params = 'firstName='+firstName+'&surname='+surname+'&termLocation='+termLocation+'&homeLocation='+homeLocation;
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", '/Student/AddStudent', true); // true is asynchronous
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onload = function() {
+          if (xhttp.readyState === 4 && xhttp.status === 200) {
+            console.log(xhttp.responseText);
+            document.getElementById("txt").innerHTML = xhttp.responseText;
+          } else {
+            console.error(xhttp.statusText);
+          }
+        };
+        xhttp.send(params);
+        return false;
+      }
+
+    </script>
   </body>
 </html>
