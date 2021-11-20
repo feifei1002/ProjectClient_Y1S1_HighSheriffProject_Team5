@@ -26,9 +26,14 @@
         <td>{{row[3]}}</td>
         <td>{{row[4]}}</td>
         <td>{{row[5]}}</td>
-        <td><input type="submit" name="accept" id="accept" value = "Accept">
-             <input type="submit" name="decline" id="decline" value = "Decline"></td>
+        <td><button type="submit" name="accept" id="accept">Accept</button>
+             <button type="submit" name="decline" id="decline" onclick="deleteFunction()">Decline</button></td>
       </tr>
    {% endfor %}
 </table>
+<script>
+function deleteFunction(){
+  document.getElementById("myTable").deleteRow(0);
+}
+</script>
 </body>
