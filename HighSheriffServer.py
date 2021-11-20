@@ -53,13 +53,15 @@ def returnAppplication():
 
 
 @app.route("/admin", methods = ['GET', 'POST'])
-def adminApplicants():
+def admin():
 	if request.method =='GET':
 		return render_template('admin.html')
 	error = None
 	if request.method =='POST':
 		if request.form['username']!= 'admin' or request.form['password'] != 'admin':
-			error: "Wrong username or password. Please try again."
+			error = "Wrong username or password. Please try again."
+			print(error)
+			return render_template('admin.html')
 		else:
 			try:
 				conn = sqlite3.connect(DATABASE)
@@ -76,7 +78,7 @@ def adminApplicants():
 				conn.close()
 				return render_template('ListApplicants.html', data = data)
 
-	return render_template('adminLogin.html')
+	return render_template('admin.html')
 
 if __name__ == "__main__":
 	app.run(debug=True)
