@@ -52,10 +52,10 @@ def returnAppplication():
 		return render_template('application.html')
 
 
-@app.route("/adminApplicants", methods = ['GET', 'POST'])
+@app.route("/admin", methods = ['GET', 'POST'])
 def adminApplicants():
 	if request.method =='GET':
-		return render_template('adminApplicants.html')
+		return render_template('admin.html')
 	error = None
 	if request.method =='POST':
 		if request.form['username']!= 'admin' or request.form['password'] != 'admin':
