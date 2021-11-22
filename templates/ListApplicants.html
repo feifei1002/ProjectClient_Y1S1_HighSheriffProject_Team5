@@ -16,6 +16,7 @@
       <td>Amount</td>
       <td>Email</td>
       <td>Reason</td>
+      <td>Decline</td>
    </thead>
 
    {% for row in data %}
@@ -27,13 +28,13 @@
         <td>{{row[4]}}</td>
         <td>{{row[5]}}</td>
         <td><button type="submit" name="accept" id="accept">Accept</button>
-             <button type="submit" name="decline" id="decline" onclick="deleteFunction()">Decline</button></td>
+             <button type="submit" name="decline" id="decline" onclick="declineApplicant()">Decline</button></td>
       </tr>
    {% endfor %}
 </table>
 <script>
-function deleteFunction(){
-  document.getElementById("myTable").deleteRow(0);
+function declineApplicant(){
+  document.getElementById("myTable").deleteRow(1);
 }
 </script>
 </body>
