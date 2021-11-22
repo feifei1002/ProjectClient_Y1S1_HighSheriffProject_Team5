@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home Page</title>
+  </head>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="HighSherrifStyle.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+    <header>
+      {% include 'nav.html'%}
+    </header>
+
+    <main>
+      <section class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8">.col-lg-8</div>
+          <div class="col-lg-4">.col-lg-4</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>About our page</h2>
+        <p class="text-left">Left-aligned text.</p>
+
+      </section>
+
+
+        <section>
+            <h2>High Sherif</h2>
+            {%if data%}
+            {{data}}
+            {%endif%}
+        </section>
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
