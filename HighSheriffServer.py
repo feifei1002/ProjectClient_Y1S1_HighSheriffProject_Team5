@@ -102,7 +102,11 @@ def adminApplicants():
 				conn.close()
 				return render_template('ListApplicants.html', data = data)
 
-	return render_template('adminLogin.html')
+@app.route("/Charities", methods =['GET'])
+def returnCharities():
+    if request.method == 'GET':
+        return render_template('charities.html')
+
 
 if __name__ == "__main__":
 	app.run(debug=True)
