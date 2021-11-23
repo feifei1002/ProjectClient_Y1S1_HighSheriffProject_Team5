@@ -14,7 +14,7 @@ def submitApp():
 		firstname = request.form.get('firstname', default = "Error")
 		lastname = request.form.get('lastname', default = "Error")
 		reason = request.form.get('reason', default = "Error")
-		print("inserting applicant"+firstname)
+		print("inserting applicant"+ firstname)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
@@ -83,13 +83,12 @@ def admin():
 @app.route("/declineApplication", methods=['POST'])
 def declineApp():
 	if request.method == 'POST':
-		decline = request.form.get('decline', default = "Error")
-		print("deleting applicant"+decline)
+		ID = request.form.get('decline', default = "Error")
+		print("deleting applicant"+ ID)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("DELETE * FROM Applicants \
-						WHERE ID = 'decline'",(ID) )
+			cur.execute("DELETE FROM Applicants WHERE ID = 'ID'")
 
 			conn.commit()
 			msg = "Application successfully deleted"
