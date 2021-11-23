@@ -80,5 +80,25 @@ def admin():
 
 	return render_template('admin.html')
 
+@app.route("/declineApplication", methods=['POST'])
+def declineApp():
+	if request.method == 'POST':
+		decline = request.form.get('decline', default = "Error")
+		print("deleting applicant"+decline)
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("DELETE * FROM Applicants \
+						WHERE ID = 'decline'",(ID) )
+
+			conn.commit()
+			msg = "Application successfully deleted"
+		except:
+			conn.rollback()
+			msg = "error in decline application"
+		finally:
+			conn.close()
+			return msg
+
 if __name__ == "__main__":
 	app.run(debug=True)
