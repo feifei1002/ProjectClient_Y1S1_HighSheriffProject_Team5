@@ -1,8 +1,17 @@
+{% include 'nav.html'%}
+
 <title>Admin Applicants Login Page</title>
+
+<main class="container-fluid mt-3 pt-2 justify-content-center text-center bg-light">
+
 <h1>Admin Applicants Login Page</h1>
 <form id='adminForm' action='/adminApplicants' method = 'post'>
   <!-- <label>Surname:<input type = "text" name = "surname"><br></label> -->
-  <label>Username:<input type = "text" name = "username"</label><br><br>
-  <label>Password:<input type = "password" name = "password"</label><br><br>
-  <button type = "submit"> submit </button>
+  <label>Username:<br><input type = "text" name = "username"</label><br><br>
+  <label>Password:<br><input type = "password" name = "password"</label><br><br>
+  <button type = "submit" class="btn btn-outline-primary"> Log In </button>
 </form>
+
+
+</main>
+{% include 'boostrap.html'%}
