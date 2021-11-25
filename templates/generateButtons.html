@@ -6,11 +6,15 @@
 <script>
     applicants = [];
     $(document).ready(function () {
+        $('#modMsg').after("<table class='table'><thead><tr><td>ID</td><td>Firstname</td><td>Surname</td><td>Amount</td><td>Email</td><td>Reason</td></tr></thead><tbody id='requestedTable'></tbody></table>");
         $('#applicantTable tr').each(function () {
+            var current = this;
+            console.log(current);
             $(this).find('td:contains("None")').each(function () {
                 console.log(this);
-                $(this).append(" <p class='text-danger'>Needs moderator input</p>");
-                $("#modMsg").html("<p class='text-warning'>There are applications that need moderation input: </p>");
+                $(this).append("<p class='text-danger'>Needs moderator input</p>");
+                $("#modMsg").html("<p class='text-warning'>There are applications that need moderator input: </p>");
+                $('#requestedTable').append(current);
             })
         })
     });
