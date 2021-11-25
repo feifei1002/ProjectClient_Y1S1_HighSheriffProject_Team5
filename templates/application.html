@@ -4,43 +4,56 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+  {% include 'boostrap.html'%}
   <body>
       <header>
           {% include 'nav.html'%}
       </header>
-      <h1>Applications for funds</h1>
-      <section>
+      <h1 class="container-fluid justify-content-center text-center">Applications for funds</h1>
+      <section class="container-fluid bg-light pt-2 justify-content-center text-center">
           <h2>Apply through Reworking (Recommended)</h2>
           <a href="">Reworking.com</a>
       </section>
-      <section>
+      <section class="container-fluid mt-3 pt-2 justify-content-center text-center bg-light">
           <h2>Apply using a form</h2>
           <form method="post" action="/submitApplication" onsubmit="return validateForm()">
+            <div class="mb-3 mt-3">
               <label name="email">
-                  Your Email:
-                  <input id="atEmail" type="text" name="email" /><br /><br />
+                  Your Email:<br />
+                  <input id="atEmail" type="text" name="email" />
               </label>
+            </div>
+            <div class="mb-3 mt-3">
               <label name="firstname">
-                  Your First Name:
-                  <input id="atFirstname" type="text" name="firstname" /><br /><br />
+                  Your First Name:<br />
+                  <input id="atFirstname" type="text" name="firstname" />
               </label>
+            </div>
+            <div class="mb-3 mt-3">
               <label name="lastname">
-                  Last Name:
-                  <input id="atLastname" type="text" name="lastname" /><br /><br />
+                  Last Name:<br />
+                  <input id="atLastname" type="text" name="lastname" />
               </label>
+            </div>
+            <div class="mb-3 mt-3">
               <label>
                   Reason for applying<br />
-                  <textarea id="atReason" cols="100" rows="20" name="reason"></textarea><br /><br />
+                  <textarea id="atReason" cols="100" rows="20" name="reason"></textarea>
               </label>
+            </div>
+            <div class="mb-3 mt-3">
               <label>
-                  Tick here to agree to the term of services
-                  <input id="termsBox" type="checkbox" name="terms" /><br /><br />
+                  Tick here to agree to the <a href="">Term of Services</a>:  <!-- Insert link to terms of service here-->
+                  <input id="termsBox" type="checkbox" name="terms" />
               </label>
+            </div>
+            <div class="mb-3 mt-3">
               <label>
-                  Tick here to confirm you are within the stated county
-                  <input id="confirmBox" type="checkbox" name="confirm" /><br /><br />
+                  Tick here to confirm you are within the stated county: 
+                  <input id="confirmBox" type="checkbox" name="confirm" />
               </label>
-              <button type="submit">Submit</button>
+            </div>
+              <button type="submit" class="btn btn-outline-primary">Submit</button>
           </form>
           <p id="error1">Please accept the terms and conditions</p>
           <p id="error2">You cannot apply for funding if you do not live within the stated county</p>

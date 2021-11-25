@@ -14,7 +14,7 @@ def submitApp():
 		firstname = request.form.get('firstname', default = "Error")
 		lastname = request.form.get('lastname', default = "Error")
 		reason = request.form.get('reason', default = "Error")
-		print("inserting applicant"+ firstname)
+		print("inserting applicant"+firstname)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
@@ -57,16 +57,40 @@ def returnAppplication():
 		return render_template('application.html')
 
 
-@app.route("/admin", methods = ['GET', 'POST'])
-def admin():
+@app.route("/adminDonators", methods = ['GET', 'POST'])
+def adminDonators():
 	if request.method =='GET':
-		return render_template('admin.html')
+		return render_template('adminDonators.html')
 	error = None
 	if request.method =='POST':
-		if request.form['username']!= 'admin' or request.form['password'] != 'admin':
-			error = "Wrong username or password. Please try again."
-			print(error)
-			return render_template('admin.html')
+		if request.form['username']!= 'admin' or request.form['password'] != 'donate':
+			error: "Wrong username or password. Please try again."
+		else:
+			try:
+				conn = sqlite3.connect(DATABASE)
+				cur = conn.cursor()
+				cur.execute("SELECT * FROM 'Donators'")
+				data = cur.fetchall()
+				print(data)
+			except Exception as e:
+				print('there was an error')
+				print(e)
+				conn.close()
+				data=""
+			finally:
+				conn.close()
+				return render_template('ListDonators.html', data = data)
+
+	return render_template('adminLogin.html')
+
+@app.route("/adminApplicants", methods = ['GET', 'POST'])
+def adminApplicants():
+	if request.method =='GET':
+		return render_template('adminApplicants.html')
+	error = None
+	if request.method =='POST':
+		if request.form['username']!= 'admin' or request.form['password'] != 'apply':
+			error: "Wrong username or password. Please try again."
 		else:
 			try:
 				conn = sqlite3.connect(DATABASE)
@@ -83,26 +107,59 @@ def admin():
 				conn.close()
 				return render_template('ListApplicants.html', data = data)
 
-	return render_template('admin.html')
+@app.route("/Charities", methods =['GET'])
+def returnCharities():
+    if request.method == 'GET':
+        return render_template('application.html')
+
+
+@app.route("/admin", methods = ['GET', 'POST'])
+def admin():
+    if request.method =='GET':
+        return render_template('admin.html')
+    error = None
+    if request.method =='POST':
+        if request.form['username']!= 'admin' or request.form['password'] != 'admin':
+            error = "Wrong username or password. Please try again."
+            print(error)
+            return render_template('admin.html')
+        else:
+            try:
+                conn = sqlite3.connect(DATABASE)
+                cur = conn.cursor()
+                cur.execute("SELECT * FROM 'Applicants'")
+                data = cur.fetchall()
+                print(data)
+            except Exception as e:
+                print('there was an error')
+                print(e)
+                conn.close()
+                data=""
+            finally:
+                conn.close()
+                return render_template('ListApplicants.html', data = data)
+
+    return render_template('admin.html')
 
 @app.route("/declineApplication", methods=['POST'])
 def declineApp():
-	if request.method == 'POST':
-		ID = request.form.get('decline', default = "Error")
-		print("deleting applicant"+ ID)
-		try:
-			conn = sqlite3.connect(DATABASE)
-			cur = conn.cursor()
-			cur.execute("DELETE FROM Applicants WHERE ID = 'ID'")
+    if request.method == 'POST':
+        ID = request.form.get('decline', default = "Error")
+        print("deleting applicant"+ ID)
+        try:
+            conn = sqlite3.connect(DATABASE)
+            cur = conn.cursor()
+            cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))
 
-			conn.commit()
-			msg = "Application successfully deleted"
-		except:
-			conn.rollback()
-			msg = "error in decline application"
-		finally:
-			conn.close()
-			return msg
-	#return render_template('ListApplicants.html')
+            conn.commit()
+            msg = "Application successfully deleted"
+        except:
+            conn.rollback()
+            msg = "error in decline application"
+        finally:
+            conn.close()
+            return msg
+    return render_template('ListApplicants.html')
+    
 if __name__ == "__main__":
 	app.run(debug=True)
