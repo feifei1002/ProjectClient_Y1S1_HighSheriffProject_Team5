@@ -1,19 +1,33 @@
+<<<<<<< HEAD
 {% include 'boostrap.html'%}
 
 <h1>Applicants</h1>
 <table class="table table-striped" border = 1>
+=======
+<!DOCTYPE html>
+<head>
+<title>Applicants List</title>
+</head>
+
+<body>
+  <header>
+    {% include 'nav.html'%}
+  </header>
+
+<section>
+<h1>Applicants List</h1>
+<table border = 1 name = "myTable">
+>>>>>>> user_story_13
    <thead>
       <td>ID</td>
-      <td>First Name</td>
-      <td>Sur name</td>
+      <td>Firstname</td>
+      <td>Surname</td>
       <td>Amount</td>
       <td>Email</td>
       <td>Reason</td>
    </thead>
 
    {% for row in data %}
-   <!-- A List of tuples so row is each item in the list
-        and then the index is the column number.-->
       <tr>
         <td>{{row[0]}}</td>
         <td>{{row[1]}}</td>
@@ -21,6 +35,23 @@
         <td>{{row[3]}}</td>
         <td>{{row[4]}}</td>
         <td>{{row[5]}}</td>
+        <!-- <td><button type = "submit" name = "accept" id = "accept">Accept</button>
+        <button type = "submit" name = "decline" id = "decline">Decline</button></td> -->
       </tr>
    {% endfor %}
 </table>
+</section>
+
+<div>
+  <h3>Decline Application</h3>
+    <form name= "declineForm" method="POST" action="/declineApplication" >
+      <label>
+        Please enter the ID of application that you want to decline here:
+        <input type="text" id="decline" name = "decline">
+      <button type="submit">Decline</button>
+      </label>
+    </form>
+</div>
+</body>
+
+</html>
