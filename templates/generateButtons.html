@@ -8,13 +8,19 @@
     $(document).ready(function () {
         $('#applicantTable tr').each(function () {
             var current = this;
+            $(this).closest('tr').find('td:first').addClass("appId");
             $(this).find('td:contains("None")').each(function () {
                 $(this).append("<p class='text-warning'>Needs moderator input</p>");
                 $(this).append("<form method='post' action='/acceptApplication'><input id='hiddenID' name='ID' type='text' value='0' style='display: none;'><input type='number' name='fundsToAdd' placeholder='Enter Funds to Award'><button type='submit' class='btn btn-outline-success'>Accept</button></form>");
-                $(this).append("<form method='post' action='/declineApplication'><input id='hiddenID' name='ID' type='text' value='0' style='display: none;'><button type='submit' class='btn btn-outline-danger'>Reject</button></form>");
+                $(this).append("<form method='post' action='/declineApplication'><input id='hiddenID2' name='ID' type='text' value='0' style='display: none;'><button type='submit' class='btn btn-outline-danger'>Reject</button></form>");
                 $("#modMsg").html("<p class='text-warning'>There are applications that need moderator input: </p>");
                 $('#requestedTable').append(current);
-            })
+            }) 
+        })
+        $('#waitTable .appId').each(function(){
+            var applicantID = $(this).html();
+            $('#hiddenID').attr("value", applicantID);
+            $('#hiddenID2').attr("value", applicantID);
         })
     });
 </script>
