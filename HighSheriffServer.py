@@ -99,5 +99,6 @@ def declineApp():
             conn.close()
             return msg
     return render_template('ListApplicants.html')
+    
 if __name__ == "__main__":
     app.run(debug=True)
