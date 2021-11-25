@@ -80,7 +80,7 @@ def admin():
 
 	return render_template('admin.html')
 
-@app.route("/declineApplication", methods=['POST'])
+@app.route("/declineApplication", methods=['DELETE'])
 def declineApp():
 	if request.method == 'POST':
 		ID = request.form.get('decline', default = "Error")
@@ -98,6 +98,6 @@ def declineApp():
 		finally:
 			conn.close()
 			return msg
-	#return render_template('ListApplicants.html')
+	return render_template('ListApplicants.html')
 if __name__ == "__main__":
 	app.run(debug=True)

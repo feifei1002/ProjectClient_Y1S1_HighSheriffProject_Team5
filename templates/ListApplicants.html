@@ -28,21 +28,23 @@
         <td>{{row[3]}}</td>
         <td>{{row[4]}}</td>
         <td>{{row[5]}}</td>
+        <td><button type = "submit" name = "accept" id = "accept">Accept</button>
+        <button type = "submit" name = "decline" id = "decline">Decline</button></td>
       </tr>
    {% endfor %}
 </table>
 </section>
 
-<div>
+<!-- <div>
   <h3>Decline Application</h3>
-    <form method="post" action="/declineApplication">
+    <form name= "declineForm" method="DELETE" action="/declineApplication">
       <label name="declineID">
         Please enter the ID of application that you want to decline here:
         <input type="number" id="decline" name = "decline">
-      <button type="submit">Submit</button>
+      <button type="submit">Decline</button>
       </label>
     </form>
-</div>
+</div> -->
 </body>
 
 </html>
