@@ -150,7 +150,7 @@ def acceptApp():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute()
+			cur.execute("UPDATE Applicants SET Amount = ? WHERE ID = ?", (funds, ID))
 			
 			conn.commit()
 			msg = "Application sucessfully accepted"
@@ -165,7 +165,7 @@ def acceptApp():
 @app.route("/declineApplication", methods=['POST'])
 def declineApp():
     if request.method == 'POST':
-        ID = request.form.get('decline', default = "Error")
+        ID = request.form.get('ID', default = "Error")
         print("deleting applicant"+ ID)
         try:
             conn = sqlite3.connect(DATABASE)

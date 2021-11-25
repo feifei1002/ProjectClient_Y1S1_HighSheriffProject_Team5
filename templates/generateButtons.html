@@ -6,16 +6,13 @@
 <script>
     applicants = [];
     $(document).ready(function () {
-        $('#modMsg').after("<table class='table'><thead><tr><td>ID</td><td>Firstname</td><td>Surname</td><td>Amount</td><td>Email</td><td>Reason</td></tr></thead><tbody id='requestedTable'></tbody></table>");
+        $('#modMsg').after("<table id='waitTable' class='table'><thead><tr><td class='appId'>ID</td><td>Firstname</td><td>Surname</td><td>Amount</td><td>Email</td><td>Reason</td></tr></thead><tbody id='requestedTable'></tbody></table>");
         $('#applicantTable tr').each(function () {
             var current = this;
-            console.log(current);
             $(this).find('td:contains("None")').each(function () {
-                console.log(this);
-                $(this).append("<p class='text-danger'>Needs moderator input</p>");
-                $(this).append("<input type='number' name='fundsToAdd' placeholder='Enter Funds to Award'>");
-                $(this).append("<button class='btn btn-outline-success'>Accept</button>");
-                $(this).append("<form method='post' action='/declineApplication'><button class='btn btn-outline-danger'>Reject</button></form>");
+                $(this).append("<p class='text-warning'>Needs moderator input</p>");
+                $(this).append("<form method='post' action='/acceptApplication'><input id='hiddenID' name='ID' type='text' value='0' style='display: none;'><input type='number' name='fundsToAdd' placeholder='Enter Funds to Award'><button type='submit' class='btn btn-outline-success'>Accept</button></form>");
+                $(this).append("<form method='post' action='/declineApplication'><input id='hiddenID' name='ID' type='text' value='0' style='display: none;'><button type='submit' class='btn btn-outline-danger'>Reject</button></form>");
                 $("#modMsg").html("<p class='text-warning'>There are applications that need moderator input: </p>");
                 $('#requestedTable').append(current);
             })
