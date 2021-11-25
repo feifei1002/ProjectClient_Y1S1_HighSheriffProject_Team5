@@ -9,8 +9,8 @@
         $('#applicantTable tr').each(function () {
             $(this).find('td:contains("None")').each(function () {
                 console.log(this);
-                $(this).append("<button>Accept</button>")
-                $(this).append("<button>Decline</button>")
+                $(this).append(" <p class='text-danger'>Needs moderator input</p>");
+                $("#modMsg").html("<p class='text-warning'>There are applications that need moderation input: </p>");
             })
         })
     });
