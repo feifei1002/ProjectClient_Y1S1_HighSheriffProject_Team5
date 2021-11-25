@@ -41,6 +41,11 @@ def returnnav():
 	if request.method == 'GET':
 		return render_template('nav.html')
 
+@app.route("/generateButtons", methods=['GET'])
+def returnButtons():
+	if request.method == 'GET':
+		return render_template('generateButtons.html')
+
 @app.route("/Donations", methods=['GET'])
 def returnWork():
 	if request.method == 'GET':
