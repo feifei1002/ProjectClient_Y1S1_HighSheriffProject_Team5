@@ -7,7 +7,7 @@
 
 <section>
 <h1>Applicants List</h1>
-<table id="applicantTable" border = 1 method = "POST" name = "myTable">
+<table class="container table" id="applicantTable" border = 1 method = "POST" name = "myTable">
    <thead>
       <td>ID</td>
       <td>Firstname</td>
@@ -32,14 +32,8 @@
 </table>
 
 <div>
-    <h3>Decline Application</h3>
-    <form name="declineForm" method="POST" action="/declineApplication">
-        <label>
-            Please enter the ID of application that you want to decline here:
-            <input type="text" id="decline" name="decline">
-            <button type="submit">Decline</button>
-        </label>
-    </form>
+    <h3>Accept or Decline Application</h3>
+    <p>There are currently no applications that need moderation</p>
 </div>
 {% include 'generateButtons.html'%}
 </body>
