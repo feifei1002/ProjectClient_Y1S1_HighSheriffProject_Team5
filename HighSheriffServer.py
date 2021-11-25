@@ -30,7 +30,7 @@ def submitApp():
 			conn.close()
 			return msg
 
-@app.route("/Home", methods=['GET'])
+@app.route("/", methods=['GET'])
 def returnHome():
 	if request.method == 'GET':
 		sherifInfo = "Here is information about the High Sheriff"
