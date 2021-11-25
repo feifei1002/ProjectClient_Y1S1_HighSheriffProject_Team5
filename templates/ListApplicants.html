@@ -10,7 +10,7 @@
 
 <section>
 <h1>Applicants List</h1>
-<table border = 1 method = "POST" name = "myTable">
+<table id="applicantTable" border = 1 method = "POST" name = "myTable">
    <thead>
       <td>ID</td>
       <td>Firstname</td>
@@ -43,6 +43,7 @@
       </label>
     </form>
 </div>
+{% include 'generateButtons.html'%}
 </body>
 
 </html>
