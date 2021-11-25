@@ -13,9 +13,9 @@
             $(this).find('td:contains("None")').each(function () {
                 console.log(this);
                 $(this).append("<p class='text-danger'>Needs moderator input</p>");
-                $(this).append("<input type='number' placeholder='Enter Funds to Award'>");
+                $(this).append("<input type='number' name='fundsToAdd' placeholder='Enter Funds to Award'>");
                 $(this).append("<button class='btn btn-outline-success'>Accept</button>");
-                $(this).append("<button class='btn btn-outline-danger'>Reject</button>");
+                $(this).append("<form method='post' action='/declineApplication'><button class='btn btn-outline-danger'>Reject</button></form>");
                 $("#modMsg").html("<p class='text-warning'>There are applications that need moderator input: </p>");
                 $('#requestedTable').append(current);
             })

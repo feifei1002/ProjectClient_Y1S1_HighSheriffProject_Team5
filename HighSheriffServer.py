@@ -141,6 +141,27 @@ def admin():
 
     return render_template('admin.html')
 
+@app.route("/acceptApplication", methods=['POST'])
+def acceptApp():
+	if request.method == 'POST':
+		ID = request.form.get('ID', default = "Error")
+		funds = request.form.get('fundsToAdd', default = "None")
+		print("Awarding applicant "+ funds)
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute()
+			
+			conn.commit()
+			msg = "Application sucessfully accepted"
+		except:
+			conn.rollback()
+			msg = "Error when accepting application"
+		finally:
+			conn.close()
+			return msg
+	return render_template('ListApplicants.html')
+
 @app.route("/declineApplication", methods=['POST'])
 def declineApp():
     if request.method == 'POST':
