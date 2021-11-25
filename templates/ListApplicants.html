@@ -35,6 +35,19 @@
 <section class="container text-center">
     <h3>Accept or Decline Application</h3>
     <p id="modMsg">There are currently no applications that need moderation</p>
+    <table id='waitTable' class='table'>
+      <thead>
+        <td>ID</td>
+        <td>Firstname</td>
+        <td>Surname</td>
+        <td>Amount</td>
+        <td>Email</td>
+        <td>Reason</td>
+     </thead>
+     <tbody id='requestedTable'>
+       <!--Its meant to be empty and jquery adds data to it-->
+     </tbody>
+    </table>
 </section>
 {% include 'generateButtons.html'%}
 </body>

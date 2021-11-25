@@ -6,7 +6,6 @@
 <script>
     applicants = [];
     $(document).ready(function () {
-        $('#modMsg').after("<table id='waitTable' class='table'><thead><tr><td class='appId'>ID</td><td>Firstname</td><td>Surname</td><td>Amount</td><td>Email</td><td>Reason</td></tr></thead><tbody id='requestedTable'></tbody></table>");
         $('#applicantTable tr').each(function () {
             var current = this;
             $(this).find('td:contains("None")').each(function () {
