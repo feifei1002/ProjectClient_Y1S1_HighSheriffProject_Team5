@@ -1,5 +1,10 @@
+<title>Applicants List</title>
 {% include 'boostrap.html'%}
+<head>
+  <link rel="stylesheet" href="/static/HighSherrifStyle.css">
+</head>
 
+<body>
 <h1>Applicants</h1>
 <table class="table table-striped" border=1>
     <thead>
@@ -12,8 +17,6 @@
     </thead>
 
     {% for row in data %}
-    <!-- A List of tuples so row is each item in the list
-         and then the index is the column number.-->
     <tr>
         <td>{{row[0]}}</td>
         <td>{{row[1]}}</td>
@@ -35,4 +38,4 @@
         </label>
     </form>
 </div>
-
+</body>
