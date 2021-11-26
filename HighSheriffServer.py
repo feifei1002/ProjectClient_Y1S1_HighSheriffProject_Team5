@@ -35,16 +35,6 @@ def returnHome():
 	if request.method == 'GET':
 		return render_template('home.html')
 
-@app.route("/WebsiteInfo", methods=['GET'])
-def returnHome():
-	if request.method == 'GET':
-		return render_template('WebsiteInfo.html')
-
-@app.route("/SherrifInfo", methods=['GET'])
-def returnHome():
-	if request.method == 'GET':
-		return render_template('SherrifInfo.html')
-
 @app.route("/nav", methods=['GET'])
 def returnnav():
 	if request.method == 'GET':
