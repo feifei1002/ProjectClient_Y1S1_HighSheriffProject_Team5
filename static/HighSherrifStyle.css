@@ -14,3 +14,23 @@ body{
   font-family:serif;
   color:#515152;
 }
+#adminForm{
+  margin: 0
+  padding: 0
+  font-family: sans-serif;
+  background-color: #A9E2F3;
+}
+
+.box{
+  width: 200px;
+  position: absolute;
+  transform: translate(-50%, 50%);
+  background: none;
+  text-align: center;
+  border: 2px solid black;
+  padding: 5px;
+}
+
+.box input{
+  border: 2px solid black;
+}
