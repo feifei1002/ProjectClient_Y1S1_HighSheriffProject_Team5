@@ -34,12 +34,28 @@ body{
   font-weight: bold;
 }
 
-.box:focus{
+.box:hover, .box:focus{
   width: 300px;
-  border-color: white;
 }
 
 .box h1{
   font-family: sans-serif;
   font-weight: 500px;
+}
+
+#adminForm button{
+  width: 150px;
+  position: absolute;
+  transform: translate(-50%, 50%);
+  background: none;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 25px;
+  padding: 5px;
+  color: #0174DF;
+  font-weight: bold;
+}
+
+#adminForm button:hover, #adminForm button:focus{
+  width: 200px;
 }
