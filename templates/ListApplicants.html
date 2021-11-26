@@ -5,8 +5,8 @@
 </head>
 
 <body>
-<h1>Applicants</h1>
-<table class="table table-striped" border=1>
+<table class="table table-striped" id="appTable" border=1>
+  <h1>Applicants</h1>
     <thead>
     <td>ID</td>
     <td>First Name</td>
@@ -30,10 +30,10 @@
 
 <div>
     <h3>Decline Application</h3>
-    <form id="declineForm" class = "myForm" method="POST" action="/declineApplication">
+    <form id="declineForm" method="POST" action="/declineApplication">
         <label>
             Please enter the ID of application that you want to decline here:
-            <input type="text" id="decline" name="box">
+            <input type="text" id="decline" placeholder="ID">
             <button type="submit">Decline</button>
         </label>
     </form>
