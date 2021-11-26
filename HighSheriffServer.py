@@ -46,15 +46,16 @@ def returnBoostrap():
 	if request.method == 'GET':
 		return render_template('boostrap.html')
 
-@app.route("/Donations", methods=['GET'])
-def returnWork():
-	if request.method == 'GET':
-		return render_template('Donations.html')
 
 @app.route("/Application", methods=['GET', 'POST'])
 def returnAppplication():
 	if request.method == 'GET':
 		return render_template('application.html')
+
+@app.route("/Donations", methods=['GET'])
+def returnWork():
+	if request.method == 'GET':
+		return render_template('Donations.html')
 
 
 @app.route("/adminDonators", methods = ['GET', 'POST'])
@@ -160,6 +161,6 @@ def declineApp():
             conn.close()
             return msg
     return render_template('ListApplicants.html')
-    
+
 if __name__ == "__main__":
 	app.run(debug=True)
