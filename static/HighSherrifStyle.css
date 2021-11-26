@@ -75,6 +75,10 @@ h1, h3{
   font-family: sans-serif;
 }
 
+#decline:hover, #decline:focus{
+  width:100px
+}
+
 #declineForm button{
   background-color: white;
   border-radius: 15px;
@@ -88,7 +92,7 @@ h1, h3{
   color:white;
 }
 
-#appTable thead{
-  font-family: sans-serif;
-  font-weight: 200;
+#appTable tr{
+  font-family: serif;
+  text-align: center;
 }
