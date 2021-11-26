@@ -108,3 +108,7 @@ h1, h3{
 #atEmail, #atFirstname, #atLastname, #atReason{
   border-color:#0174DF;
 }
+
+.navbar-nav{
+  font-family: sans-serif;
+}
