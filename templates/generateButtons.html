@@ -10,7 +10,7 @@
             var current = this;
             $(this).closest('tr').find('td:first').addClass("appId");
             $(this).find('td:contains("None")').each(function () {
-                $(this).append("<p class='text-warning'>Needs moderator input</p>");
+                $(this).html("<p class='text-warning'>Needs moderator input</p>");
                 $(this).append("<form method='post' action='/acceptApplication'><input class='hiddenID' name='ID' type='text' value='0' style='display: none;'><input type='number' name='fundsToAdd' placeholder='Enter Funds to Award'><button type='submit' class='btn btn-outline-success'>Accept</button></form>");
                 $(this).append("<form method='post' action='/declineApplication'><input class='hiddenID2' name='ID' type='text' value='0' style='display: none;'><button type='submit' class='btn btn-outline-danger'>Reject</button></form>");
                 $("#modMsg").html("<p class='text-warning'>There are applications that need moderator input: </p>");
