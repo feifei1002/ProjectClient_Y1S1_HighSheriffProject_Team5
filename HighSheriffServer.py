@@ -61,56 +61,6 @@ def returnAppplication():
 		return render_template('application.html')
 
 
-@app.route("/adminDonators", methods = ['GET', 'POST'])
-def adminDonators():
-	if request.method =='GET':
-		return render_template('adminDonators.html')
-	error = None
-	if request.method =='POST':
-		if request.form['username']!= 'admin' or request.form['password'] != 'donate':
-			error: "Wrong username or password. Please try again."
-		else:
-			try:
-				conn = sqlite3.connect(DATABASE)
-				cur = conn.cursor()
-				cur.execute("SELECT * FROM 'Donators'")
-				data = cur.fetchall()
-				print(data)
-			except Exception as e:
-				print('there was an error')
-				print(e)
-				conn.close()
-				data=""
-			finally:
-				conn.close()
-				return render_template('ListDonators.html', data = data)
-
-	return render_template('adminLogin.html')
-
-@app.route("/adminApplicants", methods = ['GET', 'POST'])
-def adminApplicants():
-	if request.method =='GET':
-		return render_template('adminApplicants.html')
-	error = None
-	if request.method =='POST':
-		if request.form['username']!= 'admin' or request.form['password'] != 'apply':
-			error: "Wrong username or password. Please try again."
-		else:
-			try:
-				conn = sqlite3.connect(DATABASE)
-				cur = conn.cursor()
-				cur.execute("SELECT * FROM 'Applicants'")
-				data = cur.fetchall()
-				print(data)
-			except Exception as e:
-				print('there was an error')
-				print(e)
-				conn.close()
-				data=""
-			finally:
-				conn.close()
-				return render_template('ListApplicants.html', data = data)
-
 @app.route("/Charities", methods =['GET'])
 def returnCharities():
     if request.method == 'GET':
