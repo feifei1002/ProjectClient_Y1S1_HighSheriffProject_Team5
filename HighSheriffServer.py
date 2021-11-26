@@ -33,8 +33,17 @@ def submitApp():
 @app.route("/Home", methods=['GET'])
 def returnHome():
 	if request.method == 'GET':
-		sherifInfo = "Here is information about the High Sheriff"
-		return render_template('home.html',data=sherifInfo)
+		return render_template('home.html')
+
+@app.route("/SherrifInfo", methods=['GET'])
+def returnSherrif():
+	if request.method == 'GET':
+		return render_template('SherrifInfo.html')
+
+@app.route("/WebsiteInfo", methods=['GET'])
+def returnWebsite():
+	if request.method == 'GET':
+		return render_template('WebsiteInfo.html')
 
 @app.route("/nav", methods=['GET'])
 def returnnav():
@@ -45,11 +54,6 @@ def returnnav():
 def returnBoostrap():
 	if request.method == 'GET':
 		return render_template('boostrap.html')
-
-@app.route("/Donations", methods=['GET'])
-def returnWork():
-	if request.method == 'GET':
-		return render_template('Donations.html')
 
 @app.route("/Application", methods=['GET', 'POST'])
 def returnAppplication():
@@ -110,7 +114,7 @@ def adminApplicants():
 @app.route("/Charities", methods =['GET'])
 def returnCharities():
     if request.method == 'GET':
-        return render_template('application.html')
+        return render_template('charities.html')
 
 
 @app.route("/admin", methods = ['GET', 'POST'])
@@ -160,6 +164,6 @@ def declineApp():
             conn.close()
             return msg
     return render_template('ListApplicants.html')
-    
+
 if __name__ == "__main__":
 	app.run(debug=True)
