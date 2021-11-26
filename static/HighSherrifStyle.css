@@ -14,3 +14,102 @@ body{
   font-family:serif;
   color:#515152;
 }
+#adminForm{
+  margin: 100px;
+  padding: 40px;
+  width: 500px;
+  border-radius: 25px;
+  transform: translate(70%, -18%);
+  font-family: sans-serif;
+  background-color: #A9E2F3;
+}
+
+.box{
+  width: 200px;
+  position: absolute;
+  transform: translate(-50%, 50%);
+  background: none;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 25px;
+  padding: 5px;
+  color: #0174DF;
+  font-weight: bold;
+}
+
+.box:hover, .box:focus{
+  width: 300px;
+}
+
+.box h1{
+  font-family: serif;
+  font-weight: 500px;
+}
+
+#adminForm button{
+  width: 100px;
+  position: absolute;
+  transform: translate(-50%, 50%);
+  background: none;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 25px;
+  padding: 5px;
+  color: #0174DF;
+  font-weight: bold;
+}
+
+#adminForm button:hover, #adminForm button:focus{
+  width: 200px;
+  background: white;
+}
+
+h1, h3{
+  color: black;
+}
+
+#decline{
+  border-radius: 10px;
+  border-color: black;
+  width:80px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#decline:hover, #decline:focus{
+  width:100px
+}
+
+#declineForm button{
+  background-color: white;
+  border-radius: 15px;
+}
+
+#declineForm button:hover, #declineForm button:focus{
+  width: 120px;
+  border-radius: 15px;
+  border-color: black;
+  background-color:black;
+  color:white;
+}
+
+#appTable tr{
+  font-family: serif;
+  text-align: center;
+}
+
+#atEmail:hover, #atFirstname:hover, #atLastname:hover {
+  width: 300px;
+  border-color: black;
+}
+
+#atReason:hover{
+  border-color:black;
+}
+#atEmail, #atFirstname, #atLastname, #atReason{
+  border-color:#0174DF;
+}
+
+.navbar-nav{
+  font-family: sans-serif;
+}

@@ -1,15 +1,15 @@
 {% include 'nav.html'%}
 
-<title>Admin Applicants Login Page</title>
+<title>Admin Login Page</title>
 
 <main class="container-fluid mt-3 pt-2 justify-content-center text-center bg-light">
+<link rel="stylesheet" href="/static/HighSherrifStyle.css">
 
-<h1>Admin Applicants Login Page</h1>
 <form id='adminForm' action='/admin' method = 'post'>
-  <!-- <label>Surname:<input type = "text" name = "surname"><br></label> -->
-  <label>Username:<br><input type = "text" name = "username"</label><br><br>
-  <label>Password:<br><input type = "password" name = "password"</label><br><br>
-  <button type = "submit" class="btn btn-outline-primary"> Log In </button>
+  <h1>LOGIN</h1>
+  <input type = "text" name = "username" placeholder="Username" class="box"><br><br>
+  <input type = "password" name = "password" placeholder="Password" class="box"><br><br>
+  <button type = "submit" class="btn btn-outline-primary"> Log In </button><br>
 </form>
 
 
