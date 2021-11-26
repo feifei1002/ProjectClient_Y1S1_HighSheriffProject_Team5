@@ -1,19 +1,22 @@
+<title>Applicants List</title>
 {% include 'boostrap.html'%}
+<head>
+  <link rel="stylesheet" href="/static/HighSherrifStyle.css">
+</head>
 
-<h1>Applicants</h1>
-<table class="table table-striped" border=1>
+<body>
+<table class="table table-striped" id="appTable" border=1>
+  <h1>Applicants List</h1>
     <thead>
     <td>ID</td>
     <td>First Name</td>
-    <td>Sur name</td>
+    <td>Last Name</td>
     <td>Amount</td>
     <td>Email</td>
     <td>Reason</td>
     </thead>
 
     {% for row in data %}
-    <!-- A List of tuples so row is each item in the list
-         and then the index is the column number.-->
     <tr>
         <td>{{row[0]}}</td>
         <td>{{row[1]}}</td>
@@ -27,12 +30,12 @@
 
 <div>
     <h3>Decline Application</h3>
-    <form name="declineForm" method="POST" action="/declineApplication">
+    <form id="declineForm" method="POST" action="/declineApplication">
         <label>
             Please enter the ID of application that you want to decline here:
-            <input type="text" id="decline" name="decline">
+            <input type="text" id="decline" placeholder="ID">
             <button type="submit">Decline</button>
         </label>
     </form>
 </div>
-
+</body>
