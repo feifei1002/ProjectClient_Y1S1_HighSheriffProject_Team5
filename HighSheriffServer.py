@@ -40,6 +40,11 @@ def returnSherrif():
 	if request.method == 'GET':
 		return render_template('SherrifInfo.html')
 
+@app.route("/SherrifPage", methods=['GET'])
+def returnSherrif():
+	if request.method == 'GET':
+		return render_template('SherrifPage.html')
+
 @app.route("/WebsiteInfo", methods=['GET'])
 def returnWebsite():
 	if request.method == 'GET':
