@@ -36,12 +36,12 @@ def returnHome():
 		return render_template('home.html')
 
 @app.route("/SherrifInfo", methods=['GET'])
-def returnSherrif():
+def returnSherrifInfo():
 	if request.method == 'GET':
 		return render_template('SherrifInfo.html')
 
 @app.route("/SherrifPage", methods=['GET'])
-def returnSherrif():
+def returnSherrifPage():
 	if request.method == 'GET':
 		return render_template('SherrifPage.html')
 
