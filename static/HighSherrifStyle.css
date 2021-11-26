@@ -96,3 +96,15 @@ h1, h3{
   font-family: serif;
   text-align: center;
 }
+
+#atEmail:hover, #atFirstname:hover, #atLastname:hover {
+  width: 300px;
+  border-color: black;
+}
+
+#atReason:hover{
+  border-color:black;
+}
+#atEmail, #atFirstname, #atLastname, #atReason{
+  border-color:#0174DF;
+}
