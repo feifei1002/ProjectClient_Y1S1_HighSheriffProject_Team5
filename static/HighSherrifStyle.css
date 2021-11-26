@@ -27,10 +27,19 @@ body{
   transform: translate(-50%, 50%);
   background: none;
   text-align: center;
-  border: 2px solid black;
+  border: 2px solid white;
+  border-radius: 25px;
   padding: 5px;
+  color: #0174DF;
+  font-weight: bold;
 }
 
-.box input{
-  border: 2px solid black;
+.box:focus{
+  width: 300px;
+  border-color: white;
+}
+
+.box h1{
+  font-family: sans-serif;
+  font-weight: 500px;
 }
