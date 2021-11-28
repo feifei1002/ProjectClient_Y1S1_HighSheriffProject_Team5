@@ -14,8 +14,8 @@
     <button type ="submit" name ="deleteQ" id = "deleteQ">Delete Questions</button>
   </div>
 
-  <form id="addForm">
-    <input type ="text" id="question" placeholder="Please enter the question here">
+  <form id="addForm" method='POST' action ='/addQuestion'>
+    <input type ="text" id="question" name ="question" placeholder="Please enter the question here">
   </form>
 
   <form id="deleteForm">
@@ -42,3 +42,4 @@
     })
   </script>
 </body>
+{% endblock %}

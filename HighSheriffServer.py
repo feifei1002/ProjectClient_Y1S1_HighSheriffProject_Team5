@@ -120,5 +120,25 @@ def declineApp():
             return msg
     return render_template('ListApplicants.html')
 
+@app.route("/addQuestion", methods=['POST'])
+def addQuestion():
+	if request.method == 'POST':
+		addQ = request.form.get('question', default = "Error")
+		print("adding question " + addQ)
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("INSERT INTO Questions ('Question')\
+						VALUES (?)", (addQ))
+			conn.commit()
+			msg = "Question successfully added"
+		except:
+			conn.rollback()
+			msg = "error in adding question"
+		finally:
+			conn.close()
+			return msg
+	return render_template('questions.html')
+
 if __name__ == "__main__":
 	app.run(debug=True)
