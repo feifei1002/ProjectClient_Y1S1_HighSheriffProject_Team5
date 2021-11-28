@@ -1,32 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Questions List</title>
-  </head>
-  <!-- {% include 'boostrap.html'%} -->
-  <body>
-    <header>
-        <!-- {% include 'nav.html'%} -->
-        <h1>Questions List</h1>
-    </header>
-    <div>
-      <button type ="submit" name ="addQ" id="addQ">Add Questions</button>
-      <button type ="submit" name ="deleteQ" id = "deleteQ">Delete Questions</button>
-    </div>
+{% block questions %}
+<head>
+  <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Questions List</title>
+</head>
+<!-- {% include 'boostrap.html'%} -->
+<body>
+  <header>
+      <!-- {% include 'nav.html'%} -->
+      <h3>Questions List</h3>
+  </header>
+  <div>
+    <button type ="submit" name ="addQ" id="addQ">Add Questions</button>
+    <button type ="submit" name ="deleteQ" id = "deleteQ">Delete Questions</button>
+  </div>
 
-    <form id="addForm">
-      <label>Please enter the question here:</label>
-      <input type ="text">
-    </form>
+  <form id="addForm">
+    <input type ="text" id="question" placeholder="Please enter the question here">
+  </form>
 
-    <script>
-      $(document).ready(function(){
-        $('#addForm').hide();
-        $('#addQ').click(function(){
-          $('#addForm').show()
-        })
+  <form id="deleteForm">
+    <input type ="number" placeholder="Please enter the question ID you want to delete here">
+  </form>
+
+  <table id="qTable">
+    <tr>
+      <td id="showQuestion"></td>
+      <td><input type="hidden"></td>
+    </tr>
+  </table>
+
+  <script>
+    $(document).ready(function(){
+      $('#addForm').hide();
+      $('#addQ').click(function(){
+        $('#addForm').toggle()
       });
-    </script>
-  </body>
+      $('#deleteForm').hide();
+      $('#deleteQ').click(function(){
+        $('#deleteForm').toggle()
+      });
+    })
+  </script>
+</body>
