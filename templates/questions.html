@@ -1,15 +1,27 @@
-{% block questions %}
+{% include 'boostrap.html'%}
 <head>
-  <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <title>Questions List</title>
+<link rel="stylesheet" href="/static/HighSherrifStyle.css">
+<script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title>Questions List</title>
+<h1>Questions</h1>
 </head>
-<!-- {% include 'boostrap.html'%} -->
 <body>
-  <header>
-      <!-- {% include 'nav.html'%} -->
-      <h3>Questions List</h3>
-  </header>
+  <section>
+    {% for row in data %}
+    <table class="table table-striped" id="list" border=1>
+    <thead>
+      <th>ID</th>
+      <th>Questions</th>
+    </thead>
+    <tr>
+      <td>{{row[0]}}</td>
+      <td>{{row[1]}}</td>
+    </tr>
+    </table>
+    {% endfor %}
+  </section>
   <div>
+    <p>Want to add or delete questions from the list?</p>
     <button type ="submit" name ="addQ" id="btnAdd">Add Questions</button>
     <button type ="submit" name ="deleteQ" id = "btnDelete">Delete Questions</button>
   </div>
@@ -35,7 +47,10 @@
       $('#btnDelete').click(function(){
         $('#deleteForm').toggle()
       });
+      $('#list').hide();
+      $('#btnSee').click(function(){
+        $('#list').show()
+      });
     })
   </script>
 </body>
-{% endblock %}
