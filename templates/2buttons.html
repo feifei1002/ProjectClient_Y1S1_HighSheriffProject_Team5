@@ -1,0 +1,16 @@
+<head>
+  <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Buttons</title>
+</head>
+<button id='appListbtn'>Applicants List</button>
+<button id='quesListbtn'>Questions List</button>
+<script>
+  $(document).ready(function(){
+    $('#appListbtn').click(function(){
+      window.location="/ListApplicants"
+    });
+    $('#quesListbtn').click(function(){
+      window.location="/ListQuestions"
+    })
+  })
+</script>

@@ -31,9 +31,8 @@ INSERT INTO 'Applicants'('firstName','surName', 'Amount', 'Email', 'Reason' ) VA
 
 CREATE TABLE IF NOT EXISTS `Questions` (
   `ID`   INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  `Question` TEXT NOT NULL,
-  `Answer` TEXT
+  `Question` TEXT NOT NULL
 );
 
-INSERT INTO 'Questions' ('Question', 'Answer') VALUES ('What is your favourite animal?', 'Dolphin');
+INSERT INTO 'Questions' ('Question') VALUES ('What is your favourite animal?');
 INSERT INTO 'Questions' ('Question') VALUES ('What is your favourite colour?')
