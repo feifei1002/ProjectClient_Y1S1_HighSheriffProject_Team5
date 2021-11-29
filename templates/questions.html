@@ -16,19 +16,14 @@
 
   <form id="addForm" method='POST' action ='/addQuestion'>
     <input type ="text" id="question" name ="question" placeholder="Please enter the question here">
+    <button type="submit">Add</button>
   </form>
 
   <form id="deleteForm">
     <input type ="number" placeholder="Please enter the question ID you want to delete here">
   </form>
 
-  <table id="qTable">
-    <tr>
-      <td id="showQuestion"></td>
-      <td><input type="hidden"></td>
-    </tr>
-  </table>
-
+  
   <script>
     $(document).ready(function(){
       $('#addForm').hide();

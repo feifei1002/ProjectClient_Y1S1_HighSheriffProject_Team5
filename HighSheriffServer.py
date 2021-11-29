@@ -123,16 +123,17 @@ def declineApp():
 @app.route("/addQuestion", methods=['POST'])
 def addQuestion():
 	if request.method == 'POST':
-		addQ = request.form.get('question', default = "Error")
-		print("adding question " + addQ)
+		question = request.form.get('question', default = "Error")
+		print("adding question " + question)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("INSERT INTO Questions ('Question')\
-						VALUES (?)", (addQ))
+			cur.execute("INSERT INTO Questions ('Question') VALUES (?)", [question])
 			conn.commit()
 			msg = "Question successfully added"
-		except:
+		except Exception as e:
+			print('there was an error')
+			print(e)
 			conn.rollback()
 			msg = "error in adding question"
 		finally:

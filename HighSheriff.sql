@@ -34,3 +34,6 @@ CREATE TABLE IF NOT EXISTS `Questions` (
   `Question` TEXT NOT NULL,
   `Answer` TEXT
 );
+
+INSERT INTO 'Questions' ('Question', 'Answer') VALUES ('What is your favourite animal?', 'Dolphin');
+INSERT INTO 'Questions' ('Question') VALUES ('What is your favourite colour?')
