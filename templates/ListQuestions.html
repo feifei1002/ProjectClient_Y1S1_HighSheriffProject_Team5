@@ -21,19 +21,21 @@
     {% endfor %}
   </section>
   <div>
-    <p>Want to add or delete questions from the list?</p>
+    <h4>Want to add or delete questions from the list?</h4>
     <button type ="submit" name ="addQ" id="btnAdd">Add Questions</button>
     <button type ="submit" name ="deleteQ" id = "btnDelete">Delete Questions</button>
   </div>
-
+  <br>
   <form id="addForm" method='POST' action ='/addQuestion'>
-    <input type ="text" id="question" name ="question" placeholder="Please enter the question here">
-    <button type="submit">Add</button>
+    <label>Please enter the question you want to add here:</label><br>
+    <input type ="text" id="question" name ="question" placeholder="Question">
+    <button type="submit" id='subAdd'>Add</button>
   </form>
 
   <form id="deleteForm" method='POST' action = '/deleteQuestion'>
-    <input type ="number" id="delete" name="delete" placeholder="Please enter the question ID you want to delete here">
-    <button type="submit">Delete</button>
+    <label>Please enter the question ID you want to delete here:</label><br>
+    <input type ="number" id="delete" name="delete" placeholder="ID">
+    <button type="submit" id='subDelete'>Delete</button>
   </form>
 
 

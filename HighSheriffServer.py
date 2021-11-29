@@ -84,20 +84,6 @@ def admin():
 			return render_template('admin.html')
 		else:
 			return render_template('2buttons.html')
-		#     try:
-		#         conn = sqlite3.connect(DATABASE)
-		#         cur = conn.cursor()
-		#         cur.execute("SELECT * FROM 'Applicants'")
-		#         data = cur.fetchall()
-		#         print(data)
-		#     except Exception as e:
-		#         print('there was an error')
-		#         print(e)
-		#         conn.close()
-		#         data=""
-		#     finally:
-		#         conn.close()
-		#         return render_template('ListApplicants.html', data = data)
 
 	return render_template('admin.html')
 
@@ -155,7 +141,7 @@ def listQuestions():
 			data=""
 		finally:
 			conn.close()
-			return render_template('questions.html', data = data)
+			return render_template('ListQuestions.html', data = data)
 
 @app.route("/addQuestion", methods=['POST'])
 def addQuestion():
