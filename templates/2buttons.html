@@ -1,16 +1,22 @@
+{% include 'boostrap.html' %}
 <head>
   <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="/static/HighSherrifStyle.css">
   <title>Buttons</title>
+<body>
 </head>
-<button id='appListbtn'>Applicants List</button>
-<button id='quesListbtn'>Questions List</button>
-<script>
-  $(document).ready(function(){
-    $('#appListbtn').click(function(){
-      window.location="/ListApplicants"
-    });
-    $('#quesListbtn').click(function(){
-      window.location="/ListQuestions"
+<body>
+  <button id='appListbtn' class='listbtn'>Applicants List</button>&emsp;&emsp;&emsp;
+  <button id='quesListbtn' class='listbtn'>Questions List</button>
+  <script>
+    $(document).ready(function(){
+      $('#appListbtn').click(function(){
+        window.location="/ListApplicants"
+      });
+      $('#quesListbtn').click(function(){
+        window.location="/ListQuestions"
+      })
     })
-  })
-</script>
+  </script>
+
+</body>
