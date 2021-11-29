@@ -10,8 +10,8 @@
       <h3>Questions List</h3>
   </header>
   <div>
-    <button type ="submit" name ="addQ" id="addQ">Add Questions</button>
-    <button type ="submit" name ="deleteQ" id = "deleteQ">Delete Questions</button>
+    <button type ="submit" name ="addQ" id="btnAdd">Add Questions</button>
+    <button type ="submit" name ="deleteQ" id = "btnDelete">Delete Questions</button>
   </div>
 
   <form id="addForm" method='POST' action ='/addQuestion'>
@@ -19,19 +19,20 @@
     <button type="submit">Add</button>
   </form>
 
-  <form id="deleteForm">
-    <input type ="number" placeholder="Please enter the question ID you want to delete here">
+  <form id="deleteForm" method='POST' action = '/deleteQuestion'>
+    <input type ="number" id="delete" name="delete" placeholder="Please enter the question ID you want to delete here">
+    <button type="submit">Delete</button>
   </form>
 
-  
+
   <script>
     $(document).ready(function(){
       $('#addForm').hide();
-      $('#addQ').click(function(){
+      $('#btnAdd').click(function(){
         $('#addForm').toggle()
       });
       $('#deleteForm').hide();
-      $('#deleteQ').click(function(){
+      $('#btnDelete').click(function(){
         $('#deleteForm').toggle()
       });
     })

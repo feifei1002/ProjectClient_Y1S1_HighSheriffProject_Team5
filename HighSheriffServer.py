@@ -141,5 +141,26 @@ def addQuestion():
 			return msg
 	return render_template('questions.html')
 
+@app.route("/deleteQuestion", methods=['POST'])
+def deleteQuestion():
+	if request.method == 'POST':
+		delete = request.form.get('delete', default = "Error")
+		print("deleting question " + delete)
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("DELETE FROM Questions WHERE ID = ?", (delete))
+			conn.commit()
+			msg = "Question successfully deleted"
+		except Exception as e:
+			print('there was an error')
+			print(e)
+			conn.rollback()
+			msg = "error in deleting question"
+		finally:
+			conn.close()
+			return msg
+	return render_template('questions.html')
+
 if __name__ == "__main__":
 	app.run(debug=True)
