@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Questions</title>
+  </head>
+  {% include 'boostrap.html'%}
+  <body>
+    <header>
+        {% include 'nav.html'%}
+    </header>
+
+    <section>
+      <h1>Questions Form</h1>
+      {% for row in data %}
+      <form>
+        <tr>{{row[0]}}</tr><br>
+        <input type="textarea">
+      </form>
+      {% endfor %}
+      <button type="submit" name="Quesbtn">Submit</button>
+    </section>
