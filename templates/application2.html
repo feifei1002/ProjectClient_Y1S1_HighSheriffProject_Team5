@@ -1,2 +1,19 @@
 {% include 'boostrap.html'%}
 {% include 'nav.html'%}
+<main>
+    <section class="container justify-contents-center text-center">
+        <h2>Video Interview</h2>
+        <p id='checkComp' style="display: none;">It seems your browser does not support getUserMedia. You will need to apply with the old-style form or use a different browser.</p>
+    </section>
+    <script>
+        function checkUserIsCompatible(){
+            var check = !!(navigator.mediaDevices.getUserMedia);
+            if(check){
+                // Play interview
+            } else {
+                document.getElementById("checkComp").style = "display: block;";
+            }
+        }
+        checkUserIsCompatible();
+    </script>
+</main>
