@@ -186,7 +186,7 @@ def deleteQuestion():
 	return render_template('questions.html')
 
 
-@app.route("/Questions", methods=['GET'])
+@app.route("/reworkingQuestions", methods=['GET'])
 def reworkingQuestions():
 	if request.method =='GET':
 		try:
@@ -202,7 +202,7 @@ def reworkingQuestions():
 			data=""
 		finally:
 			conn.close()
-			return render_template('questions.html', data = data)
+			return render_template('reworkingQuestions.html', data = data)
 
 if __name__ == "__main__":
 	app.run(debug=True)
