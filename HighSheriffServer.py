@@ -40,10 +40,10 @@ def returnSherrifInfo():
 	if request.method == 'GET':
 		return render_template('SherrifInfo.html')
 
-@app.route("/SherrifPage", methods=['GET'])
-def returnSherrifPage():
+@app.route("/SheriffPage", methods=['GET'])
+def returnSheriffPage():
 	if request.method == 'GET':
-		return render_template('SherrifPage.html')
+		return render_template('SheriffPage.html')
 
 @app.route("/WebsiteInfo", methods=['GET'])
 def returnWebsite():
@@ -115,7 +115,7 @@ def acceptApp():
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
 			cur.execute("UPDATE Applicants SET Amount = ? WHERE ID = ?", (funds, ID))
-			
+
 			conn.commit()
 			msg = "Application sucessfully accepted"
 		except:
