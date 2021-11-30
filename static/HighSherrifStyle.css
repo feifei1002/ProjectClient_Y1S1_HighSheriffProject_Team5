@@ -113,3 +113,7 @@ h1, h3{
 .navbar-nav{
   font-family: sans-serif;
 }
+
+.text-left{
+  text-align:left;
+}
