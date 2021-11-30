@@ -65,6 +65,11 @@ def returnAppplication():
 	if request.method == 'GET':
 		return render_template('application.html')
 
+@app.route("/Application/interactiveForm", methods=['GET', 'POST'])
+def returnAppplication2():
+	if request.method == 'GET':
+		return render_template('application2.html')
+
 @app.route("/Donations", methods=['GET'])
 def returnWork():
 	if request.method == 'GET':
