@@ -7,18 +7,18 @@
 </head>
 <body>
   <section>
-    {% for row in data %}
     <table class="table table-striped" id="list" border=1>
     <thead>
       <th>ID</th>
       <th>Questions</th>
     </thead>
+    {% for row in data %}
     <tr>
       <td>{{row[0]}}</td>
       <td>{{row[1]}}</td>
     </tr>
-    </table>
     {% endfor %}
+    </table>
   </section>
   <div>
     <h4>Want to add or delete questions from the list?</h4>
@@ -37,10 +37,9 @@
     <input type ="number" id="delete" name="delete" placeholder="ID">
     <button type="submit" id='subDelete'>Delete</button>
   </form>
-
-
   <script>
     $(document).ready(function(){
+      $('#list').show();
       $('#addForm').hide();
       $('#btnAdd').click(function(){
         $('#addForm').toggle()
@@ -49,10 +48,6 @@
       $('#btnDelete').click(function(){
         $('#deleteForm').toggle()
       });
-      $('#list').hide();
-      $('#btnSee').click(function(){
-        $('#list').show()
-      });
     })
   </script>
-</body>
+  </body>
