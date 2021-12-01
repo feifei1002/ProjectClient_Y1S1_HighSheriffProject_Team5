@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Reworking Questions</title>
+    <title>Reworking Tests</title>
   </head>
   {% include 'boostrap.html'%}
   <body>
@@ -11,12 +11,12 @@
     </header>
 
     <section>
-      <h1>Reworking Questions Form</h1>
+      <h1>Reworking Tests Form</h1>
       {% for row in data %}
       <form>
-        <tr>{{row[0]}}</tr><br>
-        <input type="textarea">
+        <tr>{{row[0]}}&nbsp;{{row[1]}}</tr><br>
+        <input type="textarea" id='reworkingT' name='reworkingT'>
       </form>
       {% endfor %}
-      <br><button type="submit" name="Quesbtn">Submit</button>
+      <br><button type="submit" name="Testbtn">Submit</button>
     </section>

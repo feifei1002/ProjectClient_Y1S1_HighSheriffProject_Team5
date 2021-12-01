@@ -186,13 +186,13 @@ def deleteQuestion():
 	return render_template('questions.html')
 
 
-@app.route("/reworkingQuestions", methods=['GET'])
+@app.route("/Tests", methods=['GET'])
 def reworkingQuestions():
 	if request.method =='GET':
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("SELECT Question FROM 'Questions'")
+			cur.execute("SELECT * FROM 'Questions'")
 			data = cur.fetchall()
 			print(data)
 		except Exception as e:
@@ -202,7 +202,7 @@ def reworkingQuestions():
 			data=""
 		finally:
 			conn.close()
-			return render_template('reworkingQuestions.html', data = data)
+			return render_template('reworkingTests.html', data = data)
 
 if __name__ == "__main__":
 	app.run(debug=True)
