@@ -5,7 +5,7 @@ import sqlite3
 
 UPLOAD_FOLDER = 'static/uploads/'
 DATABASE = 'HighSheriff.db'
-ALLOWED_EXTENSIONS = set(['mp4'])
+ALLOWED_EXTENSIONS = set(['mp4', 'webm'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER

@@ -3,24 +3,53 @@
 <main>
     <section class="container-fluid justify-contents-center text-center">
         <h2>Video Interview</h2>
-        <video id="webcam" autoplay></video>
+        <video id="webcam" autoplay muted></video>
+        <video id="playback" controls></video>
         <button id='botone' class='btn btn-primary text-center' onclick="checkUserIsCompatible()">Press Here to activate your webcam</button>
+        <button id='record' onclick="record()">Start Recording</button>
+        <button id='stopRecord' onclick="stop()">Stop Recording</button>
+        <button id='playback' onclick="play()">Playback recording</button>
         <p id='checkComp' style="display: none;">It seems your browser does not support getUserMedia. You will need to apply with the old-style form or use a different browser.</p>
         <form method="post" enctype="multipart/form-data" action="/Application/interactiveForm">
             <input type="file" name="file">
-            <input type="submit" value="Upload">
+            <input type="submit" value="Upload" accept="video/*" capture> <!-- Capture attribute only works for mobile phones-->
         </form>
     </section>
     <script>
+        var videoChunks = []; // Apparently the video is stored in blobs on chunks and we need to save them here
+
+        var options = {mimeType: 'video/webm: codecs=vp9'};
+
         function checkUserIsCompatible(){ // Checks if the user's browser supports user media
             var check = !!(navigator.mediaDevices.getUserMedia);
             if(check){
-                const constraints = {video: true, audio: true};
+                const constraints = {video: { width: 1024, height: 576}, audio: true};
                 const video = document.getElementById("webcam");
                 navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream;}); // Aks the user for permission then plays their own webcame to them
                 document.getElementById("botone").style.visibility = "hidden";
+                mediaRecorder = new MediaRecorder(navigator.mediaDevices.getUserMedia(constraints), options);
+                mediaRecorder.ondataavailable = handleDataAvailable;
             } else {
                 document.getElementById("checkComp").style = "display: block;";
+            }
+        }
+        function record(){
+            mediaRecorder.start();
+        }
+
+        function stop(){
+            mediaRecorder.stop();
+        }
+
+        function play(){
+            var videoPlayback = document.getElementById("playback");
+            var superBuffer = new Blob(videoChunks);
+            videoPlayback.src = window.URL.createObjectURL(superBuffer);
+        }
+
+        function handleDataAvailable(event){ // Stores video into the video chunks array
+            if(event.data.size > 0){
+                videoChunks.push(event.data);
             }
         }
     </script>
