@@ -125,13 +125,13 @@ def declineApp():
 			return msg
 	return render_template('ListApplicants.html')
 
-@app.route("/ListQuestions", methods=['GET'])
+@app.route("/ListTests", methods=['GET'])
 def listQuestions():
 	if request.method =='GET':
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("SELECT * FROM 'Questions'")
+			cur.execute("SELECT * FROM 'Tests'")
 			data = cur.fetchall()
 			print(data)
 		except Exception as e:
@@ -141,30 +141,30 @@ def listQuestions():
 			data=""
 		finally:
 			conn.close()
-			return render_template('ListQuestions.html', data = data)
+			return render_template('ListTests.html', data = data)
 
-@app.route("/addQuestion", methods=['POST'])
-def addQuestion():
+@app.route("/addTest", methods=['POST'])
+def addTest():
 	if request.method == 'POST':
-		question = request.form.get('question', default = "Error")
-		print("adding question " + question)
+		add = request.form.get('add', default = "Error")
+		print("adding question " + add)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("INSERT INTO Questions ('Question') VALUES (?)", [question])
+			cur.execute("INSERT INTO Tests ('Test') VALUES (?)", [add])
 			conn.commit()
-			msg = "Question successfully added"
+			msg = "Test successfully added"
 		except Exception as e:
 			print('there was an error')
 			print(e)
 			conn.rollback()
-			msg = "error in adding question"
+			msg = "error in adding test"
 		finally:
 			conn.close()
 			return msg
-	return render_template('questions.html')
+	return render_template('ListTests.html')
 
-@app.route("/deleteQuestion", methods=['POST'])
+@app.route("/deleteTest", methods=['POST'])
 def deleteQuestion():
 	if request.method == 'POST':
 		delete = request.form.get('delete', default = "Error")
@@ -183,11 +183,11 @@ def deleteQuestion():
 		finally:
 			conn.close()
 			return msg
-	return render_template('questions.html')
+	return render_template('ListTests.html')
 
 
 @app.route("/Tests", methods=['GET'])
-def reworkingQuestions():
+def reworkingTests():
 	if request.method =='GET':
 		try:
 			conn = sqlite3.connect(DATABASE)
@@ -203,6 +203,14 @@ def reworkingQuestions():
 		finally:
 			conn.close()
 			return render_template('reworkingTests.html', data = data)
+
+# @app.route("/submitTests", methods=['GET', 'POST'])
+# def submitTests():
+# 	if request.method =='POST':
+# 		try: conn = sqlite3.connect(DATABASE)
+# 		cur = conn.cursor()
+# 		cur.execute()
+
 
 if __name__ == "__main__":
 	app.run(debug=True)

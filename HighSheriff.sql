@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS Donators;
 DROP TABLE IF EXISTS Applicants;
-DROP TABLE IF EXISTS Questions;
+DROP TABLE IF EXISTS Tests;
 
 CREATE TABLE IF NOT EXISTS `Donators` (
   `ID`		INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -29,7 +29,7 @@ INSERT INTO 'Applicants'('firstName','surName', 'Amount', 'Email', 'Reason' ) VA
 INSERT INTO 'Applicants'('firstName','surName', 'Amount', 'Email', 'Reason' ) VALUES ('Gianfranco','Cicciomessere',2000, 'cicciomessereg@cardiff.ac.uk', 'bla bla bla');
 INSERT INTO 'Applicants'('firstName','surName', 'Amount', 'Email', 'Reason' ) VALUES ('Stevens','Matthew',1000, 'stevensm7@cardiff.ac.uk', 'bla bla bla');
 
-CREATE TABLE IF NOT EXISTS `Questions` (
+CREATE TABLE IF NOT EXISTS `Tests` (
   `ID`   INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  `Question` TEXT NOT NULL
+  `Test` TEXT NOT NULL
 );
