@@ -5,7 +5,7 @@ import sqlite3
 
 UPLOAD_FOLDER = 'static/uploads/'
 DATABASE = 'HighSheriff.db'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'mp4'])
+ALLOWED_EXTENSIONS = set(['mp4'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -88,7 +88,7 @@ def returnAppplication2():
 		if file and check_filetype(file.filename):
 			filename = secure_filename(file.filename)
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			return redirect(url_for('download_file', name=filename))
+			return redirect(request.url)
 
 @app.route("/Donations", methods=['GET'])
 def returnWork():
