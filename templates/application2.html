@@ -6,6 +6,10 @@
         <video id="webcam" autoplay></video>
         <button class='btn btn-primary text-center' onclick="checkUserIsCompatible()">Press Here to activate your webcam</button>
         <p id='checkComp' style="display: none;">It seems your browser does not support getUserMedia. You will need to apply with the old-style form or use a different browser.</p>
+        <form method="post" enctype="multipart/form-data" action="/Application/interactiveForm">
+            <input type="file" name="file">
+            <input type="submit" value="Upload">
+        </form>
     </section>
     <script>
         function checkUserIsCompatible(){ // Checks if the user's browser supports user media

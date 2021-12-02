@@ -1,34 +1,19 @@
 import os
-from flask import Flask, redirect, request,render_template, jsonify
-from flask.helpers import flash, url_for
+from flask import Flask, redirect, request, render_template, url_for, flash
 from werkzeug.utils import secure_filename
 import sqlite3
 
-UPLOAD_FOLDER = '/static/videos'
+UPLOAD_FOLDER = 'static/uploads/'
 DATABASE = 'HighSheriff.db'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'mp4'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = "MAG355" # Secret key is needed for encryption? Not 100% sure but flask was giving me errors if i didnt set this
 
 def check_filetype(file):
 	return '.' in file and \
 		file.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS # Checks if the user has submitted a valid file based from our allowed extensions
-
-@app.route("/Application/interactiveForm/filesubmit", methods=['POST'])
-def uploadFile():
-	if request.method == 'POST':
-		if 'file' not in request.files:
-			flash('Incorrect file')
-			return redirect(request.url) # We should really use redirects instead of returnign strings to users as we have in the past weeks
-		file = request.files['file']
-		if file.filename == '':
-			flash("Empty file has been submitted")
-			return redirect(request.url)
-		if file and check_filetype(file.filename):
-			filename = secure_filename(file.filename)
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'].filename))
-			return redirect(url_for('download_file', name=filename))
 
 @app.route("/submitApplication", methods=['POST'])
 def submitApp():
@@ -92,6 +77,18 @@ def returnAppplication():
 def returnAppplication2():
 	if request.method == 'GET':
 		return render_template('application2.html')
+	if request.method == 'POST':
+		if 'file' not in request.files:
+			flash('Incorrect file')
+			return redirect(request.url) # We should really use redirects instead of returning strings to users as we have in the past weeks
+		file = request.files['file']
+		if file.filename == '':
+			flash("Empty file has been submitted")
+			return redirect(request.url)
+		if file and check_filetype(file.filename):
+			filename = secure_filename(file.filename)
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			return redirect(url_for('download_file', name=filename))
 
 @app.route("/Donations", methods=['GET'])
 def returnWork():
