@@ -1,19 +1,22 @@
 {% include 'boostrap.html'%}
 {% include 'nav.html'%}
 <main>
-    <section class="container justify-contents-center text-center">
+    <section class="container-fluid justify-contents-center text-center">
         <h2>Video Interview</h2>
+        <video id="webcam" autoplay></video>
+        <button class='btn btn-primary text-center' onclick="checkUserIsCompatible()">Press Here to activate your webcam</button>
         <p id='checkComp' style="display: none;">It seems your browser does not support getUserMedia. You will need to apply with the old-style form or use a different browser.</p>
     </section>
     <script>
-        function checkUserIsCompatible(){
+        function checkUserIsCompatible(){ // Checks if the user's browser supports user media
             var check = !!(navigator.mediaDevices.getUserMedia);
             if(check){
-                // Play interview
+                const constraints = {video: true, audio: true};
+                const video = document.getElementById("webcam");
+                navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream;}); // Aks the user for permission then plays their own webcame to them
             } else {
                 document.getElementById("checkComp").style = "display: block;";
             }
         }
-        checkUserIsCompatible();
     </script>
 </main>
