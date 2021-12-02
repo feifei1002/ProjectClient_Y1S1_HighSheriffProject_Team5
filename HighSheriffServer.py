@@ -14,7 +14,7 @@ def submitApp():
 		firstname = request.form.get('firstname', default = "Error")
 		lastname = request.form.get('lastname', default = "Error")
 		reason = request.form.get('reason', default = "Error")
-		print("inserting applicant"+firstname)
+		print("inserting applicant "+firstname)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
@@ -109,7 +109,7 @@ def listApplicants():
 def declineApp():
 	if request.method == 'POST':
 		ID = request.form.get('decline', default = "Error")
-		print("deleting applicant"+ ID)
+		print("deleting applicant "+ ID)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
@@ -175,12 +175,12 @@ def deleteQuestion():
 			cur = conn.cursor()
 			cur.execute("DELETE FROM Tests WHERE ID = ?", (delete))
 			conn.commit()
-			msg = "Question successfully deleted"
+			msg = "Test successfully deleted"
 		except Exception as e:
 			print('there was an error')
 			print(e)
 			conn.rollback()
-			msg = "error in deleting question"
+			msg = "error in deleting test"
 		finally:
 			conn.close()
 			return msg
@@ -204,13 +204,6 @@ def reworkingTests():
 		finally:
 			conn.close()
 			return render_template('reworkingTests.html', data = data)
-
-# @app.route("/submitTests", methods=['GET', 'POST'])
-# def submitTests():
-# 	if request.method =='POST':
-# 		try: conn = sqlite3.connect(DATABASE)
-# 		cur = conn.cursor()
-# 		cur.execute()
 
 
 if __name__ == "__main__":

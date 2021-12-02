@@ -15,7 +15,8 @@
       {% for row in data %}
       <form>
         <tr>{{row[0]}}&nbsp;{{row[1]}}</tr><br>
-        <input type="textarea" id='reworkingT' name='reworkingT'>
+        <input type="radio" name="option" value="Yes"> Yes</input><br>
+        <input type="radio" name="option" value="No"> No</input><br>
       </form>
       {% endfor %}
       <br><button type="submit" name="Testbtn">Submit</button>
