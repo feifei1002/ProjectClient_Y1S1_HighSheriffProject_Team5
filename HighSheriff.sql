@@ -31,5 +31,6 @@ INSERT INTO 'Applicants'('firstName','surName', 'Amount', 'Email', 'Reason' ) VA
 
 CREATE TABLE IF NOT EXISTS `Tests` (
   `ID`   INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  `Test` TEXT NOT NULL
+  `Test` TEXT NOT NULL,
+  `Answer` TEXT NOT NULL
 );

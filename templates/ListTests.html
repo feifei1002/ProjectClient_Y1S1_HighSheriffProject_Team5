@@ -10,12 +10,14 @@
     <table class="table table-striped" id="list" border=1>
     <thead>
       <th>ID</th>
-      <th>Questions</th>
+      <th>Question</th>
+      <th>Answer</th>
     </thead>
     {% for row in data %}
     <tr>
       <td>{{row[0]}}</td>
       <td>{{row[1]}}</td>
+      <td>{{row[2]}}</td>
     </tr>
     {% endfor %}
     </table>
@@ -28,11 +30,14 @@
   <br>
   <form id="addForm" method='POST' action ='/addTest'>
     <label>Please enter the question you want to add here:</label><br>
-    <input type ="text" id="add" name ="add" placeholder="Question">
+    <input type ="text" id="add" name ="add" placeholder="Question"><br>
+    <label>Please select the correct answer for the question:</label><br>
+    <input type="radio" name="option" value="Yes">Yes</input><br>
+    <input type="radio" name="option" value="No">No</input><br>
     <button type="submit" id='subAdd'>Add</button>
   </form>
 
-  <form id="deleteForm" method='POST' action = '/deleteQuestion'>
+  <form id="deleteForm" method='POST' action = '/deleteTest'>
     <label>Please enter the question ID you want to delete here:</label><br>
     <input type ="number" id="delete" name="delete" placeholder="ID">
     <button type="submit" id='subDelete'>Delete</button>

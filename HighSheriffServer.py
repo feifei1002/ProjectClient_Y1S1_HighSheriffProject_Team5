@@ -147,11 +147,12 @@ def listQuestions():
 def addTest():
 	if request.method == 'POST':
 		add = request.form.get('add', default = "Error")
+		answer = request.form.get('option', default="Error")
 		print("adding question " + add)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("INSERT INTO Tests ('Test') VALUES (?)", [add])
+			cur.execute("INSERT INTO Tests ('Test', 'Answer') VALUES (?,?)", [add, answer])
 			conn.commit()
 			msg = "Test successfully added"
 		except Exception as e:
@@ -172,7 +173,7 @@ def deleteQuestion():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("DELETE FROM Questions WHERE ID = ?", (delete))
+			cur.execute("DELETE FROM Tests WHERE ID = ?", (delete))
 			conn.commit()
 			msg = "Question successfully deleted"
 		except Exception as e:
@@ -192,7 +193,7 @@ def reworkingTests():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("SELECT * FROM 'Questions'")
+			cur.execute("SELECT Test FROM 'Tests'")
 			data = cur.fetchall()
 			print(data)
 		except Exception as e:
