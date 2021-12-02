@@ -5,7 +5,6 @@
         <h2>Video Interview</h2>
         <video id="webcam" autoplay muted></video>
         <video id="playback" controls></video>
-        <button id='botone' class='btn btn-primary text-center' onclick="checkUserIsCompatible()">Press Here to activate your webcam</button>
         <button id='record' onclick="record()">Start Recording</button>
         <button id='stopRecord' onclick="stop()">Stop Recording</button>
         <button id='playback' onclick="play()">Playback recording</button>
@@ -17,8 +16,7 @@
     </section>
     <script>
         var videoChunks = []; // Apparently the video is stored in blobs on chunks and we need to save them here
-
-        var options = {mimeType: 'video/webm: codecs=vp9'};
+        var options = {mimeType: 'video/webm'};
 
         function checkUserIsCompatible(){ // Checks if the user's browser supports user media
             var check = !!(navigator.mediaDevices.getUserMedia);
@@ -26,13 +24,24 @@
                 const constraints = {video: { width: 1024, height: 576}, audio: true};
                 const video = document.getElementById("webcam");
                 navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream;}); // Aks the user for permission then plays their own webcame to them
-                document.getElementById("botone").style.visibility = "hidden";
-                mediaRecorder = new MediaRecorder(navigator.mediaDevices.getUserMedia(constraints), options);
-                mediaRecorder.ondataavailable = handleDataAvailable;
+                prepMediaRecorder(constraints);
             } else {
                 document.getElementById("checkComp").style = "display: block;";
             }
         }
+
+        async function prepMediaRecorder(constraints){
+            let stream = null;
+
+            try{
+                stream = await navigator.mediaDevices.getUserMedia(constraints);
+                mediaRecorder = new MediaRecorder(stream, options);
+                mediaRecorder.ondataavailable = handleDataAvailable;
+            } catch(error){
+                alert("Error");
+            }
+        }
+
         function record(){
             mediaRecorder.start();
         }
@@ -52,5 +61,6 @@
                 videoChunks.push(event.data);
             }
         }
+        checkUserIsCompatible()
     </script>
 </main>
