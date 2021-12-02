@@ -18,6 +18,7 @@
     </section>
     <section class="container-fluid justify-contents-center text-center bg-light">
         <button class="btn btn-outline-primary" id='playback' onclick="play()">Playback recording</button>
+        <a class="btn btn-outline-primary" id="downloadButton" href="" download="interview.webm">Download</a>
     </section>
     <section class="container justify-contents-center text-center bg-light mt-5">
         <h2>Upload</h2>
@@ -29,6 +30,7 @@
         </form>
     </section>
     <script>
+        document.getElementById("downloadButton").style.visibility = "hidden";
         var videoChunks = []; // Apparently the video is stored in blobs on chunks and we need to save them here
         var options = {mimeType: 'video/webm;codecs=vp9'};
 
@@ -68,8 +70,11 @@
 
         function play(){
             var videoPlayback = document.getElementById("playback");
+            var downloadButton = document.getElementById("downloadButton");
             var superBuffer = new Blob(videoChunks);
             videoPlayback.src = window.URL.createObjectURL(superBuffer);
+            document.getElementById("downloadButton").style.visibility = "visible";
+            downloadButton.href = window.URL.createObjectURL(superBuffer);
         }
 
         function handleDataAvailable(event){ // Stores video into the video chunks array
