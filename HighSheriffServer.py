@@ -1,5 +1,6 @@
 import os
 from flask import Flask, redirect, request,render_template, jsonify
+from flask.helpers import flash, url_for
 from werkzeug.utils import secure_filename
 import sqlite3
 
@@ -8,6 +9,7 @@ DATABASE = 'HighSheriff.db'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'mp4'])
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def check_filetype(file):
 	return '.' in file and \
@@ -23,9 +25,9 @@ def uploadFile():
 		if file.filename == '':
 			flash("Empty file has been submitted")
 			return redirect(request.url)
-		if file and allowed_file(file.filename):
+		if file and check_filetype(file.filename):
 			filename = secure_filename(file.filename)
-			file.save(os.path.join(app.config['UPLOAD_FOLDER']. filename))
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'].filename))
 			return redirect(url_for('download_file', name=filename))
 
 @app.route("/submitApplication", methods=['POST'])
