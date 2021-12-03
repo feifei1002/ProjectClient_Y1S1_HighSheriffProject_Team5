@@ -2,11 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Reworking Tests</title>
   </head>
   {% include 'boostrap.html'%}
   <body>
+    <script src="static/score.js"></script>
     <header>
         {% include 'nav.html'%}
     </header>
@@ -29,10 +29,8 @@
         <input type="radio" name="{{row[0]}}" value="No">No</input><br>
       </label><br>
       {% endfor %}
-      <br><button type="submit" name="Testbtn">Submit</button>
+      <input type="number" id="score" class="score" name ="score"></input>
+      <br><button type="submit" name="Testbtn" onclick="checkAnswer()">Submit</button>
       </form>
     </section>
-    <script>
-    
-    </script>
   </body>

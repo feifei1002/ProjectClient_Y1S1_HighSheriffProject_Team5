@@ -211,13 +211,13 @@ def submitTest():
 		email = request.form.get('email', default = "Error")
 		firstname = request.form.get('firstname', default = "Error")
 		lastname = request.form.get('lastname', default = "Error")
-		reason = request.form.get('option', default = "Error")
+		score = request.form.get('score', default = "Error")
 		print("inserting applicant "+firstname)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("INSERT INTO reworkingApplicants ('firstName', 'surName', 'Email')\
-						VALUES (?,?,?,?)",(firstname, lastname, email, reason) )
+			cur.execute("INSERT INTO reworkingApplicants ('firstName', 'surName', 'Email', 'Score')\
+						VALUES (?,?,?,?)",(firstname, lastname, email, score) )
 			conn.commit()
 			msg = "Record successfully added"
 		except Exception as e:

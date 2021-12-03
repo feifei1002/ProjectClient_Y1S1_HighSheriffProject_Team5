@@ -41,5 +41,5 @@ CREATE TABLE IF NOT EXISTS `reworkingApplicants` (
   `firstName` TEXT NOT NULL,
   `surName` TEXT NOT NULL,
   `Email` TEXT NOT NULL,
-  `Reason` TEXT
+  `Score` numeric
 );
