@@ -6,6 +6,7 @@
 <h1>Questions</h1>
 </head>
 <body>
+  <!-- Table contains all the test questions and answer that moderator can see-->
   <section>
     <table class="table table-striped" id="list" border=1>
     <thead>
@@ -22,6 +23,8 @@
     {% endfor %}
     </table>
   </section>
+  <main>
+    <!-- two buttons created to allow moderator to add or delete test questions -->
   <div>
     <h4>Want to add or delete questions from the list?</h4>
     <button type ="submit" name ="addQ" id="btnAdd">Add Questions</button>
@@ -31,6 +34,8 @@
   <form id="addForm" method='POST' action ='/addTest'>
     <label>Please enter the question you want to add here:</label><br>
     <input type ="text" id="add" name ="add" placeholder="Question"><br>
+    <!-- Moderator has to pick a correct answer for the test question -->
+    <!-- For now, I only allow Yes/No answer, we can add in text answer if we need it later -->
     <label>Please select the correct answer for the question:</label><br>
     <input type="radio" name="option" value=" Yes">Yes</input><br>
     <input type="radio" name="option" value=" No">No</input><br>
@@ -38,17 +43,22 @@
   </form>
 
   <form id="deleteForm" method='POST' action = '/deleteTest'>
+    <!-- Entered a test question's ID to delete it -->
     <label>Please enter the question ID you want to delete here:</label><br>
     <input type ="number" id="delete" name="delete" placeholder="ID">
     <button type="submit" id='subDelete'>Delete</button>
   </form>
+  </main>
+  <!-- Jquery is used to to activate the two add and delete questions buttons -->
   <script>
     $(document).ready(function(){
+      // the add question form will not appear unless the moderator clicked the button
       $('#list').show();
       $('#addForm').hide();
       $('#btnAdd').click(function(){
         $('#addForm').toggle()
       });
+      // the delete question form will not appear unless the moderator clicked the button
       $('#deleteForm').hide();
       $('#btnDelete').click(function(){
         $('#deleteForm').toggle()

@@ -3,19 +3,22 @@
   <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="/static/HighSherrifStyle.css">
   <title>Buttons</title>
-<body>
 </head>
 <body>
+  <!-- Button for the moderator to access the Applicants List -->
   <button id='appListbtn' class='listbtn'>Applicants List</button>&emsp;&emsp;&emsp;
-  <button id='quesListbtn' class='listbtn'>Questions List</button>
+  <!-- Button for the moderator to access the Test Questions List -->
+  <button id='testListbtn' class='listbtn'>Questions List</button>
+  <!-- More buttons can be added in later since we will have more tables added into the database -->
   <script>
     $(document).ready(function(){
       $('#appListbtn').click(function(){
         window.location="/ListApplicants"
       });
-      $('#quesListbtn').click(function(){
+      $('#testListbtn').click(function(){
         window.location="/ListTests"
       })
     })
   </script>
+  <!-- Jquery is used to redirect to the list pages when the buttons are clicked -->
 </body>
