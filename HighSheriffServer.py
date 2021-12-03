@@ -88,7 +88,7 @@ def admin():
 			print(error)
 			return render_template('admin.html')
 		else:
-			return render_template('2buttons.html')
+			return render_template('adminButtons.html')
 
 	return render_template('admin.html')
 
