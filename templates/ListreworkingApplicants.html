@@ -1,0 +1,22 @@
+{% include 'boostrap.html'%}
+<link rel="stylesheet" href="/static/HighSherrifStyle.css">
+<title>Reworking Applicants List</title>
+<h1>Reworking Applicants</h1>
+<table class="table table-striped" border=1>
+    <thead>
+    <td>ID</td>
+    <td>First Name</td>
+    <td>Last name</td>
+    <td>Email</td>
+    <td>Reason</td>
+    </thead>
+
+    {% for row in data %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+    </tr>
+    {% endfor %}
+</table>

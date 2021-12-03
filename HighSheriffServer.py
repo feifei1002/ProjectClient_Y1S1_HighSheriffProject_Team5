@@ -205,6 +205,47 @@ def reworkingTests():
 			conn.close()
 			return render_template('reworkingTests.html', data = data)
 
+@app.route("/submitTest", methods =['POST'])
+def submitTest():
+	if request.method == 'POST':
+		email = request.form.get('email', default = "Error")
+		firstname = request.form.get('firstname', default = "Error")
+		lastname = request.form.get('lastname', default = "Error")
+		# reason = request.form.get('reason', default = "Error")
+		print("inserting applicant "+firstname)
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("INSERT INTO reworkingApplicants ('firstName', 'surName', 'Email')\
+						VALUES (?,?,?)",(firstname, lastname, email) )
+			conn.commit()
+			msg = "Record successfully added"
+		except Exception as e:
+			print('there was an error')
+			print(e)
+			conn.rollback()
+			msg = "error in insert operation"
+		finally:
+			conn.close()
+			return msg
+
+@app.route("/ListreworkingApplicants", methods=['GET'])
+def listreworkingApplicants():
+	if request.method =='GET':
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("SELECT * FROM 'reworkingApplicants'")
+			data = cur.fetchall()
+			print(data)
+		except Exception as e:
+			print('there was an error')
+			print(e)
+			conn.close()
+			data=""
+		finally:
+			conn.close()
+			return render_template('ListreworkingApplicants.html', data = data)
 
 if __name__ == "__main__":
 	app.run(debug=True)
