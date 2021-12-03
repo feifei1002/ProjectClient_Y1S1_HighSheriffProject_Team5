@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Reworking Tests</title>
+  </head>
+  {% include 'boostrap.html'%}
+  <body>
+    <script src="static/score.js"></script>
+    <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <header>
+        {% include 'nav.html'%}
+    </header>
+
+    <section>
+      <!-- This form allow the applicants to take the test -->
+      <h1>Reworking Tests Form</h1>
+      <form id='testForm' method='POST' action="/submitTest">
+        <h4>Your information</h4>
+        <label>First Name</label><br>
+        <input type="text" name="firstname"><br>
+        <label>Last Name</label><br>
+        <input type="text" name="lastname"><br>
+        <label>Email</label><br>
+        <input type="email" name="email"><br><br>
+        <h4>Your Test</h4>
+      {% for row in data %}
+      <label class ='testQ'>{{row[0]}} {{row[1]}}<br>
+        <input type="radio" name='{{row[0]}}' value="Yes">Yes</input><br>
+        <input type="radio" name="{{row[0]}}" value="No">No</input><br>
+      </label><br>
+      {% endfor %}
+      <input type="number" id="score" class="score" name ="score"></input>
+      <br><button type="submit" name="Testbtn" onclick="checkAnswer()">Submit</button>
+      </form>
+    </section>
+    <!-- Using Jquery to hide the score input -->
+    <script>
+    $(document).ready(function(){
+      $('#score').hide();
+    })
+    </script>
+  </body>

@@ -1,0 +1,33 @@
+{% include 'boostrap.html' %}
+<head>
+  <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="/static/HighSherrifStyle.css">
+  <title>Buttons</title>
+</head>
+<body>
+  <!-- Button for the moderator to access the Applicants List -->
+  <button id='appListbtn' class='listbtn'>Applicants List</button><br><br>
+  <!-- Button for the moderator to access the Test Questions List -->
+  <button id='testListbtn' class='listbtn'>Questions List</button><br><br>
+  <!-- Button for the moderator to access the Reworking Applicants List -->
+  <button id='reworkListbtn'class='listbtn'>Reworking List</button><br><br>
+  <!-- Button for the moderator to access the Donators List -->
+  <button id='donateListbtn'class='listbtn'>Donators List</button><br><br>
+  <script>
+    $(document).ready(function(){
+      $('#appListbtn').click(function(){
+        window.location="/ListApplicants"
+      });
+      $('#testListbtn').click(function(){
+        window.location="/ListTests"
+      });
+      $('#reworkListbtn').click(function(){
+        window.location="/ListreworkingApplicants"
+      });
+      $('#donateListbtn').click(function(){
+        window.location="/"
+      });
+    })
+  </script>
+  <!-- Jquery is used to redirect to the list pages when the buttons are clicked -->
+</body>
