@@ -23,25 +23,16 @@
         <label>Email</label><br>
         <input type="email" name="email"><br><br>
         <h4>Your Test</h4>
-      <!-- {% for row in data %}
-      <tr>{{row[0]}}</tr><br>
-        <input type="radio" name="option" value="Yes"> Yes</input><br>
-        <input type="radio" name="option" value="No"> No</input><br>
-      </form>
-      {% endfor %} -->
+      {% for row in data %}
+      <label class ='testQ'>{{row[0]}} {{row[1]}}<br>
+        <input type="radio" name='{{row[0]}}' value="Yes">Yes</input><br>
+        <input type="radio" name="{{row[0]}}" value="No">No</input><br>
+      </label><br>
+      {% endfor %}
       <br><button type="submit" name="Testbtn">Submit</button>
-      </table>
-      <!-- I haven't figured out how to store this into database yet... -->
-      <!-- Probably using Jinja to show the test questions out is not a good way... -->
-      <!-- Also it had to store together with the video... -->
-      <!-- May need some help with this -->
+      </form>
     </section>
-    <!-- <script>
-      $(document).ready(function(){
-        $('#testForm tr').each function(){
-          var test = this;
-          $(this).closest('tr').find('td:first').addName()
-        }
-      }
-    </script> -->
+    <script>
+    
+    </script>
   </body>

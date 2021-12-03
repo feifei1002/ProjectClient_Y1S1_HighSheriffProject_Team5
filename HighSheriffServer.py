@@ -193,7 +193,7 @@ def reworkingTests():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("SELECT Test FROM 'Tests'")
+			cur.execute("SELECT ID, Test FROM 'Tests'")
 			data = cur.fetchall()
 			print(data)
 		except Exception as e:
@@ -211,13 +211,13 @@ def submitTest():
 		email = request.form.get('email', default = "Error")
 		firstname = request.form.get('firstname', default = "Error")
 		lastname = request.form.get('lastname', default = "Error")
-		# reason = request.form.get('reason', default = "Error")
+		reason = request.form.get('option', default = "Error")
 		print("inserting applicant "+firstname)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
 			cur.execute("INSERT INTO reworkingApplicants ('firstName', 'surName', 'Email')\
-						VALUES (?,?,?)",(firstname, lastname, email) )
+						VALUES (?,?,?,?)",(firstname, lastname, email, reason) )
 			conn.commit()
 			msg = "Record successfully added"
 		except Exception as e:
