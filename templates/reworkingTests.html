@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Reworking Tests</title>
   </head>
   {% include 'boostrap.html'%}
@@ -13,16 +14,31 @@
     <section>
       <!-- This form allow the applicants to take the test -->
       <h1>Reworking Tests Form</h1>
+      <form id='testForm' method='POST'>
+        <h4>Your information</h4>
+        <label>First Name</label><br>
+        <input type="text" name="firstname"><br>
+        <label>Last Name</label><br>
+        <input type="text" name="lastname"><br>
+        <label>Email</label><br>
+        <input type="email" name="email"><br><br>
+        <h4>Your Test</h4>
       {% for row in data %}
-      <form>
-        <tr>{{row[0]}}</tr><br>
+      <tr>{{row[0]}}</tr><br>
         <input type="radio" name="option" value="Yes"> Yes</input><br>
         <input type="radio" name="option" value="No"> No</input><br>
       </form>
       {% endfor %}
       <br><button type="submit" name="Testbtn">Submit</button>
+      </table>
       <!-- I haven't figured out how to store this into database yet... -->
       <!-- Probably using Jinja to show the test questions out is not a good way... -->
       <!-- Also it had to store together with the video... -->
       <!-- May need some help with this -->
     </section>
+    <!-- <script>
+      $(document).ready(function(){
+
+      }
+    </script> -->
+  </body>
