@@ -176,3 +176,34 @@ h1, h3{
 #add, #delete{
   border-radius: 15px;
 }
+
+.drop_menu ul{
+  padding: 0;
+  margin: 0;
+  float: right;
+  margin-right: auto;
+}
+
+.drop_menu ul li{
+  position: relative;
+  list-style: none;
+  display: inline-block;
+}
+
+.drop_menu ul li a{
+  display: block;
+  padding: 0 15px;
+  color: black;
+  text-decoration: none;
+  line-height: 60px;
+  font-size: 20px;
+}
+
+.drop_down{
+  position: absolute;
+  top: 60px;
+  display: none;
+}
+.drop_menu:hover ul{
+  display: block;
+}

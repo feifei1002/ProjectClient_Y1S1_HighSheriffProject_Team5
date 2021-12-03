@@ -1,0 +1,21 @@
+{% block dropdown %}
+<link rel="stylesheet" href="/static/HighSherrifStyle.css">
+<nav class="drop_menu">
+  <ul class="dropdown">
+    <li class="menu-item">
+      <a class="item" href="/admin">Admin</a>
+    </li>
+    <li class="menu-item">
+      <a class="item">Applicants</a>
+      <ul class="drop_down">
+        <li class="menu-item"><a class="item" href="/ListApplicants">Old Style</a></li>
+        <li class="menu-item"><a class="item" href="/ListreworkingApplicants">Reworking</a></li>
+      </ul>
+    </li>
+    <li class="menu-item">
+      <a class="item" href="#">Donators</a>
+      <li class="menu-item">
+        <a class="item" href="/ListTests">Questions</a>
+  </ul>
+</nav>
+{% endblock %}

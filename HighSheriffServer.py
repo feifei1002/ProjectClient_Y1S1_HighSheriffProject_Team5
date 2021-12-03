@@ -55,6 +55,11 @@ def returnnav():
 	if request.method == 'GET':
 		return render_template('nav.html')
 
+@app.route("/dropdown", methods=['GET'])
+def returndropdown():
+	if request.method == 'GET':
+		return render_template('dropdown.html')
+
 @app.route("/boostrap", methods=['GET'])
 def returnBoostrap():
 	if request.method == 'GET':
