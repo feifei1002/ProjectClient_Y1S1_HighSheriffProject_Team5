@@ -1,52 +1,81 @@
 {% include 'boostrap.html'%}
 
 <body>
-  <header>
-    {% include 'nav.html'%}
-  </header>
+    <header>
+        {% include 'nav.html'%}
+    </header>
 
-<h1 class="container-fluid text-center">Applicants List</h1>
-<section>
-<table class="container table" id="applicantTable" border = 1 method = "POST" name = "myTable">
-   <thead>
-      <td>ID</td>
-      <td>Firstname</td>
-      <td>Surname</td>
-      <td>Amount</td>
-      <td>Email</td>
-      <td>Reason</td>
-   </thead>
+    <h1 class="container-fluid text-center">Applicants List</h1>
+    <section class="container text-center">
+        <h2>Reworking Applicants</h2>
+        <table class="container table" id="reworkingTable" border=1 method="POST" name="myTable2">
+            <thead>
+            <td>ID</td>
+            <td>Firstname</td>
+            <td>Surname</td>
+            <td>Email</td>
+            <td>Number Of Correct Questions</td>
+            <td>Video</td>
+            <td>Amount</td>
+            </thead>
+            <tbody>
+                {% for row in data2 %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td class="vid">{{row[5]}}</td>
+                    <td>{{row[6]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <section class="container text-center">
+        <h2>Old-Style Applicants</h2>
+        <table class="container table" id="applicantTable" border=1 method="POST" name="myTable">
+            <thead>
+            <td>ID</td>
+            <td>Firstname</td>
+            <td>Surname</td>
+            <td>Amount</td>
+            <td>Email</td>
+            <td>Reason</td>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
 
-    {% for row in data %}
-    <tr>
-        <td>{{row[0]}}</td>
-        <td>{{row[1]}}</td>
-        <td>{{row[2]}}</td>
-        <td>{{row[3]}}</td>
-        <td>{{row[4]}}</td>
-        <td>{{row[5]}}</td>
-    </tr>
-    {% endfor %}
-</table>
-</section>
-
-<section class="container text-center">
-    <h3>Accept or Decline Application</h3>
-    <p id="modMsg">There are currently no applications that need moderation</p>
-    <table id='waitTable' class='table'>
-      <thead>
-        <td>ID</td>
-        <td>Firstname</td>
-        <td>Surname</td>
-        <td>Amount</td>
-        <td>Email</td>
-        <td>Reason</td>
-     </thead>
-     <tbody id='requestedTable'>
-       <!--Its meant to be empty and jquery adds data to it-->
-     </tbody>
-    </table>
-</section>
-{% include 'generateButtons.html'%}
+    <section class="container text-center">
+        <h3>Accept or Decline Application</h3>
+        <p id="modMsg">There are currently no applications that need moderation</p>
+        <table id='waitTable' class='table'>
+            <thead>
+            <td>ID</td>
+            <td>Firstname</td>
+            <td>Surname</td>
+            <td>Amount</td>
+            <td>Email</td>
+            <td>Reason</td>
+            </thead>
+            <tbody id='requestedTable'>
+                <!--Its meant to be empty and jquery adds data to it-->
+            </tbody>
+        </table>
+    </section>
+    {% include 'generateButtons.html'%}
 </body>
 
