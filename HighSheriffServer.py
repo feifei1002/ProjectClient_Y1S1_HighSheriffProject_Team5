@@ -118,6 +118,8 @@ def admin():
                 cur = conn.cursor()
                 cur.execute("SELECT * FROM 'Applicants'")
                 data = cur.fetchall()
+                cur.execute("SELECT * FROM 'ReworkingApplicants'")
+                data2 = cur.fetchall()
                 print(data)
             except Exception as e:
                 print('there was an error')
@@ -126,7 +128,7 @@ def admin():
                 data=""
             finally:
                 conn.close()
-                return render_template('ListApplicants.html', data = data)
+                return render_template('ListApplicants.html', data = data, data2 = data2)
 
     return render_template('admin.html')
 
