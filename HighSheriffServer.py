@@ -68,6 +68,11 @@ def returnButtons():
 	if request.method == 'GET':
 		return render_template('generateButtons.html')
 
+@app.route("/blobToVideo", methods=['GET'])
+def returnBlobToVid():
+	if request.method == 'GET':
+		return render_template('blobtovideo.html')
+
 @app.route("/Application", methods=['GET', 'POST'])
 def returnAppplication():
 	if request.method == 'GET':
