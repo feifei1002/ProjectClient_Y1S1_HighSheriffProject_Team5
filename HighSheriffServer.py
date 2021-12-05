@@ -35,10 +35,10 @@ def returnHome():
 	if request.method == 'GET':
 		return render_template('home.html')
 
-@app.route("/ContactPage", methods=['GET'])
-def returnContact():
-	if request.method == 'GET':
-		return render_template('ContactPage.html')
+# @app.route("/ContactPage", methods=['GET'])
+#def returnContact():
+#	if request.method == 'GET':
+#		return render_template('ContactPage.html')
 
 @app.route("/SherrifInfo", methods=['GET'])
 def returnSherrifInfo():
@@ -153,3 +153,22 @@ def declineApp():
 
 if __name__ == "__main__":
 	app.run(debug=True)
+
+TICKETBASE = 'TicketBase.db'
+
+@app.route("/ContactPage", methods=['GET'])
+def SubmitTicket():
+    try:
+		tConnect = sqlite3.connect(TICKETBASE)
+		tCursor = conn.cursor()
+		tCursor.execute("INSERT INTO Tickets ('Name','Email','Query')\
+						VALUES (?,?,?)",("John","John@hotmail.com","BlaBlaBla"))
+		tConnect.commit()
+		tmsg = "Ticket Added"
+
+	except:
+		tConnect.rollback()
+		tmsg = "Ticket insert error"
+	finally:
+		tConnect.close()
+		return tmsg
