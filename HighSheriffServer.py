@@ -30,10 +30,15 @@ def submitApp():
 			conn.close()
 			return msg
 
-@app.route("/", methods=['GET'])
+@app.route("/Home", methods=['GET'])
 def returnHome():
 	if request.method == 'GET':
 		return render_template('home.html')
+
+@app.route("/ContactPage", methods=['GET'])
+def returnContact():
+	if request.method == 'GET':
+		return render_template('ContactPage.html')
 
 @app.route("/SherrifInfo", methods=['GET'])
 def returnSherrifInfo():
