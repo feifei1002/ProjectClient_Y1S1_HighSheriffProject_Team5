@@ -35,11 +35,6 @@ def returnHome():
 	if request.method == 'GET':
 		return render_template('home.html')
 
-# @app.route("/ContactPage", methods=['GET'])
-#def returnContact():
-#	if request.method == 'GET':
-#		return render_template('ContactPage.html')
-
 @app.route("/SherrifInfo", methods=['GET'])
 def returnSherrifInfo():
 	if request.method == 'GET':
@@ -156,8 +151,15 @@ if __name__ == "__main__":
 
 TICKETBASE = 'TicketBase.db'
 
-@app.route("/ContactPage", methods=['GET'])
+@app.route("/ContactPage", methods=['POST','GET'])
 def SubmitTicket():
+	if request.method == 'GET':
+		return render_template('ContactInfo.html')
+	if request.method == 'POST'
+
+
+
+
     try:
 		tConnect = sqlite3.connect(TICKETBASE)
 		tCursor = conn.cursor()
