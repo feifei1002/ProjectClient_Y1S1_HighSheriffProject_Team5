@@ -30,7 +30,7 @@ def submitApp():
 			conn.close()
 			return msg
 
-@app.route("/Home", methods=['GET'])
+@app.route("/home", methods=['GET'])
 def returnHome():
 	if request.method == 'GET':
 		return render_template('home.html')
@@ -154,29 +154,25 @@ def returnContact():
 @app.route("/SubmitTicket", methods=['POST'])
 def SubmitTicket():
 	if request.method == 'POST':
-
-		req = request.form
-
-		tName = req.get('ContactName', default="ERROR")
-		tEmail = req.get('ContactEmail', default="ERROR")
-		tQuery = req.get('Query', default="ERROR")
-
-		print (tName + "Submitted a ticket.")
+		tName = request.form.get('ContactName', default = "Error")
+		tEmail = request.form.get('ContactEmail', default = "Error")
+		tQuery = request.form.get('Query', default = "Error")
+		print (tName + " submitted a ticket.")
 
 		try:
-			tConnect = sqlite3.connect(DATABASE)
-			tCursor = conn.cursor()
-			tCursor.execute("INSERT INTO Tickets ('Name','Email','Query')\
+			Connect = sqlite3.connect(DATABASE)
+			Cursor = conn.cursor()
+			Cursor.execute("INSERT INTO Tickets ('Name','Email','Query')\
 							VALUES (?,?,?)",(tName,tEmail,tQuery))
-			tConnect.commit()
-			tmsg = "Ticket Added"
+			Connect.commit()
+			msg = "Ticket Added"
 
 		except Exception as e:
-			tConnect.rollback()
-			tmsg = "Ticket insert error"
+			Connect.rollback()
+			msg = "Ticket insert error"
 		finally:
-			tConnect.close()
-			return tmsg
+			Connect.close()
+			return msg
 
 
 
