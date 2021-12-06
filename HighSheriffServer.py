@@ -163,6 +163,8 @@ def SubmitTicket():
 		tEmail = req.get("ContactEmail")
 		tQuery = req.get("Query")
 
+		print (tName + "Submitted a ticket.")
+
 		try:
 			tConnect = sqlite3.connect(TICKETBASE)
 			tCursor = conn.cursor()
