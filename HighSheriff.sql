@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS Donators;
 DROP TABLE IF EXISTS Applicants;
-DROP TABLE IF EXISTS Tickets;
 
 CREATE TABLE IF NOT EXISTS `Donators` (
   `ID`		INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -28,13 +27,3 @@ CREATE TABLE IF NOT EXISTS `Applicants` (
 INSERT INTO 'Applicants'('firstName','surName', 'Amount', 'Email', 'Reason' ) VALUES ('Fei','Liu',5000, 'LiuF29@cardiff.ac.uk', 'bla bla bla');
 INSERT INTO 'Applicants'('firstName','surName', 'Amount', 'Email', 'Reason' ) VALUES ('Gianfranco','Cicciomessere',2000, 'cicciomessereg@cardiff.ac.uk', 'bla bla bla');
 INSERT INTO 'Applicants'('firstName','surName', 'Amount', 'Email', 'Reason' ) VALUES ('Stevens','Matthew',1000, 'stevensm7@cardiff.ac.uk', 'bla bla bla');
-
-
-CREATE TABLE IF NOT EXISTS `Tickets` (
-  `ID`		INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  `Name`	TEXT NOT NULL,
-  `Email`	TEXT NOT NULL,
-  `Query`  TEXT NOT NULL,
-);
-
-INSERT INTO 'Applicants'('Name','Email','Query') VALUES ('John','Carmack','I have a question');
