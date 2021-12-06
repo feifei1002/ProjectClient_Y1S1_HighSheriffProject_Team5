@@ -146,8 +146,6 @@ def declineApp():
             return msg
     return render_template('ListApplicants.html')
 
-TICKETBASE = 'TicketBase.db'
-
 @app.route("/ContactPage", methods=['GET'])
 def returnContact():
 	if request.method == 'GET':
@@ -166,7 +164,7 @@ def SubmitTicket():
 		print (tName + "Submitted a ticket.")
 
 		try:
-			tConnect = sqlite3.connect(TICKETBASE)
+			tConnect = sqlite3.connect(DATABASE)
 			tCursor = conn.cursor()
 			tCursor.execute("INSERT INTO Tickets ('Name','Email','Query')\
 							VALUES (?,?,?)",(tName,tEmail,tQuery))
