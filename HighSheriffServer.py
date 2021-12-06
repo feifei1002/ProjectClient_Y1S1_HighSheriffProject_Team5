@@ -151,7 +151,7 @@ TICKETBASE = 'TicketBase.db'
 @app.route("/ContactPage", methods=['GET'])
 def returnContact():
 	if request.method == 'GET':
-		return render_template('ContactInfo.html')
+		return render_template('ContactPage.html')
 
 @app.route("/SubmitTicket", methods=['POST'])
 def SubmitTicket():
