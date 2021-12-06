@@ -146,31 +146,41 @@ def declineApp():
             return msg
     return render_template('ListApplicants.html')
 
-if __name__ == "__main__":
-	app.run(debug=True)
-
 TICKETBASE = 'TicketBase.db'
 
-@app.route("/ContactPage", methods=['POST','GET'])
-def SubmitTicket():
+@app.route("/ContactPage", methods=['GET'])
+def returnContact():
 	if request.method == 'GET':
 		return render_template('ContactInfo.html')
-	if request.method == 'POST'
+
+@app.route("/SubmitTicket", methods=['POST','GET'])
+def SubmitTicket():
+	if request.method == 'POST':
+
+		req = request.form
+
+		tName = req.get("ContactName")
+		tEmail = req.get("ContactEmail")
+		tQuery = req.get("Query")
+
+		try:
+			tConnect = sqlite3.connect(TICKETBASE)
+			tCursor = conn.cursor()
+			tCursor.execute("INSERT INTO Tickets ('Name','Email','Query')\
+							VALUES (?,?,?)",(tName,tEmail,tQuery))
+			tConnect.commit()
+			tmsg = "Ticket Added"
+
+		except:
+			tConnect.rollback()
+			tmsg = "Ticket insert error"
+		finally:
+			tConnect.close()
+			return tmsg
 
 
 
 
-    try:
-		tConnect = sqlite3.connect(TICKETBASE)
-		tCursor = conn.cursor()
-		tCursor.execute("INSERT INTO Tickets ('Name','Email','Query')\
-						VALUES (?,?,?)",("John","John@hotmail.com","BlaBlaBla"))
-		tConnect.commit()
-		tmsg = "Ticket Added"
 
-	except:
-		tConnect.rollback()
-		tmsg = "Ticket insert error"
-	finally:
-		tConnect.close()
-		return tmsg
+if __name__ == "__main__":
+	app.run(debug=True)
