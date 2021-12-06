@@ -153,15 +153,15 @@ def returnContact():
 	if request.method == 'GET':
 		return render_template('ContactInfo.html')
 
-@app.route("/SubmitTicket", methods=['POST','GET'])
+@app.route("/SubmitTicket", methods=['POST'])
 def SubmitTicket():
 	if request.method == 'POST':
 
 		req = request.form
 
-		tName = req.get("ContactName")
-		tEmail = req.get("ContactEmail")
-		tQuery = req.get("Query")
+		tName = req.get('ContactName', default="ERROR")
+		tEmail = req.get('ContactEmail', default="ERROR")
+		tQuery = req.get('Query', default="ERROR")
 
 		print (tName + "Submitted a ticket.")
 
@@ -173,7 +173,7 @@ def SubmitTicket():
 			tConnect.commit()
 			tmsg = "Ticket Added"
 
-		except:
+		except Exception as e:
 			tConnect.rollback()
 			tmsg = "Ticket insert error"
 		finally:
