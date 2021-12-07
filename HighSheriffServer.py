@@ -275,7 +275,7 @@ def submitTest():
 			cur.execute("INSERT INTO ReworkingApplicants ('firstName', 'surName', 'Email', 'Score')\
 						VALUES (?,?,?,?)",(firstname, lastname, email, score) )
 			conn.commit()
-			msg = "Record successfully added"
+			msg = "/Application/VideoInterview"
 		except Exception as e:
 			print('there was an error')
 			print(e)
@@ -283,7 +283,7 @@ def submitTest():
 			msg = "error in insert operation"
 		finally:
 			conn.close()
-			return msg
+			return redirect(msg)
 
 @app.route("/ListreworkingApplicants", methods=['GET'])
 def listreworkingApplicants():
