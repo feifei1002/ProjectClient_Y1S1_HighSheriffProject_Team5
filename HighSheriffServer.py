@@ -6,6 +6,22 @@ DATABASE = 'HighSheriff.db'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
+@app.route("/submitpayment", methods = ['POST'])
+def submitpayment():
+	Amount = request.form['amount']
+	Name = request.form ['username']
+	Card = request.form ['cardnumber']
+	Expiry = request.form ['Expirydate']
+	Security = request.form ['security']
+	conn = sqlite3.connect(DATABASE)
+	cur = conn.cursor()
+	cur.execute("INSERT INTO Donators ('Amount', 'Name', 'Card', 'Expiry', 'Security')\
+				VALUES (?,?,?,?,?)",(Amount, Name, Card, Expiry, Security) )
+	conn.commit()
+	conn.close()
+	return "Payment successfully added"
+
+
 
 @app.route("/submitApplication", methods=['POST'])
 def submitApp():
@@ -29,6 +45,7 @@ def submitApp():
 		finally:
 			conn.close()
 			return msg
+
 
 @app.route("/Home", methods=['GET'])
 def returnHome():
@@ -161,6 +178,8 @@ def declineApp():
             conn.close()
             return msg
     return render_template('ListApplicants.html')
+
+
 
 if __name__ == "__main__":
 	app.run(debug=True)
