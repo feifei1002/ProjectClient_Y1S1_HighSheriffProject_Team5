@@ -272,7 +272,7 @@ def submitTest():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("INSERT INTO reworkingApplicants ('firstName', 'surName', 'Email', 'Score')\
+			cur.execute("INSERT INTO ReworkingApplicants ('firstName', 'surName', 'Email', 'Score')\
 						VALUES (?,?,?,?)",(firstname, lastname, email, score) )
 			conn.commit()
 			msg = "Record successfully added"
