@@ -78,7 +78,7 @@ def returnAppplication():
 	if request.method == 'GET':
 		return render_template('application.html')
 
-@app.route("/Application/interactiveForm", methods=['GET', 'POST'])
+@app.route("/Application/VideoInterview", methods=['GET', 'POST'])
 def returnAppplication2():
 	if request.method == 'GET':
 		return render_template('application2.html')
@@ -243,7 +243,7 @@ def deleteQuestion():
 	return render_template('ListTests.html')
 
 
-@app.route("/Tests", methods=['GET'])
+@app.route("/Application/Test", methods=['GET'])
 def reworkingTests():
 	if request.method =='GET':
 		try:
