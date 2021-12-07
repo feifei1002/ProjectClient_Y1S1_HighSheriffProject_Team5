@@ -3,44 +3,8 @@
 <link rel="stylesheet" href="/static/HighSherrifStyle.css">
 <title>Applicants List</title>
 <h1>Applicants</h1>
-<table class="table table-striped" id="appTable" border=1>
-    <thead>
-    <td>ID</td>
-    <td>First Name</td>
-    <td>Sur name</td>
-    <td>Amount</td>
-    <td>Email</td>
-    <td>Reason</td>
-    </thead>
 
 <body>
-    <section class="container text-center">
-        <h2>Reworking Applicants</h2>
-        <table class="container table" id="reworkingTable" border=1 method="POST" name="myTable2">
-            <thead>
-            <td>ID</td>
-            <td>Firstname</td>
-            <td>Surname</td>
-            <td>Email</td>
-            <td>Number Of Correct Questions</td>
-            <td>Video</td>
-            <td>Amount</td>
-            </thead>
-            <tbody>
-                {% for row in data2 %}
-                <tr>
-                    <td>{{row[0]}}</td>
-                    <td>{{row[1]}}</td>
-                    <td>{{row[2]}}</td>
-                    <td>{{row[3]}}</td>
-                    <td>{{row[4]}}</td>
-                    <td class="vid">{{row[5]}}</td>
-                    <td>{{row[6]}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </section>
     <section class="container text-center">
         <h2>Old-Style Applicants</h2>
         <table class="container table" id="applicantTable" border=1 method="POST" name="myTable">
