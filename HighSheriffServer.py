@@ -291,7 +291,7 @@ def listreworkingApplicants():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("SELECT * FROM 'reworkingApplicants'")
+			cur.execute("SELECT * FROM 'ReworkingApplicants'")
 			data = cur.fetchall()
 			print(data)
 		except Exception as e:

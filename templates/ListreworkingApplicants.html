@@ -3,22 +3,31 @@
 <link rel="stylesheet" href="/static/HighSherrifStyle.css">
 <title>Reworking Applicants List</title>
 <h1>Reworking Applicants</h1>
-<table class="table table-striped" border=1>
-    <thead>
-    <td>ID</td>
-    <td>First Name</td>
-    <td>Last name</td>
-    <td>Email</td>
-    <td>Score</td>
-    </thead>
-
-    {% for row in data %}
-    <tr>
-        <td>{{row[0]}}</td>
-        <td>{{row[1]}}</td>
-        <td>{{row[2]}}</td>
-        <td>{{row[3]}}</td>
-        <td>{{row[4]}}</td>
-    </tr>
-    {% endfor %}
-</table>
+<section class="container text-center">
+    <h2>Reworking Applicants</h2>
+    <table class="container table table-striped" id="reworkingTable" border=1 method="POST" name="myTable2">
+        <thead>
+        <td>ID</td>
+        <td>Firstname</td>
+        <td>Surname</td>
+        <td>Email</td>
+        <td>Number Of Correct Questions</td>
+        <td>Video</td>
+        <td>Amount</td>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+                <td class="vid">{{row[5]}}</td>
+                <td>{{row[6]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% include 'generateButtons.html'%}
