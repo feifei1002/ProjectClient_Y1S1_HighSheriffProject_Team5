@@ -243,3 +243,17 @@ h4{
   bottom: 100px;
   padding: 5px 5px 5px 5px;
 }
+
+#a1{
+  text-decoration: underline;
+}
+
+#a2{
+  font-weight: bold;
+}
+
+#grants{
+  float:right;
+  width: 20%;
+  bottom: 50px;
+  padding: 20px 20px 20px 20px;
