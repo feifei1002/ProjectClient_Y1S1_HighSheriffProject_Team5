@@ -209,3 +209,26 @@ h1, h3{
 .drop_menu:hover ul{
   display: block;
 }
+
+#logo{
+  float:right;
+  width: 200px;
+  /* margin: 50px; */
+}
+
+#role{
+  float:left;
+  width: 500px;
+  /* margin: 100px; */
+
+}
+
+.office{
+  position: relative;
+  text-align: justify;
+  padding-left: 100px;
+}
+
+h4{
+  text-align: center;
+}
