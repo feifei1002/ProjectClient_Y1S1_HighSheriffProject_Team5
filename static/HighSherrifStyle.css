@@ -213,14 +213,14 @@ h1, h3{
 #logo{
   float:left;
   position: inherit;
-  width: 200px;
+  width: 18%;
   top:10px;
   padding: 5px 5px 5px 5px;
 }
 
 #role{
   float:right;
-  width: 500px;
+  width: 40%;
   bottom: 100px;
   padding: 5px 5px 5px 5px;
 }
@@ -235,4 +235,11 @@ h4{
 
 .list-left{
   text-align: left;
+}
+
+#young{
+  float:right;
+  width: 35%;
+  bottom: 100px;
+  padding: 5px 5px 5px 5px;
 }
