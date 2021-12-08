@@ -224,6 +224,13 @@ h1, h3{
   padding: 5px 5px 5px 5px;
 }
 
+#currentHS{
+  float:left;
+  width: 10%;
+  top:10px;
+  padding: 5px 5px 5px 5px;
+}
+
 #group{
   width: 80%
 }
