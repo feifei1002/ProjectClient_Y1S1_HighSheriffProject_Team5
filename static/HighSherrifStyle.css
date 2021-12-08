@@ -211,22 +211,19 @@ h1, h3{
 }
 
 #logo{
-  float:right;
+  float:left;
+  position: inherit;
   width: 200px;
-  /* margin: 50px; */
+  top:10px;
+  padding: 5px 5px 5px 5px;
 }
 
 #role{
-  float:left;
+  float:right;
   width: 500px;
-  /* margin: 100px; */
+  bottom: 100px;
+  padding: 5px 5px 5px 5px;
 
-}
-
-.office{
-  position: relative;
-  text-align: justify;
-  padding-left: 100px;
 }
 
 h4{
