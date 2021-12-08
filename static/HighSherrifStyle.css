@@ -212,7 +212,6 @@ h1, h3{
 
 #logo{
   float:left;
-  position: inherit;
   width: 18%;
   top:10px;
   padding: 5px 5px 5px 5px;
@@ -255,5 +254,17 @@ h4{
 #grants{
   float:right;
   width: 20%;
-  bottom: 50px;
   padding: 20px 20px 20px 20px;
+}
+
+  #participatory{
+    float:left;
+    width: 25%;
+    padding: 5px 5px 5px 5px;
+  }
+
+  #children{
+    float:right;
+    width: 25%;
+    padding: 5px 5px 5px 5px;
+  }
