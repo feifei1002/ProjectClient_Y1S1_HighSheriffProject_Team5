@@ -78,7 +78,7 @@ def returnAppplication():
 	if request.method == 'GET':
 		return render_template('application.html')
 
-@app.route("/Application/interactiveForm", methods=['GET', 'POST'])
+@app.route("/Application/VideoInterview", methods=['GET', 'POST'])
 def returnAppplication2():
 	if request.method == 'GET':
 		return render_template('application2.html')
@@ -93,6 +93,12 @@ def returnAppplication2():
 		if file and check_filetype(file.filename):
 			filename = secure_filename(file.filename)
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			savedRoute = UPLOAD_FOLDER+filename #saves the route to add to the database
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("UPDATE ReworkingApplicants SET Video = ? WHERE ID = (SELECT MAX(ID) FROM ReworkingApplicants)", (savedRoute,)) #Gets the last applications and sets the video
+			conn.commit()
+			conn.close()
 			return redirect(request.url)
 
 @app.route("/Donations", methods=['GET'])
@@ -125,6 +131,7 @@ def admin():
 @app.route("/ListApplicants", methods=['GET'])
 def listApplicants():
 	if request.method =='GET':
+		currentRoot = request.path
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
@@ -150,7 +157,26 @@ def acceptApp():
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
 			cur.execute("UPDATE Applicants SET Amount = ? WHERE ID = ?", (funds, ID))
+			conn.commit()
+			msg = "Application sucessfully accepted"
+		except:
+			conn.rollback()
+			msg = "Error when accepting application"
+		finally:
+			conn.close()
+			return msg
+	return render_template('ListApplicants.html')
 
+@app.route("/acceptReworkingApplication", methods=['POST'])
+def acceptReworkingApp():
+	if request.method == 'POST':
+		ID = request.form.get('ID', default = "Error")
+		funds = request.form.get('fundsToAdd', default = "None")
+		print("Awarding applicant "+ funds)
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("UPDATE ReworkingApplicants SET Amount = ? WHERE ID = ?", (funds, ID))
 			conn.commit()
 			msg = "Application sucessfully accepted"
 		except:
@@ -169,7 +195,27 @@ def declineApp():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))
+			cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))								
+
+			conn.commit()
+			msg = "Application successfully deleted"
+		except:
+			conn.rollback()
+			msg = "error in decline application"
+		finally:
+			conn.close()
+			return msg
+	return render_template('ListApplicants.html')
+
+@app.route("/declineReworkingApplication", methods=['POST'])
+def declineReworkingApp():
+	if request.method == 'POST':
+		ID = request.form.get('decline', default = "Error")
+		print("deleting applicant "+ ID)
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()							
+			cur.execute("DELETE FROM ReworkingApplicants WHERE ID = ?", (ID))
 
 			conn.commit()
 			msg = "Application successfully deleted"
@@ -243,7 +289,7 @@ def deleteQuestion():
 	return render_template('ListTests.html')
 
 
-@app.route("/Tests", methods=['GET'])
+@app.route("/Application/Test", methods=['GET'])
 def reworkingTests():
 	if request.method =='GET':
 		try:
@@ -272,10 +318,10 @@ def submitTest():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("INSERT INTO reworkingApplicants ('firstName', 'surName', 'Email', 'Score')\
+			cur.execute("INSERT INTO ReworkingApplicants ('FirstName', 'LastName', 'Email', 'NumberOfCorrect')\
 						VALUES (?,?,?,?)",(firstname, lastname, email, score) )
 			conn.commit()
-			msg = "Record successfully added"
+			msg = "/Application/VideoInterview"
 		except Exception as e:
 			print('there was an error')
 			print(e)
@@ -283,15 +329,19 @@ def submitTest():
 			msg = "error in insert operation"
 		finally:
 			conn.close()
-			return msg
+			if "/" in msg:
+				return redirect(msg)
+			else:
+				return msg
 
 @app.route("/ListreworkingApplicants", methods=['GET'])
 def listreworkingApplicants():
 	if request.method =='GET':
+		currentRoot = request.path
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("SELECT * FROM 'reworkingApplicants'")
+			cur.execute("SELECT * FROM 'ReworkingApplicants'")
 			data = cur.fetchall()
 			print(data)
 		except Exception as e:

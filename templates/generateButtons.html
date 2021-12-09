@@ -25,6 +25,13 @@
             $('.hiddenID').attr("value", applicantID);
             $('.hiddenID2').attr("value", applicantID);
         });
+        $('#waitReworkingTable .appId:first').each(function () {
+            var applicantID = $(this).html(); // The following code simply creates the buttons buttons in html
+            $(this).append("<form method='post' action='/acceptReworkingApplication'><input class='hiddenID' name='ID' type='text' value='0' style='display: none;'><input type='number' name='fundsToAdd' placeholder='Enter Funds to Award'><button type='submit' class='btn btn-outline-success'>Accept</button></form>");
+            $(this).append("<form method='post' action='/declineReworkingApplication'><input class='hiddenID2' name='ID' type='text' value='0' style='display: none;'><button type='submit' class='btn btn-outline-danger'>Reject</button></form>");
+            $('.hiddenID').attr("value", applicantID);
+            $('.hiddenID2').attr("value", applicantID);
+        });
     });
 </script>
 {% endblock %}
