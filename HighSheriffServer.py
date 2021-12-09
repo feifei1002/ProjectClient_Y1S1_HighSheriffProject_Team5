@@ -125,6 +125,7 @@ def admin():
 @app.route("/ListApplicants", methods=['GET'])
 def listApplicants():
 	if request.method =='GET':
+		currentRoot = request.path
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
@@ -150,7 +151,26 @@ def acceptApp():
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
 			cur.execute("UPDATE Applicants SET Amount = ? WHERE ID = ?", (funds, ID))
+			conn.commit()
+			msg = "Application sucessfully accepted"
+		except:
+			conn.rollback()
+			msg = "Error when accepting application"
+		finally:
+			conn.close()
+			return msg
+	return render_template('ListApplicants.html')
 
+@app.route("/acceptReworkingApplication", methods=['POST'])
+def acceptReworkingApp():
+	if request.method == 'POST':
+		ID = request.form.get('ID', default = "Error")
+		funds = request.form.get('fundsToAdd', default = "None")
+		print("Awarding applicant "+ funds)
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("UPDATE ReworkingApplicants SET Amount = ? WHERE ID = ?", (funds, ID))
 			conn.commit()
 			msg = "Application sucessfully accepted"
 		except:
@@ -169,7 +189,27 @@ def declineApp():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))
+			cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))								
+
+			conn.commit()
+			msg = "Application successfully deleted"
+		except:
+			conn.rollback()
+			msg = "error in decline application"
+		finally:
+			conn.close()
+			return msg
+	return render_template('ListApplicants.html')
+
+@app.route("/declineReworkingApplication", methods=['POST'])
+def declineReworkingApp():
+	if request.method == 'POST':
+		ID = request.form.get('decline', default = "Error")
+		print("deleting applicant "+ ID)
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()							
+			cur.execute("DELETE FROM ReworkingApplicants WHERE ID = ?", (ID))
 
 			conn.commit()
 			msg = "Application successfully deleted"
@@ -288,6 +328,7 @@ def submitTest():
 @app.route("/ListreworkingApplicants", methods=['GET'])
 def listreworkingApplicants():
 	if request.method =='GET':
+		currentRoot = request.path
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
