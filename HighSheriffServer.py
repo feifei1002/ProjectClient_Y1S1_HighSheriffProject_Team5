@@ -318,7 +318,7 @@ def submitTest():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("INSERT INTO ReworkingApplicants ('FirstName', 'LastName', 'NumberOfCorrect', 'Score')\
+			cur.execute("INSERT INTO ReworkingApplicants ('FirstName', 'LastName', 'Email', 'NumberOfCorrect')\
 						VALUES (?,?,?,?)",(firstname, lastname, email, score) )
 			conn.commit()
 			msg = "/Application/VideoInterview"
