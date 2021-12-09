@@ -15,6 +15,33 @@ def check_filetype(file):
 	return '.' in file and \
 		file.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS # Checks if the user has submitted a valid file based from our allowed extensions
 
+@app.route("/submitpayment", methods=['POST'])
+def submitPayment():
+	if request.method == 'POST':
+		Amount = request.form.get('amount', default="Error")
+		Name = request.form.get('username', default = "Error")
+		CardNumber = request.form.get('cardnumber', default="Error")
+		ExpiryDate = request.form.get('Expirydate', default = "Error")
+		securityCode = request.form.get('security', default = "Error")
+		print("Payment made")
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("INSERT INTO Donators ('Amount', 'Name', 'Cardnumber', 'Expirydate','security')\
+						VALUES (?,?,?,?,?)",(Amount, Name, CardNumber, ExpiryDate, securityCode) )
+
+			conn.commit()
+			msg = "Record successfully added"
+		except Exception as e:
+			print(e)
+			conn.rollback()
+			msg = "error in insert operation"
+		finally:
+			conn.close()
+			return msg
+
+
+
 @app.route("/submitApplication", methods=['POST'])
 def submitApp():
 	if request.method == 'POST':
