@@ -8,18 +8,27 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app = Flask(__name__)
 @app.route("/submitpayment", methods = ['POST'])
 def submitpayment():
-	Amount = request.form['amount']
-	Name = request.form ['username']
-	Card = request.form ['cardnumber']
-	Expiry = request.form ['Expirydate']
-	Security = request.form ['security']
-	conn = sqlite3.connect(DATABASE)
-	cur = conn.cursor()
-	cur.execute("INSERT INTO Donators ('Amount', 'Name', 'Card', 'Expiry', 'Security')\
-				VALUES (?,?,?,?,?)",(Amount, Name, Card, Expiry, Security) )
-	conn.commit()
-	conn.close()
-	return "Payment successfully added"
+	if request.method == 'POST':
+		Amount = request.form['amount']
+		Name = request.form ['username']
+		Card = request.form ['cardnumber']
+		Expiry = request.form ['Expirydate']
+		Security = request.form ['security']
+	try:
+		conn = sqlite3.connect(DATABASE)
+		cur = conn.cursor()
+		cur.execute("INSERT INTO Donators ('Amount', 'Name', 'Card', 'Expiry','Security')\
+					VALUES (?,?,?,?,?)",(Amount, Name, Card, Expiry, Security))
+
+		conn.commit()
+		msg = "Payment made"
+	except Exception as e:
+		print(e)
+		conn.rollback()
+		msg = "error in payment"
+	finally:
+		conn.close()
+		return msg
 
 
 
@@ -127,57 +136,57 @@ def adminApplicants():
 
 @app.route("/Charities", methods =['GET'])
 def returnCharities():
-    if request.method == 'GET':
-        return render_template('charities.html')
+	if request.method == 'GET':
+		return render_template('charities.html')
 
 
 @app.route("/admin", methods = ['GET', 'POST'])
 def admin():
-    if request.method =='GET':
-        return render_template('admin.html')
-    error = None
-    if request.method =='POST':
-        if request.form['username']!= 'admin' or request.form['password'] != 'admin':
-            error = "Wrong username or password. Please try again."
-            print(error)
-            return render_template('admin.html')
-        else:
-            try:
-                conn = sqlite3.connect(DATABASE)
-                cur = conn.cursor()
-                cur.execute("SELECT * FROM 'Applicants'")
-                data = cur.fetchall()
-                print(data)
-            except Exception as e:
-                print('there was an error')
-                print(e)
-                conn.close()
-                data=""
-            finally:
-                conn.close()
-                return render_template('ListApplicants.html', data = data)
+	if request.method =='GET':
+		return render_template('admin.html')
+	error = None
+	if request.method =='POST':
+		if request.form['username']!= 'admin' or request.form['password'] != 'admin':
+			error = "Wrong username or password. Please try again."
+			print(error)
+			return render_template('admin.html')
+		else:
+			try:
+				conn = sqlite3.connect(DATABASE)
+				cur = conn.cursor()
+				cur.execute("SELECT * FROM 'Applicants'")
+				data = cur.fetchall()
+				print(data)
+			except Exception as e:
+				print('there was an error')
+				print(e)
+				conn.close()
+				data=""
+			finally:
+				conn.close()
+				return render_template('ListApplicants.html', data = data)
 
-    return render_template('admin.html')
+	return render_template('admin.html')
 
 @app.route("/declineApplication", methods=['POST'])
 def declineApp():
-    if request.method == 'POST':
-        ID = request.form.get('decline', default = "Error")
-        print("deleting applicant"+ ID)
-        try:
-            conn = sqlite3.connect(DATABASE)
-            cur = conn.cursor()
-            cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))
+	if request.method == 'POST':
+		ID = request.form.get('decline', default = "Error")
+		print("deleting applicant"+ ID)
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))
 
-            conn.commit()
-            msg = "Application successfully deleted"
-        except:
-            conn.rollback()
-            msg = "error in decline application"
-        finally:
-            conn.close()
-            return msg
-    return render_template('ListApplicants.html')
+			conn.commit()
+			msg = "Application successfully deleted"
+		except:
+			conn.rollback()
+			msg = "error in decline application"
+		finally:
+			conn.close()
+			return msg
+	return render_template('ListApplicants.html')
 
 
 
