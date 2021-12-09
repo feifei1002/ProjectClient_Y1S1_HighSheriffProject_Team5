@@ -1,7 +1,7 @@
 {% include 'boostrap.html'%}
 {% include 'dropdown.html'%}
 <head>
-<link rel="stylesheet" href="/static/HighSherrifStyle.css">
+<link rel="stylesheet" href="/static/css/HighSherrifStyle.css">
 <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>Questions List</title>
 <h1>Questions</h1>
@@ -52,19 +52,5 @@
   </form>
   </main>
   <!-- Jquery is used to to activate the two add and delete questions buttons -->
-  <script>
-    $(document).ready(function(){
-      // the add question form will not appear unless the moderator clicked the button
-      $('#list').show();
-      $('#addForm').hide();
-      $('#btnAdd').click(function(){
-        $('#addForm').toggle()
-      });
-      // the delete question form will not appear unless the moderator clicked the button
-      $('#deleteForm').hide();
-      $('#btnDelete').click(function(){
-        $('#deleteForm').toggle()
-      });
-    })
-  </script>
+  <script src="/static/javascript/adminTestButtons.js"></script>
   </body>

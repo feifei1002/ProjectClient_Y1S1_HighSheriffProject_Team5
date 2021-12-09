@@ -6,7 +6,7 @@
   </head>
   {% include 'boostrap.html'%}
   <body>
-    <script src="static/score.js"></script>
+    <script src="static/javascript/score.js"></script>
     <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <header>
         {% include 'nav.html'%}
@@ -36,9 +36,5 @@
       </form>
     </section>
     <!-- Using Jquery to hide the score input -->
-    <script>
-    $(document).ready(function(){
-      $('#score').hide();
-    })
-    </script>
+    <script src="/static/javascript/hideScore.js"></script>
   </body>
