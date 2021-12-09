@@ -33,13 +33,14 @@
   </div>
   <br>
   <form id="addForm" method='POST' action ='/addTest'>
-    <label>Please enter the question you want to add here:</label><br>
-    <input type ="text" id="add" name ="add" placeholder="Question"><br>
+    <label>Please enter the question you want to add here:<br>
+    <input type ="text" id="add" name ="add" placeholder="Question"><br></label><br>
     <!-- Moderator has to pick a correct answer for the test question -->
     <!-- For now, I only allow Yes/No answer, we can add in text answer if we need it later -->
-    <label>Please select the correct answer for the question:</label><br>
+    <label>Please select the correct answer for the question:<br>
     <input type="radio" name="option" value=" Yes">Yes</input><br>
     <input type="radio" name="option" value=" No">No</input><br>
+    </label><br>
     <button type="submit" id='subAdd'>Add</button>
   </form>
 
