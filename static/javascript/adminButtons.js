@@ -1,0 +1,14 @@
+$(document).ready(function(){
+    $('#appListbtn').click(function(){
+      window.location="/ListApplicants"
+    });
+    $('#testListbtn').click(function(){
+      window.location="/ListTests"
+    });
+    $('#reworkListbtn').click(function(){
+      window.location="/ListreworkingApplicants"
+    });
+    $('#donateListbtn').click(function(){
+      window.location="/"
+    });
+  })
