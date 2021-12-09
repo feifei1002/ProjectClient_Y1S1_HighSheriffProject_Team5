@@ -93,6 +93,12 @@ def returnAppplication2():
 		if file and check_filetype(file.filename):
 			filename = secure_filename(file.filename)
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			savedRoute = UPLOAD_FOLDER+filename #saves the route to add to the database
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("UPDATE ReworkingApplicants SET Video = ? WHERE ID = (SELECT MAX(ID) FROM ReworkingApplicants)", (savedRoute,)) #Gets the last applications and sets the video
+			conn.commit()
+			conn.close()
 			return redirect(request.url)
 
 @app.route("/Donations", methods=['GET'])
@@ -312,7 +318,7 @@ def submitTest():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("INSERT INTO ReworkingApplicants ('firstName', 'surName', 'Email', 'Score')\
+			cur.execute("INSERT INTO ReworkingApplicants ('FirstName', 'LastName', 'NumberOfCorrect', 'Score')\
 						VALUES (?,?,?,?)",(firstname, lastname, email, score) )
 			conn.commit()
 			msg = "/Application/VideoInterview"
@@ -323,7 +329,10 @@ def submitTest():
 			msg = "error in insert operation"
 		finally:
 			conn.close()
-			return redirect(msg)
+			if "/" in msg:
+				return redirect(msg)
+			else:
+				return msg
 
 @app.route("/ListreworkingApplicants", methods=['GET'])
 def listreworkingApplicants():
