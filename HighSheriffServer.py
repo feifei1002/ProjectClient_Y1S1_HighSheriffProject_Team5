@@ -14,21 +14,21 @@ def submitpayment():
 		Card = request.form ['cardnumber']
 		Expiry = request.form ['Expirydate']
 		Security = request.form ['security']
-	try:
-		conn = sqlite3.connect(DATABASE)
-		cur = conn.cursor()
-		cur.execute("INSERT INTO Donators ('Amount', 'Name', 'Card', 'Expiry','Security')\
-					VALUES (?,?,?,?,?)",(Amount, Name, Card, Expiry, Security))
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("INSERT INTO Donators ('Amount', 'Name', 'Card', 'Expiry','Security')\
+						VALUES (?,?,?,?,?)",(Amount, Name, Card, Expiry, Security))
 
-		conn.commit()
-		msg = "Payment made"
-	except Exception as e:
-		print(e)
-		conn.rollback()
-		msg = "error in payment"
-	finally:
-		conn.close()
-		return msg
+			conn.commit()
+			msg = "Payment made"
+		except Exception as e:
+			print(e)
+			conn.rollback()
+			msg = "error in payment"
+		finally:
+			conn.close()
+			return msg
 
 
 
