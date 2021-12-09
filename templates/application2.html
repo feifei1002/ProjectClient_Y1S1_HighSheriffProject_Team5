@@ -1,0 +1,87 @@
+{% include 'boostrap.html'%}
+{% include 'nav.html'%}
+<main>
+    <section class="container-fluid justify-contents-center text-center bg-light">
+        <h2>Video Interview</h2>
+        <p>Here you will need to record a video interview of yourself, you can upload an already made one or make your own here.</p>
+        <p>If you are going to use our recording tools then press start to start the recording and stop it once you are ready, then press the playback button to view it and download it once you are happy with it.</p>
+        <video id="webcam" class="border border-info border-5" autoplay muted></video>
+        <p id='checkComp' style="display: none;">It seems your browser does not support getUserMedia. You will need record and submit your own video externally, apply with the old-style form or use a different browser.</p>
+    </section>
+    <section class="container-fluid justify-contents-center text-center mt-2 bg-light">
+        <button class="btn btn-outline-success" id='record' onclick="record()">Start Recording</button>
+        <button class="btn btn-outline-danger" id='stopRecord' onclick="stop()">Stop Recording</button>
+        <p id="recordStatus">Not recording</p>
+    </section>
+    <section class="container-fluid justify-contents-center text-center bg-light mt-5">
+        <video class="border border-info border-5" id="playback" controls></video>
+    </section>
+    <section class="container-fluid justify-contents-center text-center bg-light">
+        <button class="btn btn-outline-primary" id='playback' onclick="play()">Playback recording</button>
+        <a class="btn btn-outline-primary" id="downloadButton" href="" download="interview.webm">Download</a>
+    </section>
+    <section class="container justify-contents-center text-center bg-light mt-5">
+        <h2>Upload</h2>
+        <form method="post" enctype="multipart/form-data" action="/Application/interactiveForm">
+            <label for="file">Please record a video from your webcam and upload it here: 
+                <input id="videoSubmit" type="file" name="file">
+            </label>
+            <input type="submit" value="Upload" accept="video/*" capture> <!-- Capture attribute only works for mobile phones-->
+        </form>
+    </section>
+    <script>
+        document.getElementById("downloadButton").style.visibility = "hidden";
+        var videoChunks = []; // Apparently the video is stored in blobs on chunks and we need to save them here
+        var options = {mimeType: 'video/webm;codecs=vp9'};
+
+        function checkUserIsCompatible(){ // Checks if the user's browser supports user media
+            var check = !!(navigator.mediaDevices.getUserMedia);
+            if(check){
+                const constraints = {video: { width: 1024, height: 576}, audio: true};
+                const video = document.getElementById("webcam");
+                navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream;}); // Aks the user for permission then plays their own webcame to them
+                prepMediaRecorder(constraints);
+            } else {
+                document.getElementById("checkComp").style = "display: block;";
+            }
+        }
+
+        async function prepMediaRecorder(constraints){ // Async function to get the user's webcam and prepare it for recording
+            let stream = null;
+
+            try{
+                stream = await navigator.mediaDevices.getUserMedia(constraints);
+                mediaRecorder = new MediaRecorder(stream, options);
+                mediaRecorder.ondataavailable = handleDataAvailable;
+            } catch(error){
+                alert("Error");
+            }
+        }
+
+        function record(){
+            mediaRecorder.start();
+            document.getElementById("recordStatus").innerHTML = "Recording...";
+        }
+
+        function stop(){
+            mediaRecorder.stop();
+            document.getElementById("recordStatus").innerHTML = "Recording Saved";
+        }
+
+        function play(){
+            var videoPlayback = document.getElementById("playback");
+            var downloadButton = document.getElementById("downloadButton");
+            var superBuffer = new Blob(videoChunks);
+            videoPlayback.src = window.URL.createObjectURL(superBuffer);
+            document.getElementById("downloadButton").style.visibility = "visible";
+            downloadButton.href = window.URL.createObjectURL(superBuffer);
+        }
+
+        function handleDataAvailable(event){ // Stores video into the video chunks array
+            if(event.data.size > 0){
+                videoChunks.push(event.data);
+            }
+        }
+        checkUserIsCompatible()
+    </script>
+</main>

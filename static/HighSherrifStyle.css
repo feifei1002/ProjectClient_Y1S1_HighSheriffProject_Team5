@@ -14,3 +14,198 @@ body{
   font-family:serif;
   color:#515152;
 }
+#adminForm{
+  margin: 100px;
+  padding: 40px;
+  width: 500px;
+  border-radius: 25px;
+  transform: translate(70%, -18%);
+  font-family: sans-serif;
+  background-color: #A9E2F3;
+}
+
+.box{
+  width: 200px;
+  position: absolute;
+  transform: translate(-50%, 50%);
+  background: none;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 25px;
+  padding: 5px;
+  color: #0174DF;
+  font-weight: bold;
+}
+
+.box:hover, .box:focus{
+  width: 300px;
+}
+
+.box h1{
+  font-family: serif;
+  font-weight: 500px;
+}
+
+#adminForm button{
+  width: 100px;
+  position: absolute;
+  transform: translate(-50%, 50%);
+  background: none;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 25px;
+  padding: 5px;
+  color: #0174DF;
+  font-weight: bold;
+}
+
+#adminForm button:hover, #adminForm button:focus{
+  width: 200px;
+  background: white;
+}
+
+h1, h3{
+  color: black;
+}
+
+#decline{
+  border-radius: 10px;
+  border-color: black;
+  width:80px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#decline:hover, #decline:focus{
+  width:100px
+}
+
+#declineForm button{
+  background-color: white;
+  border-radius: 15px;
+}
+
+#declineForm button:hover, #declineForm button:focus{
+  width: 120px;
+  border-radius: 15px;
+  border-color: black;
+  background-color:black;
+  color:white;
+}
+
+#appTable tr{
+  font-family: serif;
+  text-align: center;
+}
+
+#atEmail:hover, #atFirstname:hover, #atLastname:hover {
+  width: 300px;
+  border-color: black;
+}
+
+#atReason:hover{
+  border-color:black;
+}
+#atEmail, #atFirstname, #atLastname, #atReason{
+  border-color:#0174DF;
+}
+
+.navbar-nav{
+  font-family: sans-serif;
+}
+
+.listbtn{
+  background-color: #81DAF5;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 30px 0px;
+  width: 400px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 50px;
+  transform: translate(125%, 25%)
+}
+.listbtn:hover, .listbtn:focus{
+  background-color: #81DAF5;
+  border-radius: 20px;
+  color: #0080FF;
+  padding: 30px 0px;
+  width: 400px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 50px;
+}
+
+#btnDelete{
+  background-color: #DEA5A4;
+}
+
+#btnAdd{
+  background-color: #92a8d1;
+}
+
+#btnAdd, #btnDelete{
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+#btnDelete:hover, #btnDelete:focus, #subDelete:hover, #subDelete:focus{
+  color: red
+}
+
+#btnAdd:hover, #btnAdd:focus, #subAdd:hover, #subAdd:focus{
+  color: blue
+}
+
+#subAdd, #subDelete{
+  border-radius: 5px;
+  color:black;
+  background-color: #81DAF5;
+  border: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  width: 80px
+}
+
+#add, #delete{
+  border-radius: 15px;
+}
+
+.drop_menu ul{
+  padding: 0;
+  margin: 0;
+  float: right;
+  margin-right: auto;
+}
+
+.drop_menu ul li{
+  position: relative;
+  list-style: none;
+  display: inline-block;
+}
+
+.drop_menu ul li a{
+  display: block;
+  padding: 0 15px;
+  color: black;
+  text-decoration: none;
+  line-height: 60px;
+  font-size: 20px;
+}
+
+.drop_down{
+  position: absolute;
+  top: 60px;
+  display: none;
+}
+.drop_menu:hover ul{
+  display: block;
+}

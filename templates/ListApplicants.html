@@ -1,7 +1,9 @@
 {% include 'boostrap.html'%}
-
+{% include 'dropdown.html'%}
+<link rel="stylesheet" href="/static/HighSherrifStyle.css">
+<title>Applicants List</title>
 <h1>Applicants</h1>
-<table class="table table-striped" border=1>
+<table class="table table-striped" id="appTable" border=1>
     <thead>
     <td>ID</td>
     <td>First Name</td>
@@ -11,28 +13,81 @@
     <td>Reason</td>
     </thead>
 
-    {% for row in data %}
-    <!-- A List of tuples so row is each item in the list
-         and then the index is the column number.-->
-    <tr>
-        <td>{{row[0]}}</td>
-        <td>{{row[1]}}</td>
-        <td>{{row[2]}}</td>
-        <td>{{row[3]}}</td>
-        <td>{{row[4]}}</td>
-        <td>{{row[5]}}</td>
-    </tr>
-    {% endfor %}
-</table>
+<body>
+    <header>
+        {% include 'nav.html'%}
+    </header>
 
-<div>
-    <h3>Decline Application</h3>
-    <form name="declineForm" method="POST" action="/declineApplication">
-        <label>
-            Please enter the ID of application that you want to decline here:
-            <input type="text" id="decline" name="decline">
-            <button type="submit">Decline</button>
-        </label>
-    </form>
-</div>
+    <h1 class="container-fluid text-center">Applicants List</h1>
+    <section class="container text-center">
+        <h2>Reworking Applicants</h2>
+        <table class="container table" id="reworkingTable" border=1 method="POST" name="myTable2">
+            <thead>
+            <td>ID</td>
+            <td>Firstname</td>
+            <td>Surname</td>
+            <td>Email</td>
+            <td>Number Of Correct Questions</td>
+            <td>Video</td>
+            <td>Amount</td>
+            </thead>
+            <tbody>
+                {% for row in data2 %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td class="vid">{{row[5]}}</td>
+                    <td>{{row[6]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <section class="container text-center">
+        <h2>Old-Style Applicants</h2>
+        <table class="container table" id="applicantTable" border=1 method="POST" name="myTable">
+            <thead>
+            <td>ID</td>
+            <td>Firstname</td>
+            <td>Surname</td>
+            <td>Amount</td>
+            <td>Email</td>
+            <td>Reason</td>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
 
+    <section class="container text-center">
+        <h3>Accept or Decline Application</h3>
+        <p id="modMsg">There are currently no applications that need moderation</p>
+        <table id='waitTable' class='table'>
+            <thead>
+            <td>ID</td>
+            <td>Firstname</td>
+            <td>Surname</td>
+            <td>Amount</td>
+            <td>Email</td>
+            <td>Reason</td>
+            </thead>
+            <tbody id='requestedTable'>
+                <!--Its meant to be empty and jquery adds data to it-->
+            </tbody>
+        </table>
+    </section>
+    {% include 'generateButtons.html'%}
+</body>
