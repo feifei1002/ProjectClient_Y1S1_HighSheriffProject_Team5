@@ -9,6 +9,62 @@
   margin:0px
 }
 
+footer{
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.cont-footer{
+padding: 10px;
+text-align: center;
+}
+
+.cont-footer h3{
+  color: white;
+  transform: translate(7%, -18%)
+}
+
+.follow{
+  display: flex;
+  flex-direction: row;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 500px;
+  width: 55px;
+  text-align: center;
+  margin: 5px 2px;
+  text-decoration: none;
+  border-radius: 60%;
+}
+
+.fa:hover {
+    color: black;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
 body{
   background-color:white;
   font-family:serif;
