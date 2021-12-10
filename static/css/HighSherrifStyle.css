@@ -323,7 +323,17 @@ h1, h3{
     grid-column: 1 / span 2;
 }
 
-.images{
-    width: auto;
+#grants{
     height: 250px;
+    width: auto;
+}
+
+#participatory{
+    height: 300px;
+    width: auto;
+}
+
+#children{
+    height: 300px;
+    width: auto;
 }
