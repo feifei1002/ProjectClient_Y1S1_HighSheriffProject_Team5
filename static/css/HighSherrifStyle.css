@@ -286,3 +286,12 @@ h1, h3{
     width: 25%;
     padding: 5px 5px 5px 5px;
   }
+
+.parallax {
+    background-image: url("cssPictures/group.jpg");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
