@@ -319,7 +319,11 @@ h1, h3{
     grid-column: 1 / span 3;
 }
 
-#grants{
+.item12{
+    grid-column: 1 / span 2;
+}
+
+.images{
     width: auto;
     height: 250px;
 }
