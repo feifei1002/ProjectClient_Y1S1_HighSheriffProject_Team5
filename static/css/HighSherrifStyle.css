@@ -299,6 +299,8 @@ h1, h3{
 .gridContainer{
     display: inline-grid;
     grid-template-columns: auto auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 50px;
 }
 
 .item1{
@@ -317,7 +319,7 @@ h1, h3{
     grid-column: 1 / span 3;
 }
 
-image{
+#grants{
     width: auto;
-    height: auto;
+    height: 250px;
 }
