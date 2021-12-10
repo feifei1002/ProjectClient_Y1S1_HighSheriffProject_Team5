@@ -17,13 +17,13 @@ footer{
 }
 
 .cont-footer{
-padding: 10px;
+padding: 5px;
 text-align: center;
 }
 
 .cont-footer h3{
   color: white;
-  transform: translate(7%, -18%)
+  transform: translate(7%, 18%)
 }
 
 .follow{
