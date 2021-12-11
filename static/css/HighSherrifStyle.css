@@ -338,3 +338,7 @@ h1, h3{
     height: 300px;
     width: auto;
 }
+
+.navBarPadding{
+  padding: 80px;
+}
