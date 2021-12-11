@@ -1,19 +1,8 @@
-{% include 'nav.html' %}<br>
-{% include 'boostrap.html' %}
-
-
-<html>
-<head>
-
-</head>
-<body>
-
-
-    <button onclick="firstcharity()">Oxfam</button>
-    <button onclick="secondCharity()">Cancer Research Uk</button>
-    <button onclick="thirdcharity()"> Direct Relief </button>
-    <button onclick="fourthcharity()">British Red Cross </button>
-    <button onclick="fifthcharity()"> Save the Children</button>
+    <button class="btn btn-info" onclick="firstcharity()">Oxfam</button>
+    <button class="btn btn-info" onclick="secondCharity()">Cancer Research Uk</button>
+    <button class="btn btn-info" onclick="thirdcharity()"> Direct Relief </button>
+    <button class="btn btn-info" onclick="fourthcharity()">British Red Cross </button>
+    <button class="btn btn-info" onclick="fifthcharity()"> Save the Children</button>
 
     <div id="Oxfam">
         <br>
@@ -45,8 +34,4 @@
 
 
     <script src="/static/javascript/chararitiesButtons.js"></script>
-    <footer>
-      {%include 'footer.html'%}
-    </footer>
-</body>
-</html>
+
