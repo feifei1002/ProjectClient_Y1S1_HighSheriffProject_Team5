@@ -9,6 +9,6 @@ $(document).ready(function(){
       window.location="/ListreworkingApplicants"
     });
     $('#donateListbtn').click(function(){
-      window.location="/"
+      window.location="/showpayment"
     });
   })

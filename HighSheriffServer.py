@@ -15,6 +15,26 @@ def check_filetype(file):
 	return '.' in file and \
 		file.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS # Checks if the user has submitted a valid file based from our allowed extensions
 
+@app.route("/showpayment", methods=['GET'])
+def showpayment():
+	if request.method == 'GET': 
+		#currentRoot = request.os.path
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("SELECT * FROM 'Donators'")
+			data = cur.fetchall()
+			print(data)
+		except Exception as e:
+			print('there was an error')
+			print(e)
+			conn.close()
+			data=""
+		finally:
+			conn.close()
+			return render_template('ListDonations.html', data = data)
+
+
 @app.route("/submitpayment", methods=['POST'])
 def submitPayment():
 	if request.method == 'POST':
@@ -89,6 +109,11 @@ def returnWebsite():
 def returnnav():
 	if request.method == 'GET':
 		return render_template('nav.html')
+
+@app.route("/footer", methods=['GET'])
+def returnfooter():
+	if request.method == 'GET':
+		return render_template('footer.html')
 
 @app.route("/dropdown", methods=['GET'])
 def returndropdown():
@@ -222,7 +247,7 @@ def declineApp():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))								
+			cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))
 
 			conn.commit()
 			msg = "Application successfully deleted"
@@ -241,7 +266,7 @@ def declineReworkingApp():
 		print("deleting applicant "+ ID)
 		try:
 			conn = sqlite3.connect(DATABASE)
-			cur = conn.cursor()							
+			cur = conn.cursor()
 			cur.execute("DELETE FROM ReworkingApplicants WHERE ID = ?", (ID))
 
 			conn.commit()
