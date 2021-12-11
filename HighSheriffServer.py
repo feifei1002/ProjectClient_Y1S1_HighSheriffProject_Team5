@@ -110,6 +110,11 @@ def returnnav():
 	if request.method == 'GET':
 		return render_template('nav.html')
 
+@app.route("/footer", methods=['GET'])
+def returnfooter():
+	if request.method == 'GET':
+		return render_template('footer.html')
+
 @app.route("/dropdown", methods=['GET'])
 def returndropdown():
 	if request.method == 'GET':
@@ -242,7 +247,7 @@ def declineApp():
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
-			cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))								
+			cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))
 
 			conn.commit()
 			msg = "Application successfully deleted"
@@ -261,7 +266,7 @@ def declineReworkingApp():
 		print("deleting applicant "+ ID)
 		try:
 			conn = sqlite3.connect(DATABASE)
-			cur = conn.cursor()							
+			cur = conn.cursor()
 			cur.execute("DELETE FROM ReworkingApplicants WHERE ID = ?", (ID))
 
 			conn.commit()

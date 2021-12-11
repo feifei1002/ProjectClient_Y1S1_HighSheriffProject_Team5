@@ -23,7 +23,7 @@
     <section class="container justify-contents-center text-center bg-light mt-5">
         <h2>Upload</h2>
         <form method="post" enctype="multipart/form-data" action="/Application/VideoInterview">
-            <label for="file">Please record a video from your webcam and upload it here: 
+            <label for="file">Please record a video from your webcam and upload it here:
                 <input id="videoSubmit" type="file" name="file">
             </label>
             <input type="submit" value="Upload" accept="video/*" capture> <!-- Capture attribute only works for mobile phones-->
@@ -31,3 +31,6 @@
     </section>
     <script src="/static/javascript/webcamRecorder.js"></script>
 </main>
+<footer>
+  {%include 'footer.html'%}
+</footer>
