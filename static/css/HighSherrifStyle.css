@@ -298,9 +298,10 @@ h1, h3{
 
 .gridContainer{
     display: inline-grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 25% 25% 25%;
     grid-column-gap: 20px;
     grid-row-gap: 50px;
+    justify-content: center;
 }
 
 .item1{
