@@ -324,6 +324,10 @@ h1, h3{
     grid-column: 1 / span 2;
 }
 
+.item23{
+  grid-column: 2 / span 2;
+}
+
 #grants{
     height: 250px;
     width: auto;
@@ -337,6 +341,11 @@ h1, h3{
 #children{
     height: 300px;
     width: auto;
+}
+
+#logo{
+  width: auto;
+  height: 200px;
 }
 
 .navBarPadding{
