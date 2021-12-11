@@ -351,3 +351,19 @@ h1, h3{
 .navBarPadding{
   padding: 80px;
 }
+
+.highSheriffAnimation1{
+  animation-name: fadeIn;
+  animation-duration: 3s;
+}
+
+.highSheriffAnimation2{
+  animation-name: fadeIn;
+  animation-duration: 3s;
+  animation-timing-function: cubic-bezier(1,-0.5,1,1); /* A slower ease-in */
+}
+
+@keyframes fadeIn{
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
