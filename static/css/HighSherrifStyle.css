@@ -176,9 +176,7 @@ h1, h3{
 #atReason:hover{
   border-color:black;
 }
-#atEmail, #atFirstname, #atLastname, #atReason{
-  border-color:#0174DF;
-}
+
 
 .navbar-nav{
   font-family: sans-serif;
