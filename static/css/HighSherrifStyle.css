@@ -176,8 +176,18 @@ h1, h3{
 #atReason:hover{
   border-color:black;
 }
-#atEmail, #atFirstname, #atLastname, #atReason{
-  border-color:#0174DF;
+
+.btn{
+  background-color: #212529;
+  color: white;
+  border-color: #212529;
+}
+
+.btn:hover, .btn:focus{
+  background-color: black;
+  border-color:black;
+  width: 150px;
+  color: white;
 }
 
 .navbar-nav{
