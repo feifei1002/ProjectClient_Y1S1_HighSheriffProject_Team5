@@ -87,7 +87,7 @@ body{
   border-radius: 25px;
   transform: translate(70%, -18%);
   font-family: sans-serif;
-  background-color: #A9E2F3;
+  background-color: #212529;
 }
 
 .box{
@@ -99,7 +99,7 @@ body{
   border: 2px solid white;
   border-radius: 25px;
   padding: 5px;
-  color: #0174DF;
+  color: white;
   font-weight: bold;
 }
 
@@ -121,17 +121,21 @@ body{
   border: 2px solid white;
   border-radius: 25px;
   padding: 5px;
-  color: #0174DF;
+  color: white;
   font-weight: bold;
 }
 
 #adminForm button:hover, #adminForm button:focus{
   width: 200px;
-  background: white;
+  background: black;
 }
 
 h1, h3{
   color: black;
+}
+
+#admin{
+  color: white;
 }
 
 #decline{
@@ -181,10 +185,10 @@ h1, h3{
 }
 
 .listbtn{
-  background-color: #81DAF5;
+  background-color: #212529;
   border: none;
   border-radius: 20px;
-  color: white;
+  color: #a8a8a8;
   padding: 25px 0px;
   width: 400px;
   text-align: center;
@@ -192,9 +196,9 @@ h1, h3{
   font-size: 50px;
 }
 .listbtn:hover, .listbtn:focus{
-  background-color: #81DAF5;
+  background-color: black;
   border-radius: 20px;
-  color: #0080FF;
+  color: white;
   padding: 25px 0px;
   width: 400px;
   text-align: center;
@@ -209,12 +213,8 @@ h1, h3{
   align-items: center;
 }
 
-#btnDelete{
-  background-color: #DEA5A4;
-}
-
-#btnAdd{
-  background-color: #92a8d1;
+#btnDelete, #btnAdd{
+  background-color: black;
 }
 
 #btnAdd, #btnDelete{
@@ -229,17 +229,19 @@ h1, h3{
 }
 
 #btnDelete:hover, #btnDelete:focus, #subDelete:hover, #subDelete:focus{
-  color: red
+  color: red;
+  background-color: #DEA5A4
 }
 
 #btnAdd:hover, #btnAdd:focus, #subAdd:hover, #subAdd:focus{
-  color: blue
+  color: blue;
+  background-color: #92a8d1;
 }
 
 #subAdd, #subDelete{
   border-radius: 5px;
-  color:black;
-  background-color: #81DAF5;
+  color:white;
+  background-color: #212529;
   border: none;
   font-family: sans-serif;
   font-weight: bold;
@@ -252,7 +254,8 @@ h1, h3{
 }
 
 .dropdown{
-  background-color: #49a5fa;
+  background-color: #212529;
+  color: #838077
 }
 
 .drop_menu ul{
@@ -271,7 +274,7 @@ h1, h3{
 .drop_menu ul li a{
   display: block;
   padding: 0 15px;
-  color: black;
+  color: #9b9d9e;
   text-decoration: none;
   line-height: 60px;
   font-size: 20px;
@@ -284,7 +287,7 @@ h1, h3{
 }
 .menu-itemA:hover ul{
   display: block;
-  background-color: #49a5fa;
+  background-color: #212529;
 }
 
 #logo{
