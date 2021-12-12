@@ -185,7 +185,8 @@ h1, h3{
 
 .btn:hover, .btn:focus{
   background-color: black;
-  border-color:black
+  border-color:black;
+  width: 150px
 }
 
 .navbar-nav{
