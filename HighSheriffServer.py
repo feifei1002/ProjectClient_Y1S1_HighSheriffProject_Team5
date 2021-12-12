@@ -242,7 +242,7 @@ def acceptReworkingApp():
 @app.route("/declineApplication", methods=['POST'])
 def declineApp():
 	if request.method == 'POST':
-		ID = request.form.get('decline', default = "Error")
+		ID = request.form.get('ID', default = "Error")
 		print("deleting applicant "+ ID)
 		try:
 			conn = sqlite3.connect(DATABASE)
@@ -250,19 +250,19 @@ def declineApp():
 			cur.execute("DELETE FROM Applicants WHERE ID = ?", (ID))
 
 			conn.commit()
-			msg = "Application successfully deleted"
+			msg = "/ListApplicants"
 		except:
 			conn.rollback()
 			msg = "error in decline application"
 		finally:
 			conn.close()
-			return msg
+			redirect(msg)
 	return render_template('ListApplicants.html')
 
 @app.route("/declineReworkingApplication", methods=['POST'])
 def declineReworkingApp():
 	if request.method == 'POST':
-		ID = request.form.get('decline', default = "Error")
+		ID = request.form.get('ID', default = "Error")
 		print("deleting applicant "+ ID)
 		try:
 			conn = sqlite3.connect(DATABASE)
@@ -270,13 +270,13 @@ def declineReworkingApp():
 			cur.execute("DELETE FROM ReworkingApplicants WHERE ID = ?", (ID))
 
 			conn.commit()
-			msg = "Application successfully deleted"
+			msg = "/ListreworkingApplicants"
 		except:
 			conn.rollback()
 			msg = "error in decline application"
 		finally:
 			conn.close()
-			return msg
+			return redirect(msg)
 	return render_template('ListApplicants.html')
 
 @app.route("/ListTests", methods=['GET'])
