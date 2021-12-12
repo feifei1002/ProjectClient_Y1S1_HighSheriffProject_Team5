@@ -177,6 +177,16 @@ h1, h3{
   border-color:black;
 }
 
+.btn{
+  background-color: #212529;
+  color: white;
+  border-color: #212529;
+}
+
+.btn:hover, .btn:focus{
+  background-color: black;
+  border-color:black
+}
 
 .navbar-nav{
   font-family: sans-serif;
