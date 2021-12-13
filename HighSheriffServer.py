@@ -405,6 +405,7 @@ def submitTest():
 		lastname = request.form.get('lastname', default = "Error")
 		score = request.form.get('score', default = "Error")
 		print("inserting applicant "+firstname)
+		print("Score is "+score)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
