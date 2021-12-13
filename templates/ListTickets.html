@@ -7,7 +7,7 @@
 
 <a href=/admin class="btn btn-primary">View Applicants</a>
 
-<h1 class="container-fluid text-center">User Tickets</h1>
+<h1 class="navBarPadding container-fluid text-center">User Tickets</h1>
 <section>
 <table class="container table" id="TicketTable" border = 1 method = "POST" name = "TicketTable">
    <thead>
@@ -15,6 +15,7 @@
       <td>Name</td>
       <td>Email</td>
       <td>Query</td>
+      <td>Response</td>
    </thead>
 
     {% for row in data %}
@@ -22,8 +23,18 @@
         <td>{{row[0]}}</td>
         <td>{{row[1]}}</td>
         <td>{{row[2]}}</td>
-        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
     </tr>
     {% endfor %}
 </table>
 </section>
+
+<form action="/RespondTickets" method="POST">
+  <label for= "ID">ID<br>
+    <input type ="number" maxlength="20" id="ID" name="ID" value=""/>
+  </label><br><br>   <label for="Response">Response<br>
+    <input id="Response" maxlength="30" type="text" name="Response" value=""/>
+  </label><br><br>
+  <button type="Submit"  value="Submit"> Submit</button>
+</form>
