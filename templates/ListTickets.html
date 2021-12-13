@@ -27,3 +27,12 @@
     {% endfor %}
 </table>
 </section>
+
+<form action="/ListTickets" method="POST">
+  <label for= "ID">ID<br>
+    <input type ="number" maxlength="20" id="ID" name="ID" value=""/>
+  </label><br><br>   <label for="Response">Response<br>
+    <input id="Response" maxlength="30" type="text" name="Response" value=""/>
+  </label><br><br>
+  <button type="Submit"  value="Submit"> Submit</button>
+</form>
