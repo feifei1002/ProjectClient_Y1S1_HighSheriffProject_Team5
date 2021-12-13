@@ -105,6 +105,25 @@ def admin():
 
     return render_template('admin.html')
 
+@app.route("/ListTickets", methods = ['GET', 'POST'])
+def ListTickets():
+    if request.method =='GET':
+        return render_template('ListTickets.html')
+        try:
+            conn = sqlite3.connect(DATABASE)
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM 'Tickets'")
+            data = cur.fetchall()
+            print(data)
+        except Exception as e:
+            print('there was an error')
+            print(e)
+            conn.close()
+            data=""
+        finally:
+            conn.close()
+            return render_template('ListTickets.html', data = data)
+
 @app.route("/acceptApplication", methods=['POST'])
 def acceptApp():
 	if request.method == 'POST':
