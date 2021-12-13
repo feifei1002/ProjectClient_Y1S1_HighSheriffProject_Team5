@@ -201,23 +201,42 @@ def listApplicants():
 
 @app.route("/ListTickets", methods = ['GET'])
 def ListTickets():
-    if request.method =='GET':
-            try:
-                conn = sqlite3.connect(DATABASE)
-                cur = conn.cursor()
-                cur.execute("SELECT * FROM 'Tickets'")
-                data = cur.fetchall()
-                print(data)
-            except Exception as e:
-                print('there was an error')
-                print(e)
-                conn.close()
-                data=""
-            finally:
-                conn.close()
-                return render_template('ListTickets.html', data = data)
+	if request.method =='GET':
+			try:
+				conn = sqlite3.connect(DATABASE)
+				cur = conn.cursor()
+				cur.execute("SELECT * FROM 'Tickets'")
+				data = cur.fetchall()
+				print(data)
+			except Exception as e:
+				print('there was an error')
+				print(e)
+				conn.close()
+				data=""
+			finally:
+				conn.close()
+				return render_template('ListTickets.html', data = data)
 
-    return render_template('admin.html')
+@app.route("/RespondTickets", methods = ['POST'])
+def ResponseTickets():
+	if request.method =='POST':
+		ID = request.form.get('ID', default = "Error")
+		Response = request.form.get('Response', default = "None")
+		try:
+			conn = sqlite3.connect(DATABASE)
+			cur = conn.cursor()
+			cur.execute("UPDATE Tickets SET Response = ? WHERE ID = ?", (Response, ID))
+			conn.commit()
+			msg = "Response added!"
+		except:
+			conn.rollback()
+			msg = "Error when sending response"
+		finally:
+			conn.close()
+			return msg
+	return render_template('ListTickets.html')
+
+	return render_template('admin.html')
 @app.route("/acceptApplication", methods=['POST'])
 def acceptApp():
 	if request.method == 'POST':
