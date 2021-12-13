@@ -17,7 +17,7 @@ def check_filetype(file):
 
 @app.route("/showpayment", methods=['GET'])
 def showpayment():
-	if request.method == 'GET': 
+	if request.method == 'GET':
 		#currentRoot = request.os.path
 		try:
 			conn = sqlite3.connect(DATABASE)
@@ -199,17 +199,9 @@ def listApplicants():
 			conn.close()
 			return render_template('ListApplicants.html', data = data)
 
-@app.route("/ListTickets", methods = ['GET', 'POST'])
+@app.route("/ListTickets", methods = ['GET'])
 def ListTickets():
     if request.method =='GET':
-        return render_template('admin.html')
-    error = None
-    if request.method =='POST':
-        if request.form['username']!= 'admin' or request.form['password'] != 'admin':
-            error = "Wrong username or password. Please try again."
-            print(error)
-            return render_template('admin.html')
-        else:
             try:
                 conn = sqlite3.connect(DATABASE)
                 cur = conn.cursor()
