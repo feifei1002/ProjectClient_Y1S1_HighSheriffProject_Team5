@@ -1,0 +1,56 @@
+{% include 'boostrap.html'%}
+{% include 'dropdown.html'%}
+<head>
+<link rel="stylesheet" href="/static/css/HighSherrifStyle.css">
+<script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title>Questions List</title>
+<h1>Questions</h1>
+</head>
+<body>
+  <!-- Table contains all the test questions and answer that moderator can see-->
+  <section>
+    <table class="table table-striped" id="list" border=1>
+    <thead>
+      <th>ID</th>
+      <th>Question</th>
+      <th>Answer</th>
+    </thead>
+    {% for row in data %}
+    <tr>
+      <td>{{row[0]}}</td>
+      <td>{{row[1]}}</td>
+      <td>{{row[2]}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+  </section>
+  <main>
+    <!-- two buttons created to allow moderator to add or delete test questions -->
+  <div>
+    <h4>Want to add or delete questions from the list?</h4>
+    <button type ="submit" name ="addQ" id="btnAdd">Add Questions</button>
+    <button type ="submit" name ="deleteQ" id = "btnDelete">Delete Questions</button>
+  </div>
+  <br>
+  <form id="addForm" method='POST' action ='/addTest'>
+    <label>Please enter the question you want to add here:<br>
+    <input type ="text" id="add" name ="add" placeholder="Question"><br></label><br>
+    <!-- Moderator has to pick a correct answer for the test question -->
+    <!-- For now, I only allow Yes/No answer, we can add in text answer if we need it later -->
+    <label>Please select the correct answer for the question:<br>
+    <input type="radio" name="option" value=" Yes">Yes</input><br>
+    <input type="radio" name="option" value=" No">No</input><br>
+    </label><br>
+    <button type="submit" id='subAdd'>Add</button>
+  </form>
+
+  <form id="deleteForm" method='POST' action = '/deleteTest'>
+    <!-- Entered a test question's ID to delete it -->
+    <label>Please enter the question ID you want to delete here:</label><br>
+    <input type ="number" id="delete" name="delete" placeholder="ID">
+    <button type="submit" id='subDelete'>Delete</button>
+  </form>
+  </main>
+  <!-- Jquery is used to to activate the two add and delete questions buttons -->
+  <script src="/static/javascript/adminTestButtons.js"></script>
+  </body>

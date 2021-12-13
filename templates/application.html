@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Application</title>
   </head>
   {% include 'boostrap.html'%}
   <body>
@@ -12,7 +12,7 @@
       <h1 class="container-fluid justify-content-center text-center">Applications for funds</h1>
       <section class="container-fluid bg-light pt-2 justify-content-center text-center">
           <h2>Apply through Reworking (Recommended)</h2>
-          <a class='btn btn-primary btn-lg' href="https://Jxshxn.reworking.com/apply/b9ia3smYhsko">Apply</a>
+          <a class='btn btn-primary btn-lg' href="/Application/Test">Apply</a>
       </section>
       <section class="container-fluid mt-3 pt-2 justify-content-center text-center bg-light">
           <h2>Apply using a form</h2>
@@ -49,7 +49,7 @@
             </div>
             <div class="mb-3 mt-3">
               <label>
-                  Tick here to confirm you are within the stated county: 
+                  Tick here to confirm you are within the stated county:
                   <input id="confirmBox" type="checkbox" name="confirm" />
               </label>
             </div>
@@ -58,35 +58,10 @@
           <p id="error1">Please accept the terms and conditions</p>
           <p id="error2">You cannot apply for funding if you do not live within the stated county</p>
       </section>
+      <script src="/static/javascript/applicationValidation.js"></script>
       <span id='txt'></span>
+      <footer>
+        {%include 'footer.html'%}
+      </footer>
   </body>
-  <script>
-      document.getElementById("error1").style.color = "red";
-      document.getElementById("error2").style.color = "red";
-      document.getElementById("error1").style.visibility = "hidden";
-      document.getElementById("error2").style.visibility = "hidden";
-
-      function validateForm() {
-          var terms = document.getElementById("termsBox").checked;
-          var confirm = document.getElementById("confirmBox").checked;
-          if (terms == true && confirm == true) {
-              document.getElementById("error1").style.visibility = "hidden";
-              document.getElementById("error2").style.visibility = "hidden";
-              return true
-          } else if (terms == false) {
-              document.getElementById("error1").style.visibility = "visible";
-              document.getElementById("error2").style.visibility = "hidden";
-              return false
-          } else if (confirm == false) {
-              document.getElementById("error1").style.visibility = "hidden";
-              document.getElementById("error2").style.visibility = "visible";
-              return false
-          } else {
-              document.getElementById("error1").style.visibility = "visible";
-              document.getElementById("error2").style.visibility = "hidden";
-              return false
-          }
-      }
-
-  </script>
 </html>

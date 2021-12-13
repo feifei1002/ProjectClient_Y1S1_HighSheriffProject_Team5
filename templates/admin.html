@@ -1,28 +1,22 @@
 {% include 'nav.html'%}
 
-<title>Admin Login Page</title>
+<title>Admin Login</title>
 
+<body>
 <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <main class="container-fluid mt-3 pt-2 justify-content-center text-center bg-light">
-<link rel="stylesheet" href="/static/HighSherrifStyle.css">
+<link rel="stylesheet" href="/static/css/HighSherrifStyle.css">
 
 <form id='adminForm' action='/admin' method = 'post'>
-  <h1>LOGIN</h1>
+  <h1  id='admin'>LOGIN</h1>
   <input type = "text" name = "username" placeholder="Username" class="box" id='username'><br><br>
   <input type = "password" name = "password" placeholder="Password" class="box" id='password'><br><br>
   <button type = "submit" class="btn btn-outline-primary" id="login"> Log In </button><br>
 </form>
 
-<script>
-  $(document).ready(function(){
-    $('#login').click(function(){
-      var username = $('#username').val();
-      var password = $('#password').val();
-      if (username != 'admin' || password != 'admin'){
-        alert('Wrong username or password! Please try again')
-      }
-    })
-  })
-</script>
+<script src="/static/javascript/adminLogin.js"></script>
 </main>
+<footer>
+</footer>
+</body>
 {% include 'boostrap.html'%}

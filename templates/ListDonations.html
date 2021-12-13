@@ -1,0 +1,31 @@
+{% include 'boostrap.html'%}
+{% include 'dropdown.html'%}
+<title>Donators List</title>
+<body>
+    <section class="container text-center">
+        <h2>Old-Style Donators</h2>
+        <table class="container table" id="Donatorstable" border=1 method="POST" name="donatorsTable">
+            <thead>
+            <td>ID</td>
+            <td>Amount</td>
+            <td>Name</td>
+            <td>Card number</td>
+            <td>Expiry date</td>
+            <td>Security</td>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</body>
+

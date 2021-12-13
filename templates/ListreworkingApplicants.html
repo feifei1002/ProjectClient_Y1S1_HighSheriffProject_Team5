@@ -1,0 +1,51 @@
+{% include 'boostrap.html'%}
+{% include 'dropdown.html'%}
+<link rel="stylesheet" href="/static/css/HighSherrifStyle.css">
+<title>Reworking Applicants List</title>
+<section class="container text-center">
+    <h2>Reworking Applicants</h2>
+    <table class="container table table-striped" id="applicantTable" border=1 method="POST" name="myTable2">
+        <thead>
+        <td>ID</td>
+        <td>Firstname</td>
+        <td>Surname</td>
+        <td>Email</td>
+        <td>Number Of Correct Questions</td>
+        <td>Video</td>
+        <td>Amount</td>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+                <td class="vid">{{row[5]}}</td>
+                <td>{{row[6]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <section class="container text-center">
+        <h3>Accept or Decline Application</h3>
+        <p id="modMsg">There are currently no applications that need moderation</p>
+        <table id='waitReworkingTable' class='table'>
+            <thead>
+            <td>ID</td>
+            <td>Firstname</td>
+            <td>Surname</td>
+            <td>Email</td>
+            <td>Number of Correct Question</td>
+            <td>Video</td>
+            <td>Amount</td>
+            </thead>
+            <tbody id='requestedTable'>
+                <!--Its meant to be empty and jquery adds data to it-->
+            </tbody>
+        </table>
+    </section>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/javascript/generateButtons.js"></script>
