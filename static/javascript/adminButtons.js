@@ -11,4 +11,7 @@ $(document).ready(function(){
     $('#donateListbtn').click(function(){
       window.location="/showpayment"
     });
+    $('#ticketListbtn').click(function(){
+      window.location="/ListTickets"
+    });
   })

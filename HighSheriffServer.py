@@ -17,7 +17,7 @@ def check_filetype(file):
 
 @app.route("/showpayment", methods=['GET'])
 def showpayment():
-	if request.method == 'GET': 
+	if request.method == 'GET':
 		#currentRoot = request.os.path
 		try:
 			conn = sqlite3.connect(DATABASE)
@@ -85,7 +85,7 @@ def submitApp():
 			conn.close()
 			return msg
 
-@app.route("/", methods=['GET'])
+@app.route("/home", methods=['GET'])
 def returnHome():
 	if request.method == 'GET':
 		return render_template('home.html')
@@ -199,6 +199,25 @@ def listApplicants():
 			conn.close()
 			return render_template('ListApplicants.html', data = data)
 
+@app.route("/ListTickets", methods = ['GET'])
+def ListTickets():
+    if request.method =='GET':
+            try:
+                conn = sqlite3.connect(DATABASE)
+                cur = conn.cursor()
+                cur.execute("SELECT * FROM 'Tickets'")
+                data = cur.fetchall()
+                print(data)
+            except Exception as e:
+                print('there was an error')
+                print(e)
+                conn.close()
+                data=""
+            finally:
+                conn.close()
+                return render_template('ListTickets.html', data = data)
+
+    return render_template('admin.html')
 @app.route("/acceptApplication", methods=['POST'])
 def acceptApp():
 	if request.method == 'POST':
@@ -404,6 +423,39 @@ def listreworkingApplicants():
 		finally:
 			conn.close()
 			return render_template('ListreworkingApplicants.html', data = data)
+
+@app.route("/ContactPage", methods=['GET'])
+def returnContact():
+	if request.method == 'GET':
+		return render_template('ContactPage.html')
+
+@app.route("/SubmitTicket", methods=['POST'])
+def SubmitTicket():
+	if request.method == 'POST':
+		tName = request.form.get('ContactName', default = "Error")
+		tEmail = request.form.get('ContactEmail', default = "Error")
+		tQuery = request.form.get('Query', default = "Error")
+		print (tName + " submitted a ticket.")
+		print (tEmail)
+
+		try:
+			Connect = sqlite3.connect(DATABASE)
+			Cursor = conn.cursor()
+			Cursor.execute("INSERT INTO Tickets ('Name','Email','Query')\
+							VALUES (?,?,?)",(tName,tEmail,tQuery))
+			Connect.commit()
+			msg = "Ticket Added"
+
+		except Exception as e:
+			Connect.rollback()
+			msg = "Ticket insert error"
+		finally:
+			Connect.close()
+			return msg
+
+
+
+
 
 if __name__ == "__main__":
 	app.run(debug=True)

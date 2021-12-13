@@ -1,0 +1,18 @@
+{% include 'boostrap.html'%}
+{% include 'nav.html'%}
+
+<section class="mt-3">
+  <form action="/SubmitTicket" method="POST">
+     <label for= "ContactName">Name<br>
+     <input type ="text" maxlength="20" id="ContactName" name="ContactName" value=""/>
+     </label><br><br>
+     <label for="ContactEmail">E-Mail<br>
+     <input id="ContactEmail" maxlength="30" type="text" name="ContactEmail" value=""/>
+     </label><br><br>
+     <label for="Query">How can we help?<br>
+     <input type="text" id="Query" name="Query" style="width:500px;height:150px" value=""/>
+     </label><br><br>
+
+     <button type="Submit" name="SendTicket" value="Submit"> Submit</button>
+   </form>
+</section>

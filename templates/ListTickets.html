@@ -1,0 +1,29 @@
+{% include 'boostrap.html'%}
+
+<body>
+  <header>
+    {% include 'nav.html'%}
+  </header>
+
+<a href=/admin class="btn btn-primary">View Applicants</a>
+
+<h1 class="container-fluid text-center">User Tickets</h1>
+<section>
+<table class="container table" id="TicketTable" border = 1 method = "POST" name = "TicketTable">
+   <thead>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Query</td>
+   </thead>
+
+    {% for row in data %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[2]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</section>
