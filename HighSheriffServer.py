@@ -227,13 +227,13 @@ def ResponseTickets():
 			cur = conn.cursor()
 			cur.execute("UPDATE Tickets SET Response = ? WHERE ID = ?", (Response, ID))
 			conn.commit()
-			msg = "Response added!"
+			msg = "/ListTickets"
 		except:
 			conn.rollback()
 			msg = "Error when sending response"
 		finally:
 			conn.close()
-			return msg
+			return redirect(msg)
 	return render_template('ListTickets.html')
 
 	return render_template('admin.html')
