@@ -85,7 +85,7 @@ def submitApp():
 			conn.close()
 			return msg
 
-@app.route("/home", methods=['GET'])
+@app.route("/", methods=['GET'])
 def returnHome():
 	if request.method == 'GET':
 		return render_template('home.html')
@@ -440,7 +440,7 @@ def SubmitTicket():
 
 		try:
 			Connect = sqlite3.connect(DATABASE)
-			Cursor = conn.cursor()
+			Cursor = Connect.cursor()
 			Cursor.execute("INSERT INTO Tickets ('Name','Email','Query')\
 							VALUES (?,?,?)",(tName,tEmail,tQuery))
 			Connect.commit()
