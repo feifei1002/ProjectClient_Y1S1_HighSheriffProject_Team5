@@ -346,7 +346,7 @@ def addTest():
 			cur = conn.cursor()
 			cur.execute("INSERT INTO Tests ('Test', 'Answer') VALUES (?,?)", [add, answer])
 			conn.commit()
-			msg = "Test successfully added"
+			msg = "/ListTests"
 		except Exception as e:
 			print('there was an error')
 			print(e)
@@ -354,7 +354,7 @@ def addTest():
 			msg = "error in adding test"
 		finally:
 			conn.close()
-			return msg
+			return redirect(msg)
 	return render_template('ListTests.html')
 
 @app.route("/deleteTest", methods=['POST'])
@@ -367,7 +367,7 @@ def deleteQuestion():
 			cur = conn.cursor()
 			cur.execute("DELETE FROM Tests WHERE ID = ?", (delete))
 			conn.commit()
-			msg = "Test successfully deleted"
+			msg = "/ListTests"
 		except Exception as e:
 			print('there was an error')
 			print(e)
@@ -375,7 +375,7 @@ def deleteQuestion():
 			msg = "error in deleting test"
 		finally:
 			conn.close()
-			return msg
+			return redirect(msg)
 	return render_template('ListTests.html')
 
 
@@ -405,6 +405,7 @@ def submitTest():
 		lastname = request.form.get('lastname', default = "Error")
 		score = request.form.get('score', default = "Error")
 		print("inserting applicant "+firstname)
+		print("Score is "+score)
 		try:
 			conn = sqlite3.connect(DATABASE)
 			cur = conn.cursor()
