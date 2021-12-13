@@ -158,6 +158,7 @@ def SubmitTicket():
 		tEmail = request.form.get('ContactEmail', default = "Error")
 		tQuery = request.form.get('Query', default = "Error")
 		print (tName + " submitted a ticket.")
+		print (tEmail)
 
 		try:
 			Connect = sqlite3.connect(DATABASE)
